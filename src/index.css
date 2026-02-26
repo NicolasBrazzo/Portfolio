@@ -1,0 +1,199 @@
+@import "tailwindcss";
+
+/* ============================================
+   Satoshi – variable font (self-hosted)
+   ============================================ */
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Satoshi";
+  src: url("/fonts/Satoshi-VariableItalic.woff2") format("woff2");
+  font-weight: 300 900;
+  font-style: italic;
+  font-display: swap;
+}
+
+/* ============================================
+   Instrument Serif – self-hosted
+   ============================================ */
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Instrument Serif";
+  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2");
+  font-weight: 400;
+  font-style: italic;
+  font-display: swap;
+}
+
+@theme {
+  --color-bg: #0D0D0D;
+  --color-surface: #161616;
+  --color-surface-raised: #1E1E1E;
+  --color-text: #F2F2F0;
+  --color-muted: #7A7A7A;
+  --color-accent: #FF5C00;
+  --color-accent-warm: #FF8C42;
+  --color-accent-glow: rgba(255, 92, 0, 0.25);
+}
+
+/* ============================================
+   Portfolio – variabili CSS (base)
+   ============================================ */
+
+@layer base {
+  :root {
+    /* Colori */
+    --color-bg: #0D0D0D;
+    --color-surface: #161616;
+    --color-surface-raised: #1E1E1E;
+    --color-text: #F2F2F0;
+    --color-muted: #7A7A7A;
+    --color-accent: #FF5C00;
+    --color-accent-warm: #FF8C42;
+    --color-accent-glow: rgba(255, 92, 0, 0.25);
+
+    /* Tipografia */
+    --font-sans: "Satoshi", system-ui, sans-serif;
+    --font-serif: "Instrument Serif", Georgia, serif;
+
+    /* Spacing / layout */
+    --container-max: 72rem;
+    --section-padding-y: 5rem;
+    --section-padding-x: 1.5rem;
+  }
+
+  html {
+    font-synthesis: none;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    margin: 0;
+    min-width: 320px;
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-color: var(--color-bg);
+    color: var(--color-text);
+    font-family: var(--font-sans);
+  }
+
+  /* Focus-visible globale – accessibilità keyboard */
+  :focus-visible {
+    outline: 2px solid var(--color-accent);
+    outline-offset: 3px;
+    border-radius: 3px;
+  }
+
+  /* Scroll smooth per i link anchor */
+  html {
+    scroll-behavior: smooth;
+  }
+}
+
+/* ============================================
+   Utilities
+   ============================================ */
+
+@layer utilities {
+  /* Noise overlay – aggiunge texture granulosa sopra la sezione */
+  .u-noise {
+    position: relative;
+    isolation: isolate;
+  }
+
+  .u-noise::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: url('/noise.png') repeat;
+    opacity: 0.05;
+    mix-blend-mode: overlay;
+    pointer-events: none;
+    z-index: -1;
+  }
+
+  /* Surface */
+  .u-surface {
+    background-color: var(--color-surface);
+  }
+
+  /* Glow arancione */
+  .u-glow-accent {
+    box-shadow: 0 0 32px var(--color-accent-glow);
+  }
+
+  /* Border sottile */
+  .u-border-subtle {
+    border: 1px solid rgba(255, 255, 255, 0.07);
+  }
+
+  /* Testo arancione */
+  .u-text-accent {
+    color: var(--color-accent);
+  }
+
+  /* Button shine (solo quando hover) */
+  @keyframes btnShine45 {
+    0% {
+      transform: translateX(-220%) rotate(45deg);
+      opacity: 0;
+    }
+    12% {
+      opacity: 1;
+    }
+    100% {
+      transform: translateX(220%) rotate(45deg);
+      opacity: 0;
+    }
+  }
+
+  .u-btn-shine {
+    position: relative;
+    overflow: hidden;
+  }
+
+  .u-btn-shine::after {
+    content: '';
+    pointer-events: none;
+    position: absolute;
+    top: -70%;
+    bottom: -70%;
+    width: 32%;
+    left: -22%;
+    background: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0) 0%,
+      rgba(255, 255, 255, 0.4) 50%,
+      rgba(255, 255, 255, 0) 100%
+    );
+    opacity: 0;
+    transform: translateX(220%) rotate(45deg);
+  }
+
+  .u-btn-shine:hover::after {
+    animation: btnShine45 0.3s ease-out 1;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .u-btn-shine:hover::after {
+      animation: none;
+    }
+  }
+}
