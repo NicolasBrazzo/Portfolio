@@ -9,19 +9,25 @@ import { Timeline } from '../components/ui/Timeline'
 
 const TIMELINE_ITEMS = [
   {
-    year: '2021',
+    year: '2022',
     title: 'Primi passi (scuola + curiosità)',
     description:
       'Inizio a programmare a scuola, un po’ per gioco e senza una direzione precisa. Studio HTML, CSS e PHP, sperimentando e imparando facendo.',
   },
   {
     year: '2023',
-    title: 'Riparto da solo',
+    title: 'Entro nel mondo del lavoro',
     description:
-      'Riprendo in mano la programmazione da autodidatta e capisco che mi piace davvero. Studio JavaScript, PHP, SQL e Python. È stato duro: ci credevo solo io e spesso studiavo completamente da solo.',
+      'Comincio a lavorare in un settore che non mi piaceva, mi ha fatto capire che non mi apparteneva, mi ha dato la voglia di cambiare.',
   },
   {
-    year: '2024 – oggi',
+    year: '2023/2024',
+    title: 'Rincorro la mia vera strada',
+    description:
+      'Riprendo in mano la programmazione da autodidatta e capisco che mi piace davvero. Studio JavaScript, PHP, SQL e Python. Lavoro di giorno e studio la notte, scrivendo codice ogni giorno.',
+  },
+  {
+    year: '2025 – oggi',
     title: 'ITS Web Developer (Full Stack) → Frontend & Design',
     description:
       'Mi iscrivo a un corso ITS da Web Developer Full Stack: mi manca pochissimo per terminarlo. Qui scopro la mia strada: frontend e design, con focus su interfacce curate e sistemi coerenti.',
@@ -29,9 +35,9 @@ const TIMELINE_ITEMS = [
 ]
 
 const STATS = [
-  { value: '5+',  label: 'anni di esperienza' },
-  { value: '20+', label: 'progetti completati' },
-  { value: '500+',   label: 'commit eseguiti' },
+  { value: '3+',  label: 'anni di esperienza' },
+  { value: '10+', label: 'progetti completati' },
+  { value: '400+',   label: 'commit eseguiti nell\'ultimo anno' },
 ]
 
 export function About() {

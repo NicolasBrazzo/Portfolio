@@ -211,7 +211,7 @@ export function Hero() {
               className="block"
             >
               <span className="inline-flex items-baseline gap-3 flex-wrap">
-                <span className="opacity-70 font-medium">&amp; </span>
+                <span className="font-semibold">&amp; </span>
                 <em
                   className="not-italic text-accent leading-none"
                   style={{

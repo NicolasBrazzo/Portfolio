@@ -1,10 +1,10 @@
 import { useState, useEffect } from 'react'
 
 const NAV_LINKS = [
-  { label: 'Projects', href: '#projects' },
+  { label: 'Progetti', href: '#projects' },
   { label: 'Skills',   href: '#skills'   },
-  { label: 'About',    href: '#about'    },
-  { label: 'Contact',  href: '#contact'  },
+  { label: 'Chi sono',    href: '#about'    },
+  { label: 'Contattami',  href: '#contact'  },
 ]
 
 const SECTIONS = ['hero', 'projects', 'skills', 'about', 'contact']
@@ -37,10 +37,20 @@ export function Navbar() {
     return () => observers.forEach((o) => o.disconnect())
   }, [])
 
-  /* lock body scroll when mobile menu is open */
+  /* lock body scroll when mobile menu is open – compensate scrollbar width to avoid layout shift */
   useEffect(() => {
-    document.body.style.overflow = menuOpen ? 'hidden' : ''
-    return () => { document.body.style.overflow = '' }
+    if (menuOpen) {
+      const scrollbarWidth = window.innerWidth - document.documentElement.clientWidth
+      document.body.style.overflow = 'hidden'
+      document.body.style.paddingRight = `${scrollbarWidth}px`
+    } else {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
+    return () => {
+      document.body.style.overflow = ''
+      document.body.style.paddingRight = ''
+    }
   }, [menuOpen])
 
   const handleLink = (e, href) => {
@@ -105,7 +115,7 @@ export function Navbar() {
           <span
             className={[
               'block w-5 h-px bg-text transition-all duration-300 origin-center',
-              menuOpen ? 'translate-y-[5px] rotate-45' : '',
+              menuOpen ? 'translate-y-[7px] rotate-45' : '',
             ].join(' ')}
           />
           <span
@@ -117,7 +127,7 @@ export function Navbar() {
           <span
             className={[
               'block w-5 h-px bg-text transition-all duration-300 origin-center',
-              menuOpen ? '-translate-y-[5px] -rotate-45' : '',
+              menuOpen ? '-translate-y-[7px] -rotate-45' : '',
             ].join(' ')}
           />
         </button>
@@ -126,9 +136,10 @@ export function Navbar() {
       {/* Mobile menu overlay */}
       <div
         className={[
-          'md:hidden fixed inset-0 top-16 bg-bg/95 backdrop-blur-md flex flex-col items-center justify-center gap-10 transition-all duration-300',
+          'md:hidden fixed inset-0 top-16 flex flex-col items-center justify-center gap-10 transition-all duration-300',
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
+        style={{ backgroundColor: 'rgba(13,13,13,0.97)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
         aria-hidden={!menuOpen}
       >
         {NAV_LINKS.map(({ label, href }) => {
