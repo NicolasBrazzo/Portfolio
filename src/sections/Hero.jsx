@@ -193,7 +193,7 @@ export function Hero() {
           {/* Name */}
           <div
             ref={(el) => el && titleLinesRef.current.push(el)}
-            className="text-[11px] font-semibold tracking-[0.22em] uppercase text-text/90"
+            className="text-[17px] font-semibold tracking-[0.22em] uppercase text-text/90"
           >
             Nicolas Brazzo<span className="text-accent">.</span>
           </div>
@@ -204,14 +204,14 @@ export function Hero() {
               ref={(el) => el && titleLinesRef.current.push(el)}
               className="block"
             >
-              Frontend dev
+              Web developer
             </span>
             <span
               ref={(el) => el && titleLinesRef.current.push(el)}
               className="block"
             >
               <span className="inline-flex items-baseline gap-3 flex-wrap">
-                <span className="font-semibold">&amp; </span>
+                {/* <span className="font-semibold">&amp; </span> */}
                 <em
                   className="not-italic text-accent leading-none"
                   style={{
@@ -219,7 +219,7 @@ export function Hero() {
                     fontStyle: "italic",
                   }}
                 >
-                  designer
+                  front-end
                 </em>
               </span>
               <span className="text-accent">.</span>

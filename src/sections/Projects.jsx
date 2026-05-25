@@ -9,6 +9,7 @@ import { ProjectCard } from '../components/ui/ProjectCard'
 import { projects } from '../data/projects'
 import readitImg from '../assets/Readit.png'
 import snippifyImg from '../assets/Snippify.png'
+import nasaNeo from '../assets/NASA-neo.png'
 
 export function Projects() {
   const sectionRef = useRef(null)
@@ -17,6 +18,7 @@ export function Projects() {
   const projectsWithImages = projects.map((p) => {
     if (p.title === 'ReadIt') return { ...p, image: readitImg }
     if (p.title === 'Snippify') return { ...p, image: snippifyImg }
+    if (p.title === 'NASA NEO Dashboard') return { ...p, image: nasaNeo }
     return p
   })
 

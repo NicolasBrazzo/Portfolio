@@ -1,7 +1,6 @@
 const SOCIAL_LINKS = [
-  { label: 'GitHub',      href: 'https://github.com'   },
-  { label: 'LinkedIn',    href: 'https://linkedin.com' },
-  { label: 'Twitter / X', href: 'https://x.com'        },
+  { label: 'GitHub',      href: 'https://github.com/NicolasBrazzo'   },
+  { label: 'LinkedIn',    href: 'https://www.linkedin.com/in/nicolas-brazzo-a91509286/' },
 ]
 
 export function Footer() {
