@@ -30,7 +30,7 @@ const TIMELINE_ITEMS = [
     year: '2025 – oggi',
     title: 'ITS Web Developer (Full Stack) → Frontend & Design',
     description:
-      'Mi iscrivo a un corso ITS da Web Developer Full Stack: mi manca pochissimo per terminarlo. Qui scopro la mia strada: frontend e design, con focus su interfacce curate e sistemi coerenti.',
+      'Mi iscrivo a un corso ITS da Web Developer Full Stack. Qui scopro la mia strada: frontend e design, con focus su interfacce curate e sistemi coerenti. Durante il percorso inizio a lavorare presso un\'azienda di sviluppo software, dove mi occupo di frontend e accumulo esperienza.',
   },
 ]
 
@@ -87,15 +87,15 @@ export function About() {
               <div className="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-muted max-w-lg">
                 <p>
                   Sono un{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-text not-italic">
+                  <em className="text-text not-italic">
                     frontend developer
                   </em>{' '}
                   e{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-accent not-italic">
+                  <em className="text-accent not-italic">
                     UI designer
                   </em>{' '}
                   con una forte ossessione per i{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-text not-italic">
+                  <em className="text-text not-italic">
                     dettagli
                   </em>
                   . Progetto partendo dal sistema, non dall'ispirazione del momento.
@@ -104,15 +104,15 @@ export function About() {
                   Il mio approccio unisce rigore da ingegnere e sensibilità da designer:{' '}
                   ogni componente deve essere coerente, scalabile e bello da usare.
                   Lavoro con{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-accent not-italic">
+                  <em className="text-accent not-italic">
                     React
                   </em>
                   ,{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-accent not-italic">
+                  <em className="text-accent not-italic">
                     Tailwind
                   </em>{' '}
                   e{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-accent not-italic">
+                  <em className="text-accent not-italic">
                     GSAP
                   </em>{' '}
                   per costruire interfacce che si muovono bene, si caricano veloce
@@ -121,11 +121,11 @@ export function About() {
                 <p>
                   Quando non scrivo codice, studio tipografia, esploro design system
                   di altri e cerco la combinazione perfetta tra{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-text not-italic">
+                  <em className="text-text not-italic">
                     forma
                   </em>{' '}
                   e{' '}
-                  <em style={{ fontFamily: 'var(--font-serif)', fontStyle: 'italic' }} className="text-text not-italic">
+                  <em className="text-text not-italic">
                     funzione
                   </em>
                   .
