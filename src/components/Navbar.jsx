@@ -1,13 +1,5 @@
 import { useState, useEffect } from 'react'
-
-const NAV_LINKS = [
-  { label: 'Progetti', href: '#projects' },
-  { label: 'Skills',   href: '#skills'   },
-  { label: 'Chi sono',    href: '#about'    },
-  { label: 'Contattami',  href: '#contact'  },
-]
-
-const SECTIONS = ['hero', 'projects', 'skills', 'about', 'contact']
+import { NAV_LINKS, SECTIONS } from '../constants/navbar'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)

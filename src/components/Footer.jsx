@@ -1,7 +1,4 @@
-const SOCIAL_LINKS = [
-  { label: 'GitHub',      href: 'https://github.com/NicolasBrazzo'   },
-  { label: 'LinkedIn',    href: 'https://www.linkedin.com/in/nicolas-brazzo-a91509286/' },
-]
+import { SOCIAL_LINKS } from '../constants/footer'
 
 export function Footer() {
   const year = new Date().getFullYear()
