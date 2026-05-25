@@ -1,10 +1,10 @@
 import { useRef } from "react";
 import { useGSAP } from "@gsap/react";
-import { gsap } from "../lib/gsap";
-import { prefersReducedMotion } from "../lib/motion";
-import { Section } from "../components/ui/Section";
-import { Container } from "../components/ui/Container";
-import { Button } from "../components/ui/Button";
+import { gsap } from "../../lib/gsap";
+import { prefersReducedMotion } from "../../lib/motion";
+import { Section } from "../ui/Section";
+import { Container } from "../ui/Container";
+import { Button } from "../ui/Button";
 
 export function Hero() {
   const containerRef = useRef(null);
