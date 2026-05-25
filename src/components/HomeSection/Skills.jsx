@@ -6,7 +6,7 @@ import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { SkillBar } from "../ui/SkillBar";
-import { skills, skillCategories } from "../../data/skills";
+import { skills } from "../../data/skills";
 
 export function Skills() {
   const sectionRef = useRef(null);
@@ -73,43 +73,55 @@ export function Skills() {
 
         {/* 3 colonne – una per categoria */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-16">
-          {skillCategories.map(({ id, label }, i) => {
-            const categorySkills = skills.filter((s) => s.category === id);
-
-            return (
-              <div
-                key={id}
-                ref={(el) => {
-                  columnsRef.current[i] = el;
-                }}
-                className="flex flex-col"
-              >
-                {/* Category label */}
-                <div className="flex items-center gap-3 mb-8">
-                  <span
-                    className="block w-5 h-px bg-accent shrink-0"
-                    aria-hidden
-                  />
-                  <span className="text-[11px] font-bold tracking-[0.28em] uppercase text-accent">
-                    {label}
-                  </span>
-                </div>
-
-                {/* Skill items */}
-                <div className="flex flex-col">
-                  {categorySkills.map((skill) => (
-                    <SkillBar
-                      key={skill.name}
-                      name={skill.name}
-                      percent={skill.percent}
-                      triggered={triggered}
-                    />
-                  ))}
-                </div>
+          {Object.entries(skills).map(([key, category]) => (
+            <div
+              key={key}
+              ref={(el) => {
+                columnsRef.current[Object.keys(skills).indexOf(key)] = el;
+              }}
+              className="flex flex-col"
+            >
+              {/* Category label */}
+              <div className="flex items-center gap-3 mb-8">
+                <span
+                  className="block w-5 h-px bg-accent shrink-0"
+                  aria-hidden
+                />
+                <span className="text-[11px] font-bold tracking-[0.28em] uppercase text-accent">
+                  {category.label}
+                </span>
               </div>
-            );
-          })}
-        </div>
+
+              {/* Skill items */}
+              <ul className="flex flex-wrap gap-2">
+                {category.skills.map((skill) => (
+                  <li
+                    key={skill}
+                    className="group/skill relative inline-flex items-center gap-2 pl-3 pr-4 py-2 text-[13px] font-medium tracking-wide text-text/90 u-surface u-border-subtle rounded-full cursor-default overflow-hidden transition-all duration-300 ease-out hover:border-accent/60 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_var(--color-accent-glow)]"
+                  >
+                    {/* glow di sfondo on hover */}
+                    <span
+                      aria-hidden
+                      className="pointer-events-none absolute inset-0 opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300"
+                      style={{
+                        background:
+                          'radial-gradient(circle at 0% 50%, var(--color-accent-glow), transparent 60%)',
+                      }}
+                    />
+                    {/* dot accent */}
+                    <span
+                      aria-hidden
+                      className="relative block w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent-glow)] transition-all duration-300 group-hover/skill:scale-125 group-hover/skill:shadow-[0_0_12px_var(--color-accent)]"
+                    />
+                    <span className="relative transition-colors duration-300 group-hover/skill:text-text">
+                      {skill}
+                    </span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          ))}
+        </div>  
       </Container>
     </Section>
   );
