@@ -1,10 +1,12 @@
-import { useRef } from "react";
+import { useRef, useState } from "react";
 import { useGSAP } from "@gsap/react";
 import { gsap, ScrollTrigger } from "../../lib/gsap";
 import { prefersReducedMotion } from "../../lib/motion";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
+
+const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqejgpyg";
 
 const SOCIALS = [
   {
@@ -46,6 +48,44 @@ export function Contact() {
   const subRef = useRef(null);
   const ctaRef = useRef(null);
   const socialsRef = useRef(null);
+
+  const [status, setStatus] = useState("idle");
+  const [errorMessage, setErrorMessage] = useState("");
+
+  const handleSubmit = async (event) => {
+    event.preventDefault();
+    setStatus("sending");
+    setErrorMessage("");
+
+    const form = event.currentTarget;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch(FORMSPREE_ENDPOINT, {
+        method: "POST",
+        headers: { Accept: "application/json" },
+        body: formData,
+      });
+
+      if (response.ok) {
+        setStatus("success");
+        form.reset();
+        return;
+      }
+
+      const data = await response.json().catch(() => null);
+      const message =
+        data?.errors?.[0]?.message ||
+        "Qualcosa è andato storto durante l'invio. Riprova tra qualche istante.";
+      setErrorMessage(message);
+      setStatus("error");
+    } catch {
+      setErrorMessage(
+        "Errore di rete. Controlla la connessione e riprova.",
+      );
+      setStatus("error");
+    }
+  };
 
   useGSAP(
     () => {
@@ -121,18 +161,96 @@ export function Contact() {
             entro 24 ore.
           </p>
 
-          {/* CTA mailto */}
-          <div ref={ctaRef}>
-            <Button
-              as="a"
-              href="mailto:nicolasbrazzo8@gmail.com"
-              className="text-base px-8 py-4"
-            >
-              nicolasbrazzo8@gmail.com
-              <span aria-hidden className="text-lg">
-                →
-              </span>
-            </Button>
+          {/* Form di contatto */}
+          <div ref={ctaRef} className="w-full">
+            {status === "success" ? (
+              <div
+                role="status"
+                aria-live="polite"
+                className="flex flex-col gap-2 p-6 rounded-2xl border border-accent/30 bg-accent/5"
+              >
+                <div className="flex items-center gap-3">
+                  <span aria-hidden className="text-2xl text-accent">
+                    ✓
+                  </span>
+                  <p className="text-text font-medium text-lg">
+                    Grazie per avermi scritto!
+                  </p>
+                </div>
+                <p className="text-muted text-sm pl-9">
+                  Ho ricevuto il tuo messaggio. Ti rispondo entro 24 ore.
+                </p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="flex flex-col gap-4 w-full"
+              >
+                {/* Honeypot anti-spam (invisibile agli utenti reali) */}
+                <input
+                  type="text"
+                  name="_gotcha"
+                  tabIndex={-1}
+                  autoComplete="off"
+                  aria-hidden="true"
+                  className="hidden"
+                />
+
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  <input
+                    type="text"
+                    name="name"
+                    placeholder="Il tuo nome"
+                    required
+                    disabled={status === "sending"}
+                    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
+                  />
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="La tua email"
+                    required
+                    disabled={status === "sending"}
+                    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
+                  />
+                </div>
+
+                <textarea
+                  name="message"
+                  placeholder="Raccontami del tuo progetto"
+                  rows={5}
+                  required
+                  disabled={status === "sending"}
+                  className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent/50 transition-colors duration-200 resize-none disabled:opacity-50"
+                />
+
+                <div className="flex flex-col gap-3 pt-1">
+                  <Button
+                    type="submit"
+                    disabled={status === "sending"}
+                    className="text-base px-8 py-4 self-start disabled:opacity-60 disabled:cursor-wait"
+                  >
+                    {status === "sending"
+                      ? "Invio in corso…"
+                      : "Invia messaggio"}
+                    {status !== "sending" && (
+                      <span aria-hidden className="text-lg">
+                        →
+                      </span>
+                    )}
+                  </Button>
+
+                  {status === "error" && (
+                    <p
+                      role="alert"
+                      className="text-sm text-red-400 leading-relaxed"
+                    >
+                      {errorMessage}
+                    </p>
+                  )}
+                </div>
+              </form>
+            )}
           </div>
 
           {/* Social links */}
