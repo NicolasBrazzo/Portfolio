@@ -158,6 +158,16 @@ I clienti non comprano ore di lavoro — comprano un processo affidabile. Mostra
 | 03 | Costruzione | Iterazioni brevi, feedback continuo. Niente sorprese alla consegna. |
 | 04 | Consegna | Codice documentato, handoff pulito, supporto post-lancio. |
 
+**Aggiungere dentro questa sezione un paragrafo sull'AI — non come sezione separata:**
+
+> "Nel mio processo uso l'AI come uso Figma o Git: un tool che amplifica le decisioni, non le sostituisce. Lo integro in fase di esplorazione (generare alternative architetturali velocemente), debug (analisi di errori complessi) e documentazione. Le scelte di UX, architettura e qualità finale restano mie — so quando fidarmi dell'output e quando no."
+
+**Perché qui e non in una sezione dedicata:**
+- Una sezione separata sull'AI rischia di sembrare difensiva ("devo spiegarmi")
+- Integrata nel processo, diventa prova di maturità professionale: usi tutti gli strumenti disponibili con giudizio
+- I recruiter tecnici apprezzano chi sa distinguere tra *tool* e *stampella*
+- È un differenziatore reale adesso — tra 2 anni sarà la norma, quindi meglio dirlo ora
+
 ---
 
 ### 2.2 Trasformare i progetti in case study
