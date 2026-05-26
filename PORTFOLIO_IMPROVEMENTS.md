@@ -14,6 +14,8 @@ Il portfolio è **ben costruito**: animazioni GSAP sofisticate, architettura Rea
 
 ### 1.1 OG Tags con URL reale
 
+- [ ] togliere il porfolio da railway
+
 **File:** `index.html`
 
 Le meta tag Open Graph puntano a `https://tuosito.com/` — quando qualcuno condivide il portfolio su LinkedIn o WhatsApp, l'anteprima non funziona o mostra dati sbagliati.
