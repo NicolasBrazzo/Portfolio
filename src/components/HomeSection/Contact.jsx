@@ -5,7 +5,7 @@ import { prefersReducedMotion } from "../../lib/motion";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
-import { SOCIALS } from "../../data/socials";
+import { SOCIALS } from "../../constants/contact.jsx";
 
 const FORMSPREE_ENDPOINT = "https://formspree.io/f/mqejgpyg";
 
