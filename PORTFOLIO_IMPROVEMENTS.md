@@ -16,52 +16,6 @@ Il portfolio è **ben costruito**: animazioni GSAP sofisticate, architettura Rea
 
 ---
 
-### 1.3 Sostituire il link mailto con un form funzionante
-
-**File:** `src/components/HomeSection/Contact.jsx`
-
-Il pulsante attuale apre il client email del browser, che spesso non è configurato. Molti utenti cliccano, non succede niente, e abbandonano.
-
-**Cosa fare (con Formspree — gratuito fino a 50 submit/mese):**
-
-1. Crea account su [formspree.io](https://formspree.io) e ottieni un endpoint
-2. Sostituisci il bottone con un form:
-
-```jsx
-// Contact.jsx — sostituire il bottone mailto con questo form
-<form
-  action="https://formspree.io/f/YOUR_FORM_ID"
-  method="POST"
-  className="flex flex-col gap-4 w-full max-w-md"
->
-  <input
-    type="text"
-    name="name"
-    placeholder="Il tuo nome"
-    required
-    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent"
-  />
-  <input
-    type="email"
-    name="email"
-    placeholder="La tua email"
-    required
-    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent"
-  />
-  <textarea
-    name="message"
-    placeholder="Raccontami del tuo progetto"
-    rows={4}
-    required
-    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent resize-none"
-  />
-  <Button type="submit" variant="primary">Invia messaggio →</Button>
-</form>
-```
-
-**Impatto:** Abbassa la barriera di contatto drasticamente. Chi vuole scriverti lo fa senza uscire dalla pagina.
-
----
 
 ### 1.4 Download CV/Resume
 
