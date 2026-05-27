@@ -10,12 +10,6 @@ Il portfolio è **ben costruito**: animazioni GSAP sofisticate, architettura Rea
 
 ---
 
-## Priorità 1 — Blocchi critici (da fare subito)
-
-- [ ] togliere il porfolio da railway
-
----
-
 
 ### 1.4 Download CV/Resume
 
@@ -351,19 +345,7 @@ Anche 3-4 articoli brevi ("Come gestisco gli stati di loading in React", "Perch�
 
 ---
 
-## Note finali
-
-**Cosa non toccare:**
-- Le animazioni GSAP sono un punto di forza concreto — non semplificarle
-- Il design dark con accent arancione funziona bene, non cambiarlo
-- La struttura del codice è pulita — non refactoring per ora
-- L'italiano come lingua principale è una scelta giusta per il mercato locale
-
 **Messaggio da comunicare più chiaramente:**
 > *"Sono l'unico punto di contatto tra design e sviluppo. Non devi coordinare un designer e un dev — lo faccio io."*
 
 Questa è la tua differenziazione più forte e attualmente non emerge abbastanza dal testo del sito.
-
----
-
-*Documento generato il 26/05/2026 — analisi basata sul codice sorgente del portfolio.*

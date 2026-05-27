@@ -87,7 +87,7 @@ export function About() {
           {/* ── Colonna sinistra – testo + stat ─────── */}
           <div className="flex flex-col gap-10">
             <div ref={leftRef} className="flex flex-col gap-8">
-              <SectionTitle number="03" title="Chi sono" />
+              <SectionTitle number="04" title="Chi sono" />
 
               {/* Intro – parole chiave in Instrument Serif italic + arancio */}
               <div className="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-muted max-w-lg">
