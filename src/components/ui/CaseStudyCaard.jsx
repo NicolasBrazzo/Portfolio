@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+import { Button } from "./Button";
+
 /**
- * ProjectCard – card singolo progetto.
+ * CaseStudyCard – card singolo caso studio.
  *
- * Props: { title, role, description, stack[], liveUrl, repoUrl, image }
+ * Props: { id, title, role, description, stack[], liveUrl, repoUrl, image }
  */
-export function ProjectCard({ title, role, description, stack = [], liveUrl, repoUrl, image }) {
+export function CaseStudyCard({ id, title, role, description, stack = [], liveUrl, repoUrl, image }) {
   return (
     <article className="group flex flex-col h-full min-h-135 u-surface u-border-subtle rounded-xl overflow-hidden transition-all duration-300 hover:u-glow-accent hover:-translate-y-1">
 
@@ -105,6 +108,19 @@ export function ProjectCard({ title, role, description, stack = [], liveUrl, rep
             <span className="text-xs text-muted/50 italic">Privato</span>
           )}
         </div>
+
+        {id && (
+          <div className="w-full">
+            <Button
+              as={Link}
+              to={`/case-studies/${id}`}
+              size="xs"
+              className="w-full mt-4 flex items-center justify-center"
+            >
+              Dettagli
+            </Button>
+          </div>
+        )}
 
       </div>
     </article>
