@@ -119,37 +119,36 @@ export const caseStudies = [
     title: "Volta",
     role: "SAAS Project",
     description:
-      "Volta è una piattaforma web per la gestione e l'analisi di dati energetici.",
-    stack: ["React", "Node.js", "MongoDB", "Express"],
-
-    liveUrl: "https://nasa-neo-dashboard-brz.vercel.app/",
-    repoUrl: "https://github.com/NicolasBrazzo/NASA-NEO-Dashboard",
+      "Volta è una piattaforma web di prenotazione online per liberi professionisti.",
+    stack: ["React", "Express", "Tailwind CSS", "shadcn/ui", "Supabase"],
+    liveUrl: "https://frontend-production-0a46.up.railway.app/",
+    repoUrl: "https://github.com/NicolasBrazzo/volta",
     image: null,
     featured: false,
     year: "2026",
     duration: "In sviluppo",
     client: "Progetto SAAS",
     overview:
-      "Volta è una dashboard SAAS pensata per aziende che vogliono monitorare in tempo reale i propri consumi energetici. Combina grafici interattivi, alert automatici e report esportabili per supportare decisioni data-driven.",
+      "Volta è un progetto nato dalla necessità di semplificare la gestione delle prenotazioni per i liberi professionisti, offrendo un'interfaccia intuitiva e funzionalità avanzate per ottimizzare il flusso di lavoro e migliorare l'esperienza dei clienti.",
     challenge:
-      "I dati energetici sono solitamente frammentati su più sistemi e difficili da interpretare per chi non è del settore. La sfida era costruire un'unica fonte di verità con una UI accessibile, capace di tradurre numeri complessi in insight immediati.",
+      "Solitamente i gestionali di prenotazione sono complessi, poco user-friendly e non si adattano alle esigenze specifiche dei professionisti. L'obiettivo era creare una piattaforma facile da usare, personalizzabile e in grado di gestire efficacemente prenotazioni, pagamenti e comunicazioni con i clienti.",
     solution:
-      "Ho progettato un'architettura modulare con backend in Node.js + Express e database MongoDB per gestire grandi volumi di metriche. Il frontend React rende i grafici reattivi e i pannelli configurabili, mentre un sistema di alert avvisa l'utente quando i consumi escono dalle soglie definite.",
+      "Ho progettato un'architettura modulare con backend in Node.js + Express e Supabase per database, autenticazione e aggiornamenti in tempo reale. Il frontend React, con Tailwind CSS e shadcn/ui, offre un flusso di prenotazione fluido e reattivo, mentre un sistema di notifiche automatiche tiene allineati professionista e cliente lungo tutto il ciclo dell'appuntamento.",
     features: [
       {
-        title: "Dashboard in tempo reale",
+        title: "Agenda e disponibilità",
         description:
-          "Visualizzazione live dei consumi con grafici interattivi e filtri per periodo.",
+          "Calendario interattivo con gestione degli orari, dei servizi e degli slot disponibili in tempo reale.",
       },
       {
-        title: "Alert configurabili",
+        title: "Promemoria automatici",
         description:
-          "Notifiche automatiche su soglie personalizzate per evitare picchi e sprechi.",
+          "Notifiche e promemoria via email per ridurre i no-show e tenere informati i clienti su conferme e modifiche.",
       },
       {
-        title: "Report esportabili",
+        title: "Pagina di prenotazione personalizzabile",
         description:
-          "Export PDF e CSV per la condivisione di analisi periodiche con stakeholder.",
+          "Link pubblico brandizzabile dove i clienti prenotano in autonomia, senza necessità di registrazione.",
       },
     ],
     results: [
