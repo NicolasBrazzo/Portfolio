@@ -65,7 +65,7 @@ export function Skills() {
         {/* Header */}
         <div ref={titleRef}>
           <SectionTitle
-            number="03"
+            number="04"
             title="Competenze"
             subtitle="Le tecnologie e gli strumenti con cui lavoro ogni giorno."
           />

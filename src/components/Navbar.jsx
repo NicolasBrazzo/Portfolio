@@ -57,7 +57,7 @@ export function Navbar() {
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
         scrolled
           ? 'bg-bg/90 backdrop-blur-md shadow-[0_1px_0_rgba(255,255,255,0.06)]'
-          : 'bg-transparent',
+          : 'bg-bg/50',
       ].join(' ')}
     >
       <div className="w-full mx-auto px-(--section-padding-x) max-w-(--container-max) flex items-center justify-between h-16">

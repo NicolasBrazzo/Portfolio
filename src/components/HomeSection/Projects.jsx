@@ -54,7 +54,7 @@ export function Projects() {
       <Container className="flex flex-col gap-14">
         {/* Header sezione */}
         <SectionTitle
-          number="02"
+          number="03"
           title="Progetti selezionati"
           subtitle="Una selezione dei lavori che meglio rappresentano il mio approccio al design e allo sviluppo."
         />

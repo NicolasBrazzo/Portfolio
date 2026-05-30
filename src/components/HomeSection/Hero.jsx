@@ -5,6 +5,7 @@ import { prefersReducedMotion } from "../../lib/motion";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
+import Aurora from "../ui/Aurora";
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -146,6 +147,24 @@ export function Hero() {
         "--grid-y": "45%",
       }}
     >
+      {/* ── Aurora background (react-bits) ────────────────────── */}
+      <div
+        aria-hidden
+        className="absolute inset-0 pointer-events-none opacity-70"
+        style={{
+          maskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
+          WebkitMaskImage:
+            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
+        }}
+      >
+        <Aurora
+          colorStops={["#FF5C00", "#FF8C42", "#FF5C00"]}
+          amplitude={1}
+          blend={0.75}
+        />
+      </div>
+
       {/* ── Gradient background decorativo ────────────────────── */}
       <div
         aria-hidden
