@@ -58,14 +58,14 @@ export function About() {
             <div ref={leftRef} className="flex flex-col gap-8">
               <SectionTitle number="05" title="Chi sono" />
 
-              {/* Intro – parole chiave in Instrument Serif italic + arancio */}
-              <div className="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-muted max-w-lg">
+              {/* Intro – parole chiave in colore accento */}
+              <div className="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-graphite-2 max-w-lg">
                 <p>
                   Sono un{" "}
-                  <em className="text-text not-italic">frontend developer</em> e{" "}
+                  <em className="text-graphite not-italic">frontend developer</em> e{" "}
                   <em className="text-accent not-italic">UI designer</em> con
                   una forte ossessione per i{" "}
-                  <em className="text-text not-italic">dettagli</em>. Progetto
+                  <em className="text-graphite not-italic">dettagli</em>. Progetto
                   partendo dal sistema, non dall'ispirazione del momento.
                 </p>
                 <p>
@@ -81,8 +81,8 @@ export function About() {
                 <p>
                   Quando non scrivo codice, studio tipografia, esploro design
                   system di altri e cerco la combinazione perfetta tra{" "}
-                  <em className="text-text not-italic">forma</em> e{" "}
-                  <em className="text-text not-italic">funzione</em>.
+                  <em className="text-graphite not-italic">forma</em> e{" "}
+                  <em className="text-graphite not-italic">funzione</em>.
                 </p>
               </div>
             </div>
@@ -95,12 +95,12 @@ export function About() {
                   ref={(el) => {
                     statsRef.current[i] = el;
                   }}
-                  className="flex flex-col gap-1 p-5 u-surface u-border-subtle rounded-xl"
+                  className="flex flex-col gap-1 p-5 u-surface u-rule"
                 >
-                  <span className="text-3xl font-black text-accent leading-none">
+                  <span className="font-mono text-3xl font-semibold text-accent leading-none">
                     {stat.value}
                   </span>
-                  <span className="text-[11px] text-muted leading-tight">
+                  <span className="font-mono text-(length:--fs-2xs) text-graphite-3 leading-tight">
                     {stat.label}
                   </span>
                 </div>

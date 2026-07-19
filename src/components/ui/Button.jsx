@@ -2,8 +2,8 @@
  * Button – componente UI base.
  *
  * Varianti:
- * - primary  → sfondo arancione, testo scuro
- * - outline  → bordo bianco sottile, testo chiaro; hover arancione
+ * - primary  → sfondo a colore accento, testo su carta
+ * - outline  → hairline su --rule, testo grafite; hover accento
  *
  * Prop `as` permette di renderizzare come <a> (es. link esterno).
  */
@@ -18,8 +18,8 @@ export function Button({
     'inline-flex items-center gap-3 px-7 py-3.5 text-sm tracking-wide transition-colors duration-200 cursor-pointer select-none'
 
   const variants = {
-    primary: 'bg-accent text-bg font-bold hover:bg-accent-warm u-btn-shine',
-    outline: 'border border-white/15 text-text font-medium hover:border-accent hover:text-accent',
+    primary: 'bg-accent text-paper font-bold hover:opacity-90',
+    outline: 'u-rule text-graphite font-medium hover:border-accent hover:text-accent',
   }
 
   return (

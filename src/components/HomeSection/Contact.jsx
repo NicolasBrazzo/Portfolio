@@ -87,16 +87,16 @@ export function Contact() {
   );
 
   return (
-    <Section id="contact" ref={sectionRef} noise>
+    <Section id="contact" ref={sectionRef}>
       <Container>
         <div className="flex flex-col items-start gap-10 max-w-2xl">
           {/* Badge disponibilità */}
           <div
             ref={badgeRef}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full border border-white/10 bg-surface"
+            className="inline-flex items-center gap-2 px-3.5 py-1.5 u-rule bg-paper-2"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted">
+            <span className="text-xs font-medium tracking-[0.15em] uppercase text-graphite-3">
               Aperto a nuovi progetti — 2026
             </span>
           </div>
@@ -104,16 +104,13 @@ export function Contact() {
           {/* Headline grande */}
           <h2
             ref={headlineRef}
-            className="text-[clamp(2.8rem,7vw,5.5rem)] font-black leading-[0.95] tracking-tight text-text"
+            className="font-display text-[clamp(2.8rem,7vw,5.5rem)] font-medium leading-[0.95] tracking-tighter text-graphite"
           >
             Costruiamo
             <br />
             qualcosa
             <br />
-            <em
-              className="not-italic text-accent"
-              style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}
-            >
+            <em className="font-display italic text-accent">
               insieme.
             </em>
           </h2>
@@ -121,11 +118,11 @@ export function Contact() {
           {/* Sottotitolo */}
           <p
             ref={subRef}
-            className="text-base md:text-lg text-muted leading-relaxed"
+            className="text-base md:text-lg text-graphite-2 leading-relaxed"
           >
             Hai un progetto in mente, un'idea da sviluppare o semplicemente vuoi
             scambiare due parole?{" "}
-            <span className="text-text font-medium">Scrivimi.</span> Rispondo
+            <span className="text-graphite font-medium">Scrivimi.</span> Rispondo
             entro 24 ore.
           </p>
 
@@ -135,17 +132,17 @@ export function Contact() {
               <div
                 role="status"
                 aria-live="polite"
-                className="flex flex-col gap-2 p-6 rounded-2xl border border-accent/30 bg-accent/5"
+                className="flex flex-col gap-2 p-6 u-rule bg-paper-2"
               >
                 <div className="flex items-center gap-3">
                   <span aria-hidden className="text-2xl text-accent">
                     ✓
                   </span>
-                  <p className="text-text font-medium text-lg">
+                  <p className="text-graphite font-medium text-lg">
                     Grazie per avermi scritto!
                   </p>
                 </div>
-                <p className="text-muted text-sm pl-9">
+                <p className="text-graphite-2 text-sm pl-9">
                   Ho ricevuto il tuo messaggio. Ti rispondo entro 24 ore.
                 </p>
               </div>
@@ -171,7 +168,7 @@ export function Contact() {
                     placeholder="Il tuo nome"
                     required
                     disabled={status === "sending"}
-                    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
+                    className="bg-paper-2 u-rule px-4 py-3 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
                   />
                   <input
                     type="email"
@@ -179,7 +176,7 @@ export function Contact() {
                     placeholder="La tua email"
                     required
                     disabled={status === "sending"}
-                    className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
+                    className="bg-paper-2 u-rule px-4 py-3 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
                   />
                 </div>
 
@@ -189,7 +186,7 @@ export function Contact() {
                   rows={5}
                   required
                   disabled={status === "sending"}
-                  className="bg-surface border border-white/10 rounded-xl px-4 py-3 text-text placeholder:text-muted focus:outline-none focus:border-accent/50 transition-colors duration-200 resize-none disabled:opacity-50"
+                  className="bg-paper-2 u-rule px-4 py-3 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 resize-none disabled:opacity-50"
                 />
 
                 <div className="flex flex-col gap-3 pt-1">
@@ -211,7 +208,7 @@ export function Contact() {
                   {status === "error" && (
                     <p
                       role="alert"
-                      className="text-sm text-red-400 leading-relaxed"
+                      className="text-sm text-accent leading-relaxed"
                     >
                       {errorMessage}
                     </p>
@@ -223,7 +220,7 @@ export function Contact() {
 
           {/* Social links */}
           <div ref={socialsRef} className="flex items-center gap-6 pt-2">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-muted">
+            <span className="text-xs font-medium tracking-[0.2em] uppercase text-graphite-3">
               Trovami su
             </span>
             <div className="flex items-center gap-4">
@@ -234,7 +231,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 rounded-lg text-muted u-border-subtle hover:text-accent hover:border-accent/30 transition-colors duration-200"
+                  className="flex items-center justify-center w-9 h-9 text-graphite-2 u-rule hover:text-accent hover:border-accent/30 transition-colors duration-200"
                 >
                   {icon}
                 </a>

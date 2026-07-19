@@ -63,7 +63,7 @@ export function Skills() {
   const codeCategoriesCount = Object.keys(codeSkillCategories).length;
 
   return (
-    <Section id="skills" ref={sectionRef} noise>
+    <Section id="skills" ref={sectionRef}>
       <Container className="flex flex-col gap-16">
         {/* Header */}
         <div ref={titleRef}>
@@ -88,7 +88,7 @@ export function Skills() {
               >
                 {/* Category label */}
                 <div className="mb-8">
-                  <span className="text-[11px] font-bold tracking-[0.28em] uppercase text-accent">
+                  <span className="font-mono text-(length:--fs-2xs) font-bold tracking-[0.28em] uppercase text-accent">
                     {category.label}
                   </span>
                 </div>
@@ -103,30 +103,16 @@ export function Skills() {
             ))}
           </div>
 
-          {/* Competenze AI – pannello ingrandito, con texture a righe diagonali */}
+          {/* Competenze AI – pannello ingrandito */}
           <div
             ref={(el) => {
               columnsRef.current[codeCategoriesCount] = el;
             }}
-            className="relative w-full lg:w-96 shrink-0 rounded-2xl u-border-subtle p-8 sm:p-10 pt-12 sm:pt-16 overflow-hidden"
-            style={{
-              backgroundImage:
-                "repeating-linear-gradient(135deg, rgba(255,92,0,0.07) 0px, rgba(255,92,0,0.07) 1px, transparent 1px, transparent 11px), linear-gradient(160deg, var(--color-surface-raised), var(--color-surface))",
-            }}
+            className="relative w-full lg:w-96 shrink-0 u-rule bg-paper-2 p-8 sm:p-10 pt-12 sm:pt-16 overflow-hidden"
           >
-            {/* Glow decorativo d'angolo */}
-            <span
-              aria-hidden
-              className="pointer-events-none absolute -top-14 -right-14 w-48 h-48 rounded-full opacity-70"
-              style={{
-                background:
-                  "radial-gradient(circle, var(--color-accent-glow), transparent 70%)",
-              }}
-            />
-
             {/* Category label */}
             <div className="relative mb-8">
-              <span className="text-[11px] font-bold tracking-[0.28em] uppercase text-accent">
+              <span className="font-mono text-(length:--fs-2xs) font-bold tracking-[0.28em] uppercase text-accent">
                 {aiSkills.label}
               </span>
             </div>
@@ -146,22 +132,13 @@ export function Skills() {
 
 function SkillPill({ skill }) {
   return (
-    <li className="group/skill relative inline-flex items-center gap-2 pl-3 pr-4 py-2 text-[13px] font-medium tracking-wide text-text/90 u-surface u-border-subtle rounded-full cursor-default overflow-hidden transition-all duration-300 ease-out hover:border-accent/60 hover:-translate-y-0.5 hover:shadow-[0_8px_24px_-12px_var(--color-accent-glow)]">
-      {/* glow di sfondo on hover */}
-      <span
-        aria-hidden
-        className="pointer-events-none absolute inset-0 opacity-0 group-hover/skill:opacity-100 transition-opacity duration-300"
-        style={{
-          background:
-            "radial-gradient(circle at 0% 50%, var(--color-accent-glow), transparent 60%)",
-        }}
-      />
+    <li className="group/skill relative inline-flex items-center gap-2 pl-3 pr-4 py-2 text-sm font-medium tracking-wide text-graphite/90 u-surface u-rule cursor-default overflow-hidden transition-all duration-300 ease-out hover:border-accent/60 hover:-translate-y-0.5">
       {/* dot accent */}
       <span
         aria-hidden
-        className="relative block w-1.5 h-1.5 rounded-full bg-accent shadow-[0_0_8px_var(--color-accent-glow)] transition-all duration-300 group-hover/skill:scale-125 group-hover/skill:shadow-[0_0_12px_var(--color-accent)]"
+        className="relative block w-1.5 h-1.5 rounded-full bg-accent transition-all duration-300 group-hover/skill:scale-125"
       />
-      <span className="relative transition-colors duration-300 group-hover/skill:text-text">
+      <span className="relative transition-colors duration-300 group-hover/skill:text-graphite">
         {skill}
       </span>
     </li>

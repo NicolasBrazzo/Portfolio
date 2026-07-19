@@ -3,8 +3,8 @@
  *
  * Props:
  * - number     → numero sezione (es. "01") – opzionale
- * - title      → titolo principale (Satoshi bold, oversize)
- * - subtitle   → sottotitolo opzionale (Satoshi regular, muted)
+ * - title      → titolo principale (display, peso medio)
+ * - subtitle   → sottotitolo opzionale (testo, secondario)
  * - align      → "left" | "center"  (default: "left")
  * - className  → classi extra sul wrapper
  */
@@ -26,12 +26,12 @@ export function SectionTitle({
         </span>
       )}
 
-      <h2 className="text-4xl md:text-5xl font-black leading-tight tracking-tight text-text">
+      <h2 className="font-display text-4xl md:text-5xl font-medium leading-tight tracking-tighter text-graphite">
         {title}
       </h2>
 
       {subtitle && (
-        <p className="text-base text-muted leading-relaxed max-w-xl">
+        <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
           {subtitle}
         </p>
       )}

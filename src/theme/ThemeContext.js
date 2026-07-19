@@ -7,7 +7,7 @@ export const THEME_STORAGE_KEY = 'theme'
 export const ACCENT_STORAGE_KEY = 'accent'
 
 export const THEMES = ['light', 'dark']
-export const ACCENTS = ['mark'] // TODO Task 1: altri 3 accenti da approvare
+export const ACCENTS = ['mark', 'ink', 'pine', 'ochre']
 
 export const ThemeContext = createContext(null)
 

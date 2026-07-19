@@ -110,12 +110,6 @@ export const Process = () => {
 
   return (
     <Section id="process" ref={sectionRef}>
-      {/* Glow decorativo coerente con Hero */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-      />
-
       <Container className="relative flex flex-col gap-10">
         <SectionTitle
           number="01"
@@ -132,25 +126,14 @@ export const Process = () => {
             preserveAspectRatio="none"
             aria-hidden
           >
-            <defs>
-              <linearGradient id="thread-gradient" x1="0" y1="0" x2="1" y2="0">
-                <stop offset="0%" stopColor="var(--color-accent)" stopOpacity="0" />
-                <stop offset="8%" stopColor="var(--color-accent)" stopOpacity="1" />
-                <stop offset="92%" stopColor="var(--color-accent)" stopOpacity="1" />
-                <stop offset="100%" stopColor="var(--color-accent)" stopOpacity="0" />
-              </linearGradient>
-            </defs>
             <path
               ref={pathRef}
               d="M 0 180 C 100 180, 100 70, 200 70 C 300 70, 300 290, 450 290 C 600 290, 600 70, 750 70 C 900 70, 900 290, 1050 290 C 1150 290, 1150 180, 1200 180"
               fill="none"
-              stroke="url(#thread-gradient)"
+              stroke="var(--color-accent)"
               strokeWidth="1.5"
               strokeLinecap="round"
               vectorEffect="non-scaling-stroke"
-              style={{
-                filter: "drop-shadow(0 0 8px var(--color-accent-glow))",
-              }}
             />
 
             {/* Dot di intersezione su ogni card */}
@@ -170,9 +153,6 @@ export const Process = () => {
                 r="5"
                 fill="var(--color-accent)"
                 vectorEffect="non-scaling-stroke"
-                style={{
-                  filter: "drop-shadow(0 0 6px var(--color-accent-glow))",
-                }}
               />
             ))}
           </svg>
@@ -217,11 +197,7 @@ export const Process = () => {
         <div className="md:hidden relative pl-8">
           <div
             aria-hidden
-            className="absolute left-3 top-2 bottom-2 w-px"
-            style={{
-              background:
-                "linear-gradient(to bottom, transparent, var(--color-accent) 10%, var(--color-accent) 90%, transparent)",
-            }}
+            className="absolute left-3 top-2 bottom-2 w-px bg-accent"
           />
           <div className="flex flex-col gap-8">
             {steps.map((step, i) => (
@@ -234,7 +210,6 @@ export const Process = () => {
               >
                 <span
                   className="absolute -left-[1.55rem] top-6 w-3 h-3 rounded-full bg-accent"
-                  style={{ boxShadow: "0 0 8px var(--color-accent-glow)" }}
                   aria-hidden
                 />
                 <ProcessCard step={step} />
@@ -250,27 +225,26 @@ export const Process = () => {
 /* ─── Card singola – isolata per riusare nei 3 breakpoint ──── */
 function ProcessCard({ step }) {
   return (
-    <article className="group relative h-full u-surface u-border-subtle rounded-xl p-6 transition-all duration-300 hover:u-glow-accent hover:-translate-y-1">
+    <article className="group relative h-full u-surface u-rule p-6 transition-all duration-300 hover:-translate-y-1">
       {/* Header – numero + label */}
-      <div className="flex items-baseline justify-between gap-3 pb-4 border-b border-white/5">
+      <div className="flex items-baseline justify-between gap-3 pb-4 u-rule-b">
         <span
-          className="text-4xl font-black leading-none text-accent"
-          style={{ fontFamily: "var(--font-serif)", fontStyle: "italic" }}
+          className="font-display italic text-4xl font-medium leading-none text-accent"
           aria-hidden
         >
           {step.number}
         </span>
-        <span className="text-[10px] font-semibold tracking-[0.25em] uppercase text-muted">
+        <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.25em] uppercase text-graphite-3">
           {step.label}
         </span>
       </div>
 
       {/* Body */}
       <div className="flex flex-col gap-2.5 pt-4">
-        <h3 className="text-lg font-bold leading-tight text-text group-hover:text-accent transition-colors duration-200">
+        <h3 className="text-lg font-bold leading-tight text-graphite group-hover:text-accent transition-colors duration-200">
           {step.title}
         </h3>
-        <p className="text-sm text-muted leading-relaxed">
+        <p className="text-sm text-graphite-2 leading-relaxed">
           {step.description}
         </p>
       </div>

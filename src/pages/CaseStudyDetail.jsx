@@ -35,10 +35,10 @@ export const CaseStudyDetail = () => {
               <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                 404
               </span>
-              <h1 className="text-4xl md:text-5xl font-black leading-tight tracking-tight text-text">
+              <h1 className="font-display text-4xl md:text-5xl font-medium leading-tight tracking-tighter text-graphite">
                 Caso studio non trovato
               </h1>
-              <p className="text-base text-muted leading-relaxed max-w-xl">
+              <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
                 Il progetto che stai cercando non esiste o è stato rimosso.
               </p>
               <Button as={Link} to="/" variant="outline">
@@ -63,7 +63,7 @@ export const CaseStudyDetail = () => {
           <Container className="flex flex-col gap-10">
             <Link
               to="/#case-studies"
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-muted hover:text-accent transition-colors duration-200 w-fit"
+              className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-graphite-2 hover:text-accent transition-colors duration-200 w-fit"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <line x1="19" y1="12" x2="5" y2="12" />
@@ -76,31 +76,31 @@ export const CaseStudyDetail = () => {
               <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                 {project.role}
               </span>
-              <h1 className="text-5xl md:text-6xl lg:text-7xl font-black leading-[1.05] tracking-tight text-text">
+              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tighter text-graphite">
                 {project.title}
               </h1>
-              <p className="text-lg md:text-xl text-muted leading-relaxed max-w-3xl">
+              <p className="text-lg md:text-xl text-graphite-2 leading-relaxed max-w-3xl">
                 {project.description}
               </p>
             </div>
 
             {/* Meta info */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-white/5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 u-rule-t">
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-muted">Anno</span>
-                <span className="text-sm font-medium text-text">{project.year ?? "—"}</span>
+                <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Anno</span>
+                <span className="text-sm font-medium text-graphite">{project.year ?? "—"}</span>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-muted">Durata</span>
-                <span className="text-sm font-medium text-text">{project.duration ?? "—"}</span>
+                <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Durata</span>
+                <span className="text-sm font-medium text-graphite">{project.duration ?? "—"}</span>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-muted">Cliente</span>
-                <span className="text-sm font-medium text-text">{project.client ?? "—"}</span>
+                <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Cliente</span>
+                <span className="text-sm font-medium text-graphite">{project.client ?? "—"}</span>
               </div>
               <div className="flex flex-col gap-1.5">
-                <span className="text-[10px] font-semibold tracking-[0.2em] uppercase text-muted">Ruolo</span>
-                <span className="text-sm font-medium text-text">{project.role}</span>
+                <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Ruolo</span>
+                <span className="text-sm font-medium text-graphite">{project.role}</span>
               </div>
             </div>
 
@@ -110,7 +110,7 @@ export const CaseStudyDetail = () => {
                 {project.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 text-[10px] font-semibold tracking-[0.15em] uppercase text-muted border border-white/8 rounded-md"
+                    className="px-2.5 py-1 font-mono text-(length:--fs-2xs) font-semibold tracking-[0.15em] uppercase text-graphite-3 u-rule"
                   >
                     {tech}
                   </span>
@@ -138,7 +138,7 @@ export const CaseStudyDetail = () => {
         {image && (
           <Section className="py-0">
             <Container>
-              <div className="relative w-full aspect-video overflow-hidden rounded-xl u-border-subtle">
+              <div className="relative w-full aspect-video overflow-hidden u-rule">
                 <img
                   src={image}
                   alt={project.title}
@@ -157,7 +157,7 @@ export const CaseStudyDetail = () => {
                 <SectionTitle number="01" title="Overview" />
               </div>
               <div className="md:col-span-8">
-                <p className="text-base md:text-lg text-muted leading-relaxed">
+                <p className="text-base md:text-lg text-graphite-2 leading-relaxed">
                   {project.overview}
                 </p>
               </div>
@@ -170,27 +170,27 @@ export const CaseStudyDetail = () => {
           <Section>
             <Container className="grid md:grid-cols-2 gap-10">
               {project.challenge && (
-                <div className="flex flex-col gap-4 p-8 u-surface u-border-subtle rounded-xl">
+                <div className="flex flex-col gap-4 p-8 u-surface u-rule">
                   <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                     Challenge
                   </span>
-                  <h3 className="text-2xl font-bold text-text leading-tight">
+                  <h3 className="text-2xl font-bold text-graphite leading-tight">
                     Il problema
                   </h3>
-                  <p className="text-sm md:text-base text-muted leading-relaxed">
+                  <p className="text-sm md:text-base text-graphite-2 leading-relaxed">
                     {project.challenge}
                   </p>
                 </div>
               )}
               {project.solution && (
-                <div className="flex flex-col gap-4 p-8 u-surface u-border-subtle rounded-xl">
+                <div className="flex flex-col gap-4 p-8 u-surface u-rule">
                   <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                     Solution
                   </span>
-                  <h3 className="text-2xl font-bold text-text leading-tight">
+                  <h3 className="text-2xl font-bold text-graphite leading-tight">
                     L'approccio
                   </h3>
-                  <p className="text-sm md:text-base text-muted leading-relaxed">
+                  <p className="text-sm md:text-base text-graphite-2 leading-relaxed">
                     {project.solution}
                   </p>
                 </div>
@@ -212,15 +212,15 @@ export const CaseStudyDetail = () => {
                 {project.features.map((feature, i) => (
                   <div
                     key={feature.title}
-                    className="flex flex-col gap-3 p-6 u-surface u-border-subtle rounded-xl"
+                    className="flex flex-col gap-3 p-6 u-surface u-rule"
                   >
                     <span className="text-xs font-mono text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h4 className="text-lg font-bold text-text leading-tight">
+                    <h4 className="text-lg font-bold text-graphite leading-tight">
                       {feature.title}
                     </h4>
-                    <p className="text-sm text-muted leading-relaxed">
+                    <p className="text-sm text-graphite-2 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -239,12 +239,12 @@ export const CaseStudyDetail = () => {
                 {project.results.map((r) => (
                   <div
                     key={r.label}
-                    className="flex flex-col gap-2 p-8 u-surface u-border-subtle rounded-xl"
+                    className="flex flex-col gap-2 p-8 u-surface u-rule"
                   >
-                    <span className="text-4xl md:text-5xl font-black text-accent leading-none">
+                    <span className="font-mono text-4xl md:text-5xl font-semibold text-accent leading-none">
                       {r.value}
                     </span>
-                    <span className="text-xs font-medium tracking-wide text-muted uppercase">
+                    <span className="font-mono text-(length:--fs-2xs) font-medium tracking-wide text-graphite-3 uppercase">
                       {r.label}
                     </span>
                   </div>
@@ -263,7 +263,7 @@ export const CaseStudyDetail = () => {
                 {project.gallery.map((src, i) => (
                   <div
                     key={i}
-                    className="relative w-full aspect-video overflow-hidden rounded-xl u-border-subtle"
+                    className="relative w-full aspect-video overflow-hidden u-rule"
                   >
                     <img
                       src={src}
@@ -280,14 +280,14 @@ export const CaseStudyDetail = () => {
 
         {/* CTA FINALE */}
         <Section>
-          <Container className="flex flex-col items-start gap-6 p-10 u-surface u-border-subtle rounded-xl">
+          <Container className="flex flex-col items-start gap-6 p-10 u-surface u-rule">
             <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
               Next
             </span>
-            <h3 className="text-3xl md:text-4xl font-black text-text leading-tight">
+            <h3 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-graphite leading-tight">
               Ti piace quello che vedi?
             </h3>
-            <p className="text-base text-muted leading-relaxed max-w-xl">
+            <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
               Scopri gli altri casi studio o scrivimi per parlare di un nuovo progetto insieme.
             </p>
             <div className="flex flex-wrap gap-4">

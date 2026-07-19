@@ -55,9 +55,7 @@ export function Navbar() {
     <header
       className={[
         'fixed top-0 left-0 right-0 z-50 transition-all duration-300',
-        scrolled
-          ? 'bg-bg/90 backdrop-blur-md shadow-[0_1px_0_rgba(255,255,255,0.06)]'
-          : 'bg-bg/50',
+        scrolled ? 'bg-paper/95 u-rule-b' : 'bg-transparent',
       ].join(' ')}
     >
       <div className="w-full mx-auto px-(--section-padding-x) max-w-(--container-max) flex items-center justify-between h-16">
@@ -66,7 +64,7 @@ export function Navbar() {
         <a
           href="#hero"
           onClick={(e) => handleLink(e, '#hero')}
-          className="text-sm font-bold tracking-widest text-text hover:text-accent transition-colors duration-200"
+          className="text-sm font-bold tracking-widest text-graphite hover:text-accent transition-colors duration-200"
         >
           Nicolas Brazzo<span className="text-accent">.</span>
         </a>
@@ -85,7 +83,7 @@ export function Navbar() {
                   'relative text-sm font-medium tracking-wide transition-colors duration-200 pb-0.5',
                   isActive
                     ? 'text-accent'
-                    : 'text-muted hover:text-text',
+                    : 'text-graphite-2 hover:text-graphite',
                 ].join(' ')}
               >
                 {label}
@@ -106,19 +104,19 @@ export function Navbar() {
         >
           <span
             className={[
-              'block w-5 h-px bg-text transition-all duration-300 origin-center',
+              'block w-5 h-px bg-graphite transition-all duration-300 origin-center',
               menuOpen ? 'translate-y-[7px] rotate-45' : '',
             ].join(' ')}
           />
           <span
             className={[
-              'block w-5 h-px bg-text transition-all duration-300',
+              'block w-5 h-px bg-graphite transition-all duration-300',
               menuOpen ? 'opacity-0 scale-x-0' : '',
             ].join(' ')}
           />
           <span
             className={[
-              'block w-5 h-px bg-text transition-all duration-300 origin-center',
+              'block w-5 h-px bg-graphite transition-all duration-300 origin-center',
               menuOpen ? '-translate-y-[7px] -rotate-45' : '',
             ].join(' ')}
           />
@@ -131,7 +129,7 @@ export function Navbar() {
           'md:hidden fixed inset-0 top-16 flex flex-col items-center justify-center gap-10 transition-all duration-300',
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
-        style={{ backgroundColor: 'rgba(13,13,13,0.97)', backdropFilter: 'blur(12px)', WebkitBackdropFilter: 'blur(12px)' }}
+        style={{ backgroundColor: 'var(--color-paper)' }}
         aria-hidden={!menuOpen}
       >
         {NAV_LINKS.map(({ label, href }) => {
@@ -143,8 +141,8 @@ export function Navbar() {
               href={href}
               onClick={(e) => handleLink(e, href)}
               className={[
-                'text-3xl font-bold tracking-tight transition-colors duration-200',
-                isActive ? 'text-accent' : 'text-text',
+                'font-display text-3xl font-medium tracking-tighter transition-colors duration-200',
+                isActive ? 'text-accent' : 'text-graphite',
               ].join(' ')}
             >
               {label}

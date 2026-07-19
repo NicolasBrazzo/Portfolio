@@ -151,8 +151,8 @@ export function Hero() {
         className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150"
         style={{
           backgroundImage: `
-            linear-gradient(to right, #ffffff10 1px, transparent 1px),
-            linear-gradient(to bottom, #ffffff10 1px, transparent 1px)
+            linear-gradient(to right, var(--color-rule) 1px, transparent 1px),
+            linear-gradient(to bottom, var(--color-rule) 1px, transparent 1px)
           `,
           backgroundSize: "64px 64px",
           backgroundPosition: "center",
@@ -168,10 +168,10 @@ export function Hero() {
           {/* Badge "available" */}
           <div
             ref={badgeLineRef}
-            className="inline-flex items-center gap-2 w-fit px-3.5 py-1.5 rounded-full border border-white/10 bg-surface"
+            className="inline-flex items-center gap-2 w-fit px-3.5 py-1.5 u-rule bg-paper-2"
           >
             <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-muted">
+            <span className="text-xs font-medium tracking-[0.15em] uppercase text-graphite-3">
               Available for work
             </span>
           </div>
@@ -179,13 +179,13 @@ export function Hero() {
           {/* Name */}
           <div
             ref={nameLineRef}
-            className="text-[17px] font-semibold tracking-[0.22em] uppercase text-text/90"
+            className="text-lg font-semibold tracking-[0.22em] uppercase text-graphite/90"
           >
             Nicolas Brazzo<span className="text-accent">.</span>
           </div>
 
           {/* Headline — mask reveal dal basso */}
-          <h1 className="text-[clamp(3rem,8vw,6rem)] font-black leading-[0.95] tracking-tight text-text">
+          <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-medium leading-[0.95] tracking-tighter text-graphite">
             <span className="block overflow-hidden">
               <span
                 ref={(el) => el && headlineLinesRef.current.push(el)}
@@ -200,14 +200,7 @@ export function Hero() {
                 className="block"
               >
                 <span className="inline-flex items-baseline gap-3 flex-wrap">
-                  {/* <span className="font-semibold">&amp; </span> */}
-                  <em
-                    className="not-italic text-accent leading-none"
-                    style={{
-                      fontFamily: "var(--font-serif)",
-                      fontStyle: "italic",
-                    }}
-                  >
+                  <em className="font-display italic text-accent leading-none">
                     front-end
                   </em>
                 </span>
@@ -217,7 +210,7 @@ export function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base md:text-lg text-muted leading-relaxed max-w-xl">
+          <p className="text-base md:text-lg text-graphite-2 leading-relaxed max-w-xl">
             <span
               ref={(el) => el && subLinesRef.current.push(el)}
               className="block"
@@ -229,7 +222,7 @@ export function Hero() {
               className="block"
             >
               Ogni interfaccia nasce da un{" "}
-              <span className="text-text font-medium">sistema</span>, non da
+              <span className="text-graphite font-medium">sistema</span>, non da
               un'ispirazione casuale.
             </span>
           </p>
@@ -254,10 +247,10 @@ export function Hero() {
         ref={scrollIndRef}
         className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
       >
-        <span className="text-[10px] font-medium tracking-[0.25em] uppercase text-muted">
+        <span className="font-mono text-(length:--fs-2xs) font-medium tracking-[0.25em] uppercase text-graphite-3">
           Scroll
         </span>
-        <div className="w-px h-10 bg-linear-to-b from-muted to-transparent" />
+        <div className="w-px h-10 bg-rule" />
       </div>
     </Section>
   );

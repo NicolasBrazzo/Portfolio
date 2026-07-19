@@ -4,15 +4,15 @@ export function Footer() {
   const year = new Date().getFullYear()
 
   return (
-    <footer className="border-t border-white/5 py-8">
+    <footer className="u-rule-t py-8">
       <div
         className="w-full mx-auto px-(--section-padding-x) max-w-(--container-max) flex flex-col sm:flex-row items-center justify-between gap-4"
       >
 
         {/* Copyright + firma */}
-        <p className="text-xs text-muted tracking-wide text-center sm:text-left">
+        <p className="text-xs text-graphite-2 tracking-wide text-center sm:text-left">
           © {year}{' '}
-          <span className="text-text font-medium">Nicolas Brazzo</span>
+          <span className="text-graphite font-medium">Nicolas Brazzo</span>
           {' '}— Built with React &amp; Tailwind
         </p>
 
@@ -24,7 +24,7 @@ export function Footer() {
               href={href}
               target="_blank"
               rel="noopener noreferrer"
-              className="text-xs font-medium text-muted hover:text-accent transition-colors duration-200 tracking-wide"
+              className="text-xs font-medium text-graphite-2 hover:text-accent transition-colors duration-200 tracking-wide"
             >
               {label}
             </a>

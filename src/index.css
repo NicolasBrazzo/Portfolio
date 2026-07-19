@@ -2,42 +2,54 @@
 @import "./styles/tokens.css";
 
 /* ============================================
-   Satoshi – variable font (self-hosted)
+   IBM Plex Sans – display (self-hosted)
    ============================================ */
 
 @font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/Satoshi-Variable.woff2") format("woff2");
-  font-weight: 300 900;
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");
+  font-weight: 500;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Satoshi";
-  src: url("/fonts/Satoshi-VariableItalic.woff2") format("woff2");
-  font-weight: 300 900;
+  font-family: "IBM Plex Sans";
+  src: url("/fonts/IBMPlexSans-MediumItalic.woff2") format("woff2");
+  font-weight: 500;
   font-style: italic;
   font-display: swap;
 }
 
 /* ============================================
-   Instrument Serif – self-hosted
+   IBM Plex Serif – testo (self-hosted)
    ============================================ */
 
 @font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/InstrumentSerif-Regular.woff2") format("woff2");
+  font-family: "IBM Plex Serif";
+  src: url("/fonts/IBMPlexSerif-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+
+/* ============================================
+   IBM Plex Mono – etichette, annotazioni, numeri (self-hosted)
+   ============================================ */
+
+@font-face {
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
   font-weight: 400;
   font-style: normal;
   font-display: swap;
 }
 
 @font-face {
-  font-family: "Instrument Serif";
-  src: url("/fonts/InstrumentSerif-Italic.woff2") format("woff2");
-  font-weight: 400;
-  font-style: italic;
+  font-family: "IBM Plex Mono";
+  src: url("/fonts/IBMPlexMono-SemiBold.woff2") format("woff2");
+  font-weight: 600;
+  font-style: normal;
   font-display: swap;
 }
 
@@ -53,19 +65,10 @@
   --color-graphite-2: var(--graphite-2);
   --color-graphite-3: var(--graphite-3);
   --color-mark: var(--mark);
+  --color-ink: var(--ink);
+  --color-pine: var(--pine);
+  --color-ochre: var(--ochre);
   --color-accent: var(--accent);
-
-  /* Alias legacy — nomi già in uso nei componenti
-     esistenti. Restano finché il refactor dei componenti
-     (Task 1, insieme al cambio tipografico) non passa ai
-     nomi definitivi sopra, per non toccarli due volte. */
-  --color-bg: var(--paper);
-  --color-surface: var(--paper-2);
-  --color-surface-raised: var(--paper-2);
-  --color-text: var(--graphite);
-  --color-muted: var(--graphite-2);
-  --color-accent-warm: var(--accent);
-  --color-accent-glow: transparent; /* niente più glow: Task 4 rimuove gli usi residui */
 
   /* Spigolo vivo ovunque tranne rounded-full (cerchi veri:
      utility statica di Tailwind, non è una chiave di tema) */
@@ -78,6 +81,16 @@
   --radius-2xl: var(--r-base);
   --radius-3xl: var(--r-base);
   --radius-4xl: var(--r-base);
+
+  /* Famiglie — vivono solo qui (non in tokens.css: vedi nota
+     lì) per generare le utility font-display/font-text, e per
+     sostituire il mono di default di Tailwind ovunque
+     font-mono è già in uso nei componenti. Valori letterali:
+     i font non cambiano con tema/accento, non serve
+     l'indirezione a runtime che "inline" abilita per i colori. */
+  --font-display: "IBM Plex Sans", system-ui, sans-serif;
+  --font-text: "IBM Plex Serif", Georgia, serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
 }
 
 /* ============================================
@@ -105,9 +118,9 @@
     min-width: 320px;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: var(--color-bg);
-    color: var(--color-text);
-    font-family: var(--font-sans);
+    background-color: var(--color-paper);
+    color: var(--color-graphite);
+    font-family: var(--font-text);
   }
 
   /* Focus-visible globale – accessibilità keyboard */
@@ -123,88 +136,22 @@
    ============================================ */
 
 @layer utilities {
-  /* Noise overlay – aggiunge texture granulosa sopra la sezione */
-  .u-noise {
-    position: relative;
-    isolation: isolate;
-  }
-
-  .u-noise::before {
-    content: '';
-    position: absolute;
-    inset: 0;
-    background: url('/noise.png') repeat;
-    opacity: 0.05;
-    mix-blend-mode: overlay;
-    pointer-events: none;
-    z-index: -1;
-  }
-
-  /* Surface */
+  /* Superficie sollevata */
   .u-surface {
-    background-color: var(--color-surface);
+    background-color: var(--color-paper-2);
   }
 
-  /* Glow arancione */
-  .u-glow-accent {
-    box-shadow: 0 0 32px var(--color-accent-glow);
+  /* Hairline — quota tecnica, non decorazione.
+     0.5px invece di 1px: al netto vero, non un bordo pieno. */
+  .u-rule {
+    border: 0.5px solid var(--color-rule);
   }
 
-  /* Border sottile */
-  .u-border-subtle {
-    border: 1px solid rgba(255, 255, 255, 0.07);
+  .u-rule-t {
+    border-top: 0.5px solid var(--color-rule);
   }
 
-  /* Testo arancione */
-  .u-text-accent {
-    color: var(--color-accent);
-  }
-
-  /* Button shine (solo quando hover) */
-  @keyframes btnShine45 {
-    0% {
-      transform: translateX(-220%) rotate(45deg);
-      opacity: 0;
-    }
-    12% {
-      opacity: 1;
-    }
-    100% {
-      transform: translateX(220%) rotate(45deg);
-      opacity: 0;
-    }
-  }
-
-  .u-btn-shine {
-    position: relative;
-    overflow: hidden;
-  }
-
-  .u-btn-shine::after {
-    content: '';
-    pointer-events: none;
-    position: absolute;
-    top: -70%;
-    bottom: -70%;
-    width: 32%;
-    left: -22%;
-    background: linear-gradient(
-      to right,
-      rgba(255, 255, 255, 0) 0%,
-      rgba(255, 255, 255, 0.4) 50%,
-      rgba(255, 255, 255, 0) 100%
-    );
-    opacity: 0;
-    transform: translateX(220%) rotate(45deg);
-  }
-
-  .u-btn-shine:hover::after {
-    animation: btnShine45 0.3s ease-out 1;
-  }
-
-  @media (prefers-reduced-motion: reduce) {
-    .u-btn-shine:hover::after {
-      animation: none;
-    }
+  .u-rule-b {
+    border-bottom: 0.5px solid var(--color-rule);
   }
 }

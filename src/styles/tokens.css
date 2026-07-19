@@ -6,6 +6,15 @@
    automatica (nessun auto-detect da
    prefers-color-scheme: la scelta è sempre
    esplicita e persistita, vedi ThemeProvider).
+
+   Nota: --text-*, --tracking-*, --leading-* NON
+   vengono definiti qui perché collidono con lo
+   stesso namespace del tema di default di Tailwind
+   (dichiararli in un :root fuori da @theme li
+   sovrascriverebbe silenziosamente ovunque, bug
+   scoperto durante l'implementazione). Le uniche
+   dimensioni fuori scala Tailwind vivono qui sotto
+   con nomi non ambigui (--fs-*).
    ============================================ */
 
 :root {
@@ -19,9 +28,14 @@
   --graphite-3: #8A8781;
   --mark: #C8392B;
 
-  /* Accento attivo — indirizzato da data-accent.
-     Di base coincide con --mark; altri accenti
-     (Task 1) si aggiungono come varianti sotto. */
+  /* Accenti alternativi — colori da penna/matita tecnica,
+     non da brand. Attivato da data-accent sull'html. */
+  --ink: #2B5797;
+  --pine: #2E6B4B;
+  --ochre: #96631A;
+
+  /* Accento attivo — indirizzato da data-accent, di base
+     coincide con --mark. */
   --accent: var(--mark);
 
   /* --- Raggi: spigolo vivo ovunque ---
@@ -37,37 +51,23 @@
   --shadow-2: 0 -1px 0 0 var(--rule), 0 1px 0 0 var(--rule);
   --shadow-3: 0 1px 0 0 var(--rule), 0 2px 0 0 var(--rule-soft);
 
-  /* --- Tipografia: scala esplicita ---
-     Famiglie invariate finché il Task 2 non sceglie
-     l'accoppiata definitiva. --font-sans/--font-serif
-     sono i nomi legacy già usati nei componenti (inline
-     style con var(--font-serif) per il corsivo); restano
-     finché quel refactor non li sostituisce con i ruoli
-     display/testo/mono qui sotto. */
-  --font-sans: "Satoshi", system-ui, sans-serif;
-  --font-serif: "Instrument Serif", Georgia, serif;
+  /* Le famiglie (display/text/mono) sono definite dentro
+     @theme in index.css, non qui: devono vivere in un
+     blocco @theme per generare le utility font-display/
+     font-text e per sovrascrivere il font-mono di default
+     di Tailwind. Definirle anche qui creerebbe due
+     dichiarazioni per la stessa custom property su :root
+     — nella migliore ipotesi duplicazione, nella peggiore
+     un riferimento circolare se una richiama l'altra via
+     var(). */
 
-  --font-display: var(--font-serif); /* TODO Task 2 */
-  --font-text: var(--font-sans);     /* TODO Task 2 */
-  --font-mono: ui-monospace, "SFMono-Regular", Menlo, Consolas, monospace; /* TODO Task 2 */
-
-  --text-xs: 0.6875rem;   /* 11px — annotazioni, metadati mono */
-  --text-sm: 0.8125rem;   /* 13px — etichette, badge */
-  --text-base: 1rem;      /* 16px — corpo */
-  --text-md: 1.125rem;    /* 18px — corpo enfatizzato */
-  --text-lg: 1.375rem;    /* 22px — sottotitoli */
-  --text-xl: 1.75rem;     /* 28px — titoli di sezione, piccoli */
-  --text-2xl: 2.25rem;    /* 36px — titoli di sezione */
-  --text-3xl: 3rem;       /* 48px — display */
-  --text-4xl: 4rem;       /* 64px — display, hero */
-
-  --leading-tight: 1.1;
-  --leading-snug: 1.3;
-  --leading-normal: 1.5;
-  --leading-relaxed: 1.7;
-
-  --tracking-tight: -0.02em;
-  --tracking-tighter: -0.04em;
+  /* Unico gradino fuori dalla scala nativa di Tailwind:
+     il livello più piccolo per badge/metadati minimi
+     (percentuali, anno/durata, tag stack) — sostituisce
+     i valori arbitrari text-[10px]/text-[11px] sparsi
+     nei componenti. Nome non ambiguo, non collide con
+     --text-xs di Tailwind. */
+  --fs-2xs: 0.6875rem; /* 11px */
 
   /* --- Movimento: durate nominali ---
      L'assegnazione ai singoli gesti è nel Task 4;
@@ -81,33 +81,30 @@
 
 /* ============================================
    Colore — tema scuro (alternativa progettata)
-
-   TODO Task 1: valori da proporre e approvare.
-   Finché non sono definiti, [data-theme="dark"]
-   eredita silenziosamente i valori del tema chiaro
-   (nessuna dichiarazione qui sotto) — non è un bug,
-   è lo stato "struttura pronta, in attesa dei valori".
    ============================================ */
 :root[data-theme="dark"] {
-  /* --paper: TODO
-     --paper-2: TODO
-     --rule: TODO
-     --rule-soft: TODO
-     --graphite: TODO
-     --graphite-2: TODO
-     --graphite-3: TODO
-     --mark: TODO — stesso rosso, ricalibrato per contrasto su fondo scuro, non un rosso diverso */
+  --paper: #17161A;
+  --paper-2: #201F1B;
+  --rule-soft: #2B2924;
+  --rule: #38352E;
+  --graphite: #F1EEE7;
+  --graphite-2: #A9A59C;
+  --graphite-3: #726E64;
+  --mark: #E2604B; /* stesso rosso, schiarito e un po' più saturo per il contrasto su fondo scuro */
+
+  /* TODO Task successivo: ink/pine/ochre non sono ancora
+     ricalibrati per il fondo scuro, ereditano i valori
+     chiari finché il selettore accento non viene esposto
+     in UI. */
 }
 
 /* ============================================
    Accenti alternativi (data-accent)
-
-   TODO Task 1: proporre tre accenti oltre al rosso.
-   Per ora "mark" è l'unico definito.
    ============================================ */
-:root[data-accent="mark"] {
-  --accent: var(--mark);
-}
+:root[data-accent="mark"] { --accent: var(--mark); }
+:root[data-accent="ink"] { --accent: var(--ink); }
+:root[data-accent="pine"] { --accent: var(--pine); }
+:root[data-accent="ochre"] { --accent: var(--ochre); }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
