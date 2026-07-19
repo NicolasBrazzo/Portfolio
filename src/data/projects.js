@@ -35,7 +35,7 @@ export const projects = [
       "Snippify è un'applicazione web che permette di creare e condividere snippet di codice in modo semplice e veloce.",
     stack: ["React", "GSAP", "Tailwind CSS", "Vite", "Figma"],
     liveUrl: "https://snippify.andreasabettaprogrammatore.com/",
-    repoUrl: "https://github.com",
+    repoUrl: null,
     image: null,
     featured: true,
   },

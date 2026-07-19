@@ -9,7 +9,7 @@ import { caseStudies } from "../../data/caseStudies";
 import readitImg from "../../assets/Readit.png";
 import snippifyImg from "../../assets/Snippify.png";
 import voltaImg from "../../assets/Volta.png";
-import { CaseStudyCard } from "../ui/CaseStudyCaard";
+import { CaseStudyCard } from "../ui/CaseStudyCard";
 
 export function CaseStudies() {
   const sectionRef = useRef(null);

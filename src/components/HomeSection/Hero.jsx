@@ -5,20 +5,20 @@ import { prefersReducedMotion } from "../../lib/motion";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
-import Aurora from "../ui/Aurora";
 
 export function Hero() {
   const containerRef = useRef(null);
   const scrollIndRef = useRef(null);
   const badgeLineRef = useRef(null);
-  const titleLinesRef = useRef([]);
+  const nameLineRef = useRef(null);
+  const headlineLinesRef = useRef([]);
   const subLinesRef = useRef([]);
   const ctaLineRef = useRef(null);
   const gridRafRef = useRef(0);
   const gridPosRef = useRef({ x: 0, y: 0 });
 
   // Reset array refs ad ogni render per evitare accumuli
-  titleLinesRef.current = [];
+  headlineLinesRef.current = [];
   subLinesRef.current = [];
 
   const scrollTo = (id) =>
@@ -59,76 +59,75 @@ export function Hero() {
     () => {
       if (prefersReducedMotion()) return;
 
-      const badgeEl = badgeLineRef.current;
-      const titleEls = titleLinesRef.current.filter(Boolean);
-      const subEls = subLinesRef.current.filter(Boolean);
-      const ctaEl = ctaLineRef.current;
+      const headlineEls = headlineLinesRef.current.filter(Boolean);
+      const restEls = [
+        badgeLineRef.current,
+        nameLineRef.current,
+        ...subLinesRef.current.filter(Boolean),
+        ctaLineRef.current,
+      ].filter(Boolean);
+      const scrollEl = scrollIndRef.current;
 
-      // Stato iniziale – elementi invisibili prima del primo paint
-      gsap.set([badgeEl, ...titleEls, ...subEls, ctaEl].filter(Boolean), {
-        opacity: 0,
-        y: 10,
+      // Stato iniziale – headline chiusa nella maschera, resto invisibile
+      gsap.set(headlineEls, { yPercent: 110 });
+      gsap.set(restEls, { opacity: 0, y: 8 });
+      if (scrollEl) gsap.set(scrollEl, { opacity: 0, y: 8 });
+
+      // Un gesto solo: la headline si rivela dal basso, decisa;
+      // tutto il resto arriva subito dopo, compatto, quasi insieme.
+      const tl = gsap.timeline();
+
+      if (headlineEls.length) {
+        tl.to(headlineEls, {
+          yPercent: 0,
+          duration: 0.6,
+          ease: "power4.out",
+          stagger: 0.05,
+        });
+      }
+
+      if (restEls.length) {
+        tl.to(
+          restEls,
+          {
+            opacity: 1,
+            y: 0,
+            duration: 0.45,
+            ease: "power2.out",
+            stagger: 0.03,
+          },
+          headlineEls.length ? "-=0.25" : 0,
+        );
+      }
+
+      if (scrollEl) {
+        tl.to(
+          scrollEl,
+          { opacity: 0.4, y: 0, duration: 0.45, ease: "power2.out" },
+          "<",
+        );
+      }
+
+      // Saltabile: al primo scroll dell'utente, salta subito alla fine
+      const skipIntro = () => tl.progress(1);
+      window.addEventListener("scroll", skipIntro, {
+        passive: true,
+        once: true,
       });
-      if (scrollIndRef.current)
-        gsap.set(scrollIndRef.current, { opacity: 0, y: 10 });
+      window.addEventListener("wheel", skipIntro, {
+        passive: true,
+        once: true,
+      });
+      window.addEventListener("touchmove", skipIntro, {
+        passive: true,
+        once: true,
+      });
 
-      // Timeline d'ingresso
-      const tl = gsap.timeline({ defaults: { ease: "sine.out" } });
-
-      // 1) Titolo (con badge)
-      if (badgeEl) {
-        tl.to(
-          badgeEl,
-          { opacity: 1, y: 0, duration: 0.55, ease: "sine.out" },
-          0.05,
-        );
-      }
-
-      if (titleEls.length) {
-        tl.to(
-          titleEls,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.78,
-            ease: "sine.out",
-            stagger: { amount: 0.16, from: "start" },
-          },
-          badgeEl ? "-=0.18" : 0.06,
-        );
-      }
-
-      // 2) Sottotitolo (più vicino)
-      if (subEls.length) {
-        tl.to(
-          subEls,
-          {
-            opacity: 1,
-            y: 0,
-            duration: 0.62,
-            ease: "sine.out",
-            stagger: { amount: 0.14, from: "start" },
-          },
-          "+=0.14",
-        );
-      }
-
-      // 3) CTA (più vicino)
-      if (ctaEl) {
-        tl.to(
-          ctaEl,
-          { opacity: 1, y: 0, duration: 0.56, ease: "sine.out" },
-          "+=0.16",
-        );
-      }
-
-      if (scrollIndRef.current) {
-        tl.to(
-          scrollIndRef.current,
-          { opacity: 0.4, y: 0, duration: 0.6, ease: "sine.out" },
-          "-=0.28",
-        );
-      }
+      return () => {
+        window.removeEventListener("scroll", skipIntro);
+        window.removeEventListener("wheel", skipIntro);
+        window.removeEventListener("touchmove", skipIntro);
+      };
     },
     { scope: containerRef },
   );
@@ -136,7 +135,6 @@ export function Hero() {
   return (
     <Section
       id="hero"
-      noise
       className="group py-0 min-h-screen flex flex-col justify-center"
       ref={containerRef}
       onPointerMove={onGridMove}
@@ -147,37 +145,6 @@ export function Hero() {
         "--grid-y": "45%",
       }}
     >
-      {/* ── Aurora background (react-bits) ────────────────────── */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-70"
-        style={{
-          maskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
-          WebkitMaskImage:
-            "linear-gradient(to bottom, rgba(0,0,0,1) 0%, rgba(0,0,0,0.85) 55%, transparent 100%)",
-        }}
-      >
-        <Aurora
-          colorStops={["#FF5C00", "#FF8C42", "#FF5C00"]}
-          amplitude={1}
-          blend={0.75}
-        />
-      </div>
-
-      {/* ── Gradient background decorativo ────────────────────── */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: `
-            radial-gradient(ellipse 65% 55% at 82% 12%, rgba(255,92,0,0.11) 0%, transparent 70%),
-            radial-gradient(ellipse 45% 40% at 8%  88%, rgba(255,92,0,0.06) 0%, transparent 65%),
-            radial-gradient(ellipse 85% 65% at 50% 50%, rgba(255,92,0,0.02) 0%, transparent 75%)
-          `,
-        }}
-      />
-
       {/* ── Grid background (full viewport) ───────────────────── */}
       <div
         aria-hidden
@@ -211,37 +178,41 @@ export function Hero() {
 
           {/* Name */}
           <div
-            ref={(el) => el && titleLinesRef.current.push(el)}
+            ref={nameLineRef}
             className="text-[17px] font-semibold tracking-[0.22em] uppercase text-text/90"
           >
             Nicolas Brazzo<span className="text-accent">.</span>
           </div>
 
-          {/* Headline */}
+          {/* Headline — mask reveal dal basso */}
           <h1 className="text-[clamp(3rem,8vw,6rem)] font-black leading-[0.95] tracking-tight text-text">
-            <span
-              ref={(el) => el && titleLinesRef.current.push(el)}
-              className="block"
-            >
-              Web developer
-            </span>
-            <span
-              ref={(el) => el && titleLinesRef.current.push(el)}
-              className="block"
-            >
-              <span className="inline-flex items-baseline gap-3 flex-wrap">
-                {/* <span className="font-semibold">&amp; </span> */}
-                <em
-                  className="not-italic text-accent leading-none"
-                  style={{
-                    fontFamily: "var(--font-serif)",
-                    fontStyle: "italic",
-                  }}
-                >
-                  front-end
-                </em>
+            <span className="block overflow-hidden">
+              <span
+                ref={(el) => el && headlineLinesRef.current.push(el)}
+                className="block"
+              >
+                Web developer
               </span>
-              <span className="text-accent">.</span>
+            </span>
+            <span className="block overflow-hidden">
+              <span
+                ref={(el) => el && headlineLinesRef.current.push(el)}
+                className="block"
+              >
+                <span className="inline-flex items-baseline gap-3 flex-wrap">
+                  {/* <span className="font-semibold">&amp; </span> */}
+                  <em
+                    className="not-italic text-accent leading-none"
+                    style={{
+                      fontFamily: "var(--font-serif)",
+                      fontStyle: "italic",
+                    }}
+                  >
+                    front-end
+                  </em>
+                </span>
+                <span className="text-accent">.</span>
+              </span>
             </span>
           </h1>
 

@@ -17,4 +17,8 @@ export const skills = {
     label: 'Learning & exploration',
     skills: ["GraphQL", "AWS", "Python", "Rust", "Go"],
   },
+  ai: {
+    label: 'AI Toolkit',
+    skills: ["Claude (Code, AI, Design)", "ChatGPT", "Lovable", "Gemini"],
+  },
 }
