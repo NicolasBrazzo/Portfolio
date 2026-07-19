@@ -72,45 +72,45 @@ export const caseStudies = [
   },
   {
     id: "project-02",
-    title: "Snippify",
-    role: "Team Project",
+    title: "HUB",
+    role: "Personal Project",
     description:
-      "Snippify è un'applicazione web che permette di creare e condividere snippet di codice in modo semplice e veloce.",
-    stack: ["React", "GSAP", "Tailwind CSS", "Vite", "Figma"],
+      "HUB è il centro di controllo personale che uso per gestire progetti, snippet di codice, strumenti e design system in un'unica dashboard veloce e su misura.",
+    stack: ["Next.js", "Prisma", "Tailwind CSS", "shadcn/ui", "Supabase"],
     liveUrl: "https://snippify.andreasabettaprogrammatore.com/",
     repoUrl: "https://github.com",
     image: null,
     featured: true,
-    year: "2025",
+    year: "2026",
     duration: "4 settimane",
-    client: "Team project",
+    client: "My personal project",
     overview:
-      "Snippify è una piattaforma collaborativa per sviluppatori che permette di salvare, organizzare e condividere snippet di codice. Pensata per essere veloce, leggera e bella da usare ogni giorno, mette al centro il flusso di lavoro del developer.",
+      "HUB è il centro di controllo personale che uso per gestire progetti, snippet di codice, strumenti e design system in un'unica dashboard veloce e su misura.",
     challenge:
-      "Gli strumenti esistenti per gestire snippet sono spesso pesanti, poco curati nell'UX o vincolati a un editor specifico. L'obiettivo era costruire un tool web universale con un'identità visiva forte e animazioni che valorizzassero l'interazione senza appesantire.",
+      "Gestisco in parallelo più progetti personali e freelance, ognuno con le proprie note, task e link utili: avevo bisogno di un solo posto per tenere tutto sotto controllo, senza passare tra fogli sparsi, bookmark e app diverse. Volevo anche uno spazio dove archiviare snippet di codice e componenti UI riutilizzabili, per non riscrivere due volte la stessa soluzione.",
     solution:
-      "Insieme al team abbiamo definito un design system scalabile, integrato GSAP per microinterazioni fluide e organizzato la libreria di snippet con tag, ricerca e categorie. Il risultato è uno strumento immediato che valorizza la velocità di consultazione.",
+      "Ho costruito una dashboard con Next.js 16 (App Router e React Server Components) e Prisma 7 collegato a Supabase tramite driver adapter, con le mutazioni gestite interamente da Server Actions invece che da API routes. L'interfaccia usa shadcn/ui insieme a un design system custom, con syntax highlighting lato server (Shiki) per gli snippet e una navigazione configurabile da un'unica fonte di verità.",
     features: [
       {
-        title: "Editor con syntax highlighting",
+        title: "To-do per ogni progetto",
         description:
-          "Supporto per i linguaggi più diffusi, formattazione automatica e copy-to-clipboard.",
+          "Ogni progetto ha la propria lista di attività con priorità, stato e scadenze, per non perdere di vista cosa manca per portarlo a termine.",
       },
       {
-        title: "Organizzazione smart",
+        title: "Knowledge base di snippet",
         description:
-          "Tag, collezioni e ricerca full-text per ritrovare lo snippet giusto in pochi secondi.",
+          "Codice riutilizzabile organizzato per linguaggio e categoria, con syntax highlighting generato lato server e ricerca full-text per ritrovare la soluzione giusta in pochi secondi.",
       },
       {
-        title: "Microinterazioni GSAP",
+        title: "Design system integrato",
         description:
-          "Animazioni curate per transizioni di pagina, hover e feedback delle azioni principali.",
+          "Una libreria di componenti UI con showcase interattivo che mostra il codice sorgente reale di ogni elemento, pronta da riusare in nuovi progetti.",
       },
     ],
     results: [
-      { value: "3", label: "Sviluppatori nel team" },
+      { value: "8", label: "Sezioni modulari nell'hub" },
       { value: "60+", label: "Componenti UI riutilizzabili" },
-      { value: "100%", label: "Responsive su tutti i breakpoint" },
+      { value: "100%", label: "Dark mode e responsive su ogni breakpoint" },
     ],
     gallery: [],
   },

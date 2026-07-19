@@ -165,16 +165,6 @@ export function Hero() {
 
       <Container className="relative pt-24 pb-16 md:pb-20">
         <div className="mx-auto flex flex-col items-center text-center gap-8 max-w-3xl">
-          {/* Badge "available" */}
-          <div
-            ref={badgeLineRef}
-            className="inline-flex items-center gap-2 w-fit px-3.5 py-1.5 u-rule bg-paper-2"
-          >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-graphite-3">
-              Available for work
-            </span>
-          </div>
 
           {/* Name */}
           <div
