@@ -1,4 +1,5 @@
 @import "tailwindcss";
+@import "./styles/tokens.css";
 
 /* ============================================
    Satoshi – variable font (self-hosted)
@@ -40,15 +41,43 @@
   font-display: swap;
 }
 
-@theme {
-  --color-bg: #0D0D0D;
-  --color-surface: #161616;
-  --color-surface-raised: #1E1E1E;
-  --color-text: #F2F2F0;
-  --color-muted: #7A7A7A;
-  --color-accent: #FF5C00;
-  --color-accent-warm: #FF8C42;
-  --color-accent-glow: rgba(255, 92, 0, 0.25);
+@theme inline {
+  /* Nomi Tailwind mappati sui token (indiretto, non
+     inlineato a build-time): necessario perché il valore
+     cambi a runtime con data-theme / data-accent. */
+  --color-paper: var(--paper);
+  --color-paper-2: var(--paper-2);
+  --color-rule: var(--rule);
+  --color-rule-soft: var(--rule-soft);
+  --color-graphite: var(--graphite);
+  --color-graphite-2: var(--graphite-2);
+  --color-graphite-3: var(--graphite-3);
+  --color-mark: var(--mark);
+  --color-accent: var(--accent);
+
+  /* Alias legacy — nomi già in uso nei componenti
+     esistenti. Restano finché il refactor dei componenti
+     (Task 1, insieme al cambio tipografico) non passa ai
+     nomi definitivi sopra, per non toccarli due volte. */
+  --color-bg: var(--paper);
+  --color-surface: var(--paper-2);
+  --color-surface-raised: var(--paper-2);
+  --color-text: var(--graphite);
+  --color-muted: var(--graphite-2);
+  --color-accent-warm: var(--accent);
+  --color-accent-glow: transparent; /* niente più glow: Task 4 rimuove gli usi residui */
+
+  /* Spigolo vivo ovunque tranne rounded-full (cerchi veri:
+     utility statica di Tailwind, non è una chiave di tema) */
+  --radius: var(--r-base);
+  --radius-xs: var(--r-base);
+  --radius-sm: var(--r-base);
+  --radius-md: var(--r-base);
+  --radius-lg: var(--r-base);
+  --radius-xl: var(--r-base);
+  --radius-2xl: var(--r-base);
+  --radius-3xl: var(--r-base);
+  --radius-4xl: var(--r-base);
 }
 
 /* ============================================
@@ -57,20 +86,6 @@
 
 @layer base {
   :root {
-    /* Colori */
-    --color-bg: #0D0D0D;
-    --color-surface: #161616;
-    --color-surface-raised: #1E1E1E;
-    --color-text: #F2F2F0;
-    --color-muted: #7A7A7A;
-    --color-accent: #FF5C00;
-    --color-accent-warm: #FF8C42;
-    --color-accent-glow: rgba(255, 92, 0, 0.25);
-
-    /* Tipografia */
-    --font-sans: "Satoshi", system-ui, sans-serif;
-    --font-serif: "Instrument Serif", Georgia, serif;
-
     /* Spacing / layout */
     --container-max: 72rem;
     --section-padding-y: 5rem;
@@ -82,6 +97,7 @@
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    scroll-behavior: smooth;
   }
 
   body {
@@ -98,12 +114,7 @@
   :focus-visible {
     outline: 2px solid var(--color-accent);
     outline-offset: 3px;
-    border-radius: 3px;
-  }
-
-  /* Scroll smooth per i link anchor */
-  html {
-    scroll-behavior: smooth;
+    border-radius: var(--r-base);
   }
 }
 
