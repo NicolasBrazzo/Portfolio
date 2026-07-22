@@ -7,7 +7,7 @@ import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { ProjectCard } from "../ui/ProjectCard";
 import { projects } from "../../data/projects";
-import readitImg from "../../assets/Readit.png";
+import rivistaNotturna from "../../assets/RivistaNotturna.webp";
 import snippifyImg from "../../assets/Snippify.png";
 import nasaNeo from "../../assets/NASA-neo.png";
 
@@ -16,7 +16,7 @@ export function Projects() {
   const cardsRef = useRef([]);
 
   const projectsWithImages = projects.map((p) => {
-    if (p.title === "ReadIt") return { ...p, image: readitImg };
+    if (p.title === "Rivista Notturna") return { ...p, image: rivistaNotturna };
     if (p.title === "Snippify") return { ...p, image: snippifyImg };
     if (p.title === "NASA NEO Dashboard") return { ...p, image: nasaNeo };
     return p;

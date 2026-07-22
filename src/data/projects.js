@@ -17,13 +17,13 @@
 export const projects = [
   {
     id: "project-01",
-    title: "ReadIt",
-    role: "Full Stack Project",
+    title: "Rivista Notturna",
+    role: "Frontend Developer & GSAP Animator",
     description:
-      "Progetto nato per incentivare i giovani a leggere di più, trasformando la lettura in un'esperienza coinvolgente, sociale e gratificante attraverso il monitoraggio del progresso quotidiano.",
-    stack: ["React", "Tailwind CSS", "Vite", "Figma", "NodeJS", "Supabase"],
-    liveUrl: "https://brz-read-it.vercel.app/",
-    repoUrl: "https://github.com/NicolasBrazzo/ReadIt",
+      "Rivista Notturna è un progetto nato dallo studio di GSAP e delle animazioni web, con l'obiettivo di creare un'esperienza immersiva per gli utenti.",
+    stack: ["React", "Tailwind CSS", "Vite", "GSAP"],
+    liveUrl: "https://rivista-notturna.vercel.app/",
+    repoUrl: "https://github.com/NicolasBrazzo/Rivista-Notturna",
     image: null,
     featured: true,
   },
