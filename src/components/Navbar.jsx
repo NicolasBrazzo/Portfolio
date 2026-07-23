@@ -58,19 +58,19 @@ export function Navbar() {
         scrolled ? 'bg-paper/95 u-rule-b' : 'bg-transparent',
       ].join(' ')}
     >
-      <div className="w-full mx-auto px-(--section-padding-x) max-w-(--container-max) flex items-center justify-between h-16">
+      <div className="w-full mx-auto px-(--section-padding-x) max-w-(--container-max) flex items-center justify-between h-55">
 
         {/* Logo */}
         <a
           href="#hero"
           onClick={(e) => handleLink(e, '#hero')}
-          className="text-sm font-bold tracking-widest text-graphite hover:text-accent transition-colors duration-200"
+          className="text-base font-semibold tracking-widest text-graphite hover:text-accent transition-colors duration-200"
         >
           Nicolas Brazzo<span className="text-accent">.</span>
         </a>
 
         {/* Desktop links */}
-        <nav className="hidden md:flex items-center gap-8" aria-label="Main navigation">
+        <nav className="hidden md:flex items-center gap-34" aria-label="Main navigation">
           {NAV_LINKS.map(({ label, href }) => {
             const id = href.replace('#', '')
             const isActive = active === id
@@ -80,7 +80,7 @@ export function Navbar() {
                 href={href}
                 onClick={(e) => handleLink(e, href)}
                 className={[
-                  'relative text-sm font-medium tracking-wide transition-colors duration-200 pb-0.5',
+                  'relative text-base font-medium tracking-wide transition-colors duration-200 pb-2',
                   isActive
                     ? 'text-accent'
                     : 'text-graphite-2 hover:text-graphite',
@@ -88,7 +88,7 @@ export function Navbar() {
               >
                 {label}
                 {isActive && (
-                  <span className="absolute -bottom-0.5 left-0 right-0 h-px bg-accent" />
+                  <span className="absolute -bottom-2 left-0 right-0 h-px bg-accent" />
                 )}
               </a>
             )
@@ -97,27 +97,27 @@ export function Navbar() {
 
         {/* Hamburger (mobile) */}
         <button
-          className="md:hidden flex flex-col justify-center items-center gap-1.5 w-8 h-8 cursor-pointer"
+          className="md:hidden flex flex-col justify-center items-center gap-5 w-34 h-34 cursor-pointer"
           aria-label={menuOpen ? 'Close menu' : 'Open menu'}
           aria-expanded={menuOpen}
           onClick={() => setMenuOpen((v) => !v)}
         >
           <span
             className={[
-              'block w-5 h-px bg-graphite transition-all duration-300 origin-center',
-              menuOpen ? 'translate-y-[7px] rotate-45' : '',
+              'block w-21 h-px bg-graphite transition-all duration-300 origin-center',
+              menuOpen ? 'translate-y-8 rotate-45' : '',
             ].join(' ')}
           />
           <span
             className={[
-              'block w-5 h-px bg-graphite transition-all duration-300',
+              'block w-21 h-px bg-graphite transition-all duration-300',
               menuOpen ? 'opacity-0 scale-x-0' : '',
             ].join(' ')}
           />
           <span
             className={[
-              'block w-5 h-px bg-graphite transition-all duration-300 origin-center',
-              menuOpen ? '-translate-y-[7px] -rotate-45' : '',
+              'block w-21 h-px bg-graphite transition-all duration-300 origin-center',
+              menuOpen ? '-translate-y-8 -rotate-45' : '',
             ].join(' ')}
           />
         </button>
@@ -126,7 +126,7 @@ export function Navbar() {
       {/* Mobile menu overlay */}
       <div
         className={[
-          'md:hidden fixed inset-0 top-16 flex flex-col items-center justify-center gap-10 transition-all duration-300',
+          'md:hidden fixed inset-0 top-55 flex flex-col items-center justify-center gap-34 transition-all duration-300',
           menuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none',
         ].join(' ')}
         style={{ backgroundColor: 'var(--color-paper)' }}
@@ -141,7 +141,7 @@ export function Navbar() {
               href={href}
               onClick={(e) => handleLink(e, href)}
               className={[
-                'font-display text-3xl font-medium tracking-tighter transition-colors duration-200',
+                'font-display text-md font-medium tracking-tighter transition-colors duration-200',
                 isActive ? 'text-accent' : 'text-graphite',
               ].join(' ')}
             >
