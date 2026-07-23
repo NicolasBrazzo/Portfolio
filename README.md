@@ -1,16 +1,66 @@
-# React + Vite
+# Portfolio — Nicolas Brazzo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Portfolio personale: una pagina singola che raccoglie progetti, casi studio e
+percorso professionale, costruita con React e animata con GSAP.
 
-Currently, two official plugins are available:
+**Live** → [brzportfolio.vercel.app](https://brzportfolio.vercel.app)
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) (or [oxc](https://oxc.rs) when used in [rolldown-vite](https://vite.dev/guide/rolldown)) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+---
 
-## React Compiler
+## Stack
 
-The React Compiler is not enabled on this template because of its impact on dev & build performances. To add it, see [this documentation](https://react.dev/learn/react-compiler/installation).
+| | |
+|---|---|
+| **Framework** | React 19 + Vite |
+| **Stile** | Tailwind CSS |
+| **Animazioni** | GSAP (ScrollTrigger) |
+| **Form** | Formspree |
+| **Deploy** | Vercel |
 
-## Expanding the ESLint configuration
+---
 
-If you are developing a production application, we recommend using TypeScript with type-aware lint rules enabled. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) for information on how to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Struttura
+
+Single page application con sezioni ancorate: hero, progetti selezionati,
+casi studio, processo di lavoro, competenze, percorso e contatti.
+
+```
+src/
+├── components/   # componenti UI e sezioni della pagina
+├── assets/       # immagini e risorse statiche
+└── main.jsx      # entry point
+```
+
+---
+
+## Avvio in locale
+
+```bash
+git clone https://github.com/NicolasBrazzo/Portfolio.git
+cd Portfolio
+npm install
+npm run dev
+```
+
+Il sito parte su `http://localhost:5173`.
+
+| Comando | Descrizione |
+|---|---|
+| `npm run dev` | Server di sviluppo con HMR |
+| `npm run build` | Build di produzione in `dist/` |
+| `npm run preview` | Anteprima locale della build |
+| `npm run lint` | Controllo ESLint |
+
+---
+
+## Stato
+
+In evoluzione. È in programma una revisione della direzione visiva.
+
+---
+
+## Contatti
+
+[Portfolio](https://brzportfolio.vercel.app) ·
+[LinkedIn](https://www.linkedin.com/in/nicolas-brazzo-a91509286/) ·
+nicolasbrazzo8@gmail.com
