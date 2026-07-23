@@ -51,7 +51,7 @@ export function CaseStudies() {
 
   return (
     <Section id="case-studies" ref={sectionRef}>
-      <Container className="flex flex-col gap-14">
+      <Container className="flex flex-col gap-55">
         {/* Header sezione */}
         <SectionTitle
           number="02"
@@ -60,7 +60,7 @@ export function CaseStudies() {
         />
 
         {/* Grid progetti */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-21">
           {caseStudyWithImages.map((project, i) => (
             <div
               key={project.id}

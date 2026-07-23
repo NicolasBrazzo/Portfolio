@@ -163,19 +163,19 @@ export function Hero() {
         }}
       />
 
-      <Container className="relative pt-24 pb-16 md:pb-20">
-        <div className="mx-auto flex flex-col items-center text-center gap-8 max-w-3xl">
+      <Container className="relative pt-89 pb-55 md:pb-89">
+        <div className="mx-auto flex flex-col items-center text-center gap-34 max-w-3xl">
 
           {/* Name */}
           <div
             ref={nameLineRef}
-            className="text-lg font-semibold tracking-[0.22em] uppercase text-graphite/90"
+            className="text-micro font-semibold tracking-[0.22em] uppercase text-graphite/90"
           >
             Nicolas Brazzo<span className="text-accent">.</span>
           </div>
 
           {/* Headline — mask reveal dal basso */}
-          <h1 className="font-display text-[clamp(3rem,8vw,6rem)] font-medium leading-[0.95] tracking-tighter text-graphite">
+          <h1 className="font-display text-lg md:text-xl lg:text-2xl font-medium leading-[0.95] tracking-tighter text-graphite">
             <span className="block overflow-hidden">
               <span
                 ref={(el) => el && headlineLinesRef.current.push(el)}
@@ -189,7 +189,7 @@ export function Hero() {
                 ref={(el) => el && headlineLinesRef.current.push(el)}
                 className="block"
               >
-                <span className="inline-flex items-baseline gap-3 flex-wrap">
+                <span className="inline-flex items-baseline gap-13 flex-wrap">
                   <em className="font-display italic text-accent leading-none">
                     front-end
                   </em>
@@ -200,7 +200,7 @@ export function Hero() {
           </h1>
 
           {/* Subtitle */}
-          <p className="text-base md:text-lg text-graphite-2 leading-relaxed max-w-xl">
+          <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
             <span
               ref={(el) => el && subLinesRef.current.push(el)}
               className="block"
@@ -220,7 +220,7 @@ export function Hero() {
           {/* CTA row */}
           <div
             ref={ctaLineRef}
-            className="flex items-center justify-center gap-4 flex-wrap pt-2"
+            className="flex items-center justify-center gap-13 flex-wrap pt-8"
           >
             <Button onClick={() => scrollTo("projects")}>
               Vedi i progetti <span aria-hidden>→</span>
@@ -235,12 +235,12 @@ export function Hero() {
       {/* Scroll indicator */}
       <div
         ref={scrollIndRef}
-        className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2"
+        className="absolute bottom-34 left-1/2 -translate-x-1/2 flex flex-col items-center gap-8"
       >
         <span className="font-mono text-(length:--fs-2xs) font-medium tracking-[0.25em] uppercase text-graphite-3">
           Scroll
         </span>
-        <div className="w-px h-10 bg-rule" />
+        <div className="w-px h-34 bg-rule" />
       </div>
     </Section>
   );

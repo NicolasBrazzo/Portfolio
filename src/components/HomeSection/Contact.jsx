@@ -89,14 +89,14 @@ export function Contact() {
   return (
     <Section id="contact" ref={sectionRef}>
       <Container>
-        <div className="flex flex-col items-start gap-10 max-w-2xl">
+        <div className="flex flex-col items-start gap-34 max-w-2xl">
           {/* Badge disponibilità */}
           <div
             ref={badgeRef}
-            className="inline-flex items-center gap-2 px-3.5 py-1.5 u-rule bg-paper-2"
+            className="inline-flex items-center gap-8 px-13 py-5 u-rule bg-paper-2"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-accent animate-pulse" />
-            <span className="text-xs font-medium tracking-[0.15em] uppercase text-graphite-3">
+            <span className="w-5 h-5 rounded-full bg-accent animate-pulse" />
+            <span className="text-micro font-medium tracking-[0.15em] uppercase text-graphite-3">
               Aperto a nuovi progetti — 2026
             </span>
           </div>
@@ -104,7 +104,7 @@ export function Contact() {
           {/* Headline grande */}
           <h2
             ref={headlineRef}
-            className="font-display text-[clamp(2.8rem,7vw,5.5rem)] font-medium leading-[0.95] tracking-tighter text-graphite"
+            className="font-display text-lg lg:text-xl font-medium leading-[0.95] tracking-tighter text-graphite"
           >
             Costruiamo
             <br />
@@ -118,7 +118,7 @@ export function Contact() {
           {/* Sottotitolo */}
           <p
             ref={subRef}
-            className="text-base md:text-lg text-graphite-2 leading-relaxed"
+            className="text-base text-graphite-2 leading-relaxed"
           >
             Hai un progetto in mente, un'idea da sviluppare o semplicemente vuoi
             scambiare due parole?{" "}
@@ -132,24 +132,24 @@ export function Contact() {
               <div
                 role="status"
                 aria-live="polite"
-                className="flex flex-col gap-2 p-6 u-rule bg-paper-2"
+                className="flex flex-col gap-8 p-21 u-rule bg-paper-2"
               >
-                <div className="flex items-center gap-3">
-                  <span aria-hidden className="text-2xl text-accent">
+                <div className="flex items-center gap-13">
+                  <span aria-hidden className="text-md text-accent">
                     ✓
                   </span>
-                  <p className="text-graphite font-medium text-lg">
+                  <p className="text-graphite font-medium text-base">
                     Grazie per avermi scritto!
                   </p>
                 </div>
-                <p className="text-graphite-2 text-sm pl-9">
+                <p className="text-graphite-2 text-base pl-34">
                   Ho ricevuto il tuo messaggio. Ti rispondo entro 24 ore.
                 </p>
               </div>
             ) : (
               <form
                 onSubmit={handleSubmit}
-                className="flex flex-col gap-4 w-full"
+                className="flex flex-col gap-13 w-full"
               >
                 {/* Honeypot anti-spam (invisibile agli utenti reali) */}
                 <input
@@ -161,14 +161,14 @@ export function Contact() {
                   className="hidden"
                 />
 
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-13">
                   <input
                     type="text"
                     name="name"
                     placeholder="Il tuo nome"
                     required
                     disabled={status === "sending"}
-                    className="bg-paper-2 u-rule px-4 py-3 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
+                    className="bg-paper-2 u-rule px-13 py-13 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
                   />
                   <input
                     type="email"
@@ -176,7 +176,7 @@ export function Contact() {
                     placeholder="La tua email"
                     required
                     disabled={status === "sending"}
-                    className="bg-paper-2 u-rule px-4 py-3 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
+                    className="bg-paper-2 u-rule px-13 py-13 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 disabled:opacity-50"
                   />
                 </div>
 
@@ -186,20 +186,20 @@ export function Contact() {
                   rows={5}
                   required
                   disabled={status === "sending"}
-                  className="bg-paper-2 u-rule px-4 py-3 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 resize-none disabled:opacity-50"
+                  className="bg-paper-2 u-rule px-13 py-13 text-graphite placeholder:text-graphite-3 focus:outline-none focus:border-accent/50 transition-colors duration-200 resize-none disabled:opacity-50"
                 />
 
-                <div className="flex flex-col gap-3 pt-1">
+                <div className="flex flex-col gap-13 pt-5">
                   <Button
                     type="submit"
                     disabled={status === "sending"}
-                    className="text-base px-8 py-4 self-start disabled:opacity-60 disabled:cursor-wait"
+                    className="text-base px-34 py-13 self-start disabled:opacity-60 disabled:cursor-wait"
                   >
                     {status === "sending"
                       ? "Invio in corso…"
                       : "Invia messaggio"}
                     {status !== "sending" && (
-                      <span aria-hidden className="text-lg">
+                      <span aria-hidden className="text-base">
                         →
                       </span>
                     )}
@@ -208,7 +208,7 @@ export function Contact() {
                   {status === "error" && (
                     <p
                       role="alert"
-                      className="text-sm text-accent leading-relaxed"
+                      className="text-base text-accent leading-relaxed"
                     >
                       {errorMessage}
                     </p>
@@ -219,11 +219,11 @@ export function Contact() {
           </div>
 
           {/* Social links */}
-          <div ref={socialsRef} className="flex items-center gap-6 pt-2">
-            <span className="text-xs font-medium tracking-[0.2em] uppercase text-graphite-3">
+          <div ref={socialsRef} className="flex items-center gap-21 pt-8">
+            <span className="text-micro font-medium tracking-[0.2em] uppercase text-graphite-3">
               Trovami su
             </span>
-            <div className="flex items-center gap-4">
+            <div className="flex items-center gap-13">
               {SOCIALS.map(({ label, href, icon }) => (
                 <a
                   key={label}
@@ -231,7 +231,7 @@ export function Contact() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={label}
-                  className="flex items-center justify-center w-9 h-9 text-graphite-2 u-rule hover:text-accent hover:border-accent/30 transition-colors duration-200"
+                  className="flex items-center justify-center w-34 h-34 text-graphite-2 u-rule hover:text-accent hover:border-accent/30 transition-colors duration-200"
                 >
                   {icon}
                 </a>

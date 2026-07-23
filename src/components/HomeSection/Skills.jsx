@@ -64,7 +64,7 @@ export function Skills() {
 
   return (
     <Section id="skills" ref={sectionRef}>
-      <Container className="flex flex-col gap-16">
+      <Container className="flex flex-col gap-55">
         {/* Header */}
         <div ref={titleRef}>
           <SectionTitle
@@ -75,9 +75,9 @@ export function Skills() {
         </div>
 
         {/* Due zone: competenze tecniche a sinistra, AI a destra */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-10 lg:gap-12 items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-[1fr_auto] gap-34 lg:gap-55 items-start">
           {/* Competenze tecniche */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 lg:gap-12">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-34 lg:gap-55">
             {Object.entries(codeSkillCategories).map(([key, category], i) => (
               <div
                 key={key}
@@ -87,14 +87,14 @@ export function Skills() {
                 className="flex flex-col"
               >
                 {/* Category label */}
-                <div className="mb-8">
-                  <span className="font-mono text-(length:--fs-2xs) font-bold tracking-[0.28em] uppercase text-accent">
+                <div className="mb-34">
+                  <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.28em] uppercase text-accent">
                     {category.label}
                   </span>
                 </div>
 
                 {/* Skill items */}
-                <ul className="flex flex-wrap gap-2">
+                <ul className="flex flex-wrap gap-8">
                   {category.skills.map((skill) => (
                     <SkillPill key={skill} skill={skill} />
                   ))}
@@ -108,17 +108,17 @@ export function Skills() {
             ref={(el) => {
               columnsRef.current[codeCategoriesCount] = el;
             }}
-            className="relative w-full lg:w-96 shrink-0 u-rule bg-paper-2 p-8 sm:p-10 pt-12 sm:pt-16 overflow-hidden"
+            className="relative w-full lg:w-233 shrink-0 u-rule bg-paper-2 p-34 pt-55 overflow-hidden"
           >
             {/* Category label */}
-            <div className="relative mb-8">
-              <span className="font-mono text-(length:--fs-2xs) font-bold tracking-[0.28em] uppercase text-accent">
+            <div className="relative mb-34">
+              <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.28em] uppercase text-accent">
                 {aiSkills.label}
               </span>
             </div>
 
             {/* Skill items */}
-            <ul className="relative flex flex-wrap gap-2">
+            <ul className="relative flex flex-wrap gap-8">
               {aiSkills.skills.map((skill) => (
                 <SkillPill key={skill} skill={skill} />
               ))}
@@ -132,11 +132,11 @@ export function Skills() {
 
 function SkillPill({ skill }) {
   return (
-    <li className="group/skill relative inline-flex items-center gap-2 pl-3 pr-4 py-2 text-sm font-medium tracking-wide text-graphite/90 u-surface u-rule cursor-default overflow-hidden transition-all duration-300 ease-out hover:border-accent/60 hover:-translate-y-0.5">
+    <li className="group/skill relative inline-flex items-center gap-8 pl-13 pr-13 py-8 text-base font-medium tracking-wide text-graphite/90 u-surface u-rule cursor-default overflow-hidden transition-all duration-300 ease-out hover:border-accent/60 hover:-translate-y-2">
       {/* dot accent */}
       <span
         aria-hidden
-        className="relative block w-1.5 h-1.5 rounded-full bg-accent transition-all duration-300 group-hover/skill:scale-125"
+        className="relative block w-5 h-5 rounded-full bg-accent transition-all duration-300 group-hover/skill:scale-125"
       />
       <span className="relative transition-colors duration-300 group-hover/skill:text-graphite">
         {skill}

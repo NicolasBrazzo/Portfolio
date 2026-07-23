@@ -110,7 +110,7 @@ export const Process = () => {
 
   return (
     <Section id="process" ref={sectionRef}>
-      <Container className="relative flex flex-col gap-10">
+      <Container className="relative flex flex-col gap-34">
         <SectionTitle
           number="01"
           title="Il mio processo"
@@ -158,7 +158,7 @@ export const Process = () => {
           </svg>
 
           {/* Card sfalsate – stessa grid del SVG (4 col, due "row band") */}
-          <div className="relative grid grid-cols-4 gap-x-6" style={{ minHeight: "560px" }}>
+          <div className="relative grid grid-cols-4 gap-x-21" style={{ minHeight: "560px" }}>
             {steps.map((step, i) => {
               const isTop = i % 2 === 0;
               return (
@@ -169,7 +169,7 @@ export const Process = () => {
                   }}
                   className={[
                     "relative",
-                    isTop ? "self-start mt-16" : "self-end mb-16",
+                    isTop ? "self-start mt-55" : "self-end mb-55",
                   ].join(" ")}
                 >
                   <ProcessCard step={step} />
@@ -180,7 +180,7 @@ export const Process = () => {
         </div>
 
         {/* ─── Fallback md – griglia 2x2 ───────────────────────── */}
-        <div className="hidden md:grid lg:hidden grid-cols-2 gap-6">
+        <div className="hidden md:grid lg:hidden grid-cols-2 gap-21">
           {steps.map((step, i) => (
             <div
               key={step.number}
@@ -194,12 +194,12 @@ export const Process = () => {
         </div>
 
         {/* ─── Mobile – stack verticale con filo a sinistra ─── */}
-        <div className="md:hidden relative pl-8">
+        <div className="md:hidden relative pl-34">
           <div
             aria-hidden
-            className="absolute left-3 top-2 bottom-2 w-px bg-accent"
+            className="absolute left-13 top-8 bottom-8 w-px bg-accent"
           />
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-34">
             {steps.map((step, i) => (
               <div
                 key={step.number}
@@ -209,7 +209,7 @@ export const Process = () => {
                 className="relative"
               >
                 <span
-                  className="absolute -left-[1.55rem] top-6 w-3 h-3 rounded-full bg-accent"
+                  className="absolute -left-21 top-21 w-13 h-13 rounded-full bg-accent"
                   aria-hidden
                 />
                 <ProcessCard step={step} />
@@ -225,11 +225,11 @@ export const Process = () => {
 /* ─── Card singola – isolata per riusare nei 3 breakpoint ──── */
 function ProcessCard({ step }) {
   return (
-    <article className="group relative h-full u-surface u-rule p-6 transition-all duration-300 hover:-translate-y-1">
+    <article className="group relative h-full u-surface u-rule p-21 transition-all duration-300 hover:-translate-y-5">
       {/* Header – numero + label */}
-      <div className="flex items-baseline justify-between gap-3 pb-4 u-rule-b">
+      <div className="flex items-baseline justify-between gap-13 pb-13 u-rule-b">
         <span
-          className="font-display italic text-4xl font-medium leading-none text-accent"
+          className="font-display italic text-lg font-medium leading-none text-accent"
           aria-hidden
         >
           {step.number}
@@ -240,11 +240,11 @@ function ProcessCard({ step }) {
       </div>
 
       {/* Body */}
-      <div className="flex flex-col gap-2.5 pt-4">
-        <h3 className="text-lg font-bold leading-tight text-graphite group-hover:text-accent transition-colors duration-200">
+      <div className="flex flex-col gap-8 pt-13">
+        <h3 className="text-base font-semibold leading-tight text-graphite group-hover:text-accent transition-colors duration-200">
           {step.title}
         </h3>
-        <p className="text-sm text-graphite-2 leading-relaxed">
+        <p className="text-base text-graphite-2 leading-relaxed">
           {step.description}
         </p>
       </div>
