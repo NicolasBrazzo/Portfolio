@@ -8,8 +8,8 @@ import { SectionTitle } from "../ui/SectionTitle";
 import { ProjectCard } from "../ui/ProjectCard";
 import { projects } from "../../data/projects";
 import rivistaNotturna from "../../assets/RivistaNotturna.webp";
-import snippifyImg from "../../assets/Snippify.png";
-import nasaNeo from "../../assets/NASA-neo.png";
+import snippifyImg from "../../assets/Snippify.webp";
+import nasaNeo from "../../assets/NASA-neo.webp";
 
 export function Projects() {
   const sectionRef = useRef(null);

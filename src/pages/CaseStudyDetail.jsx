@@ -7,9 +7,9 @@ import { Container } from "../components/ui/Container";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { Button } from "../components/ui/Button";
 import { caseStudies } from "../data/caseStudies";
-import readitImg from "../assets/Readit.png";
-import snippifyImg from "../assets/Snippify.png";
-import voltaImg from "../assets/Volta.png";
+import readitImg from "../assets/Readit.webp";
+import snippifyImg from "../assets/Snippify.webp";
+import voltaImg from "../assets/Volta.webp";
 
 const IMAGE_MAP = {
   ReadIt: readitImg,

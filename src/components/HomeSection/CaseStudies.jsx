@@ -6,9 +6,9 @@ import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
 import { caseStudies } from "../../data/caseStudies";
-import readitImg from "../../assets/Readit.png";
-import snippifyImg from "../../assets/Snippify.png";
-import voltaImg from "../../assets/Volta.png";
+import readitImg from "../../assets/Readit.webp";
+import snippifyImg from "../../assets/Snippify.webp";
+import voltaImg from "../../assets/Volta.webp";
 import { CaseStudyCard } from "../ui/CaseStudyCard";
 
 export function CaseStudies() {
