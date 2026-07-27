@@ -5,6 +5,7 @@ import { prefersReducedMotion } from "../../lib/motion";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
+import cvUrl from "../../assets/Nicolas Brazzo Frontend Developer · React.pdf?url";
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -225,8 +226,13 @@ export function Hero() {
             <Button onClick={() => scrollTo("projects")}>
               Vedi i progetti <span aria-hidden>→</span>
             </Button>
-            <Button variant="outline" onClick={() => scrollTo("contact")}>
-              Contattami
+            <Button
+              as="a"
+              variant="outline"
+              href={cvUrl}
+              download="Nicolas Brazzo — Frontend Developer.pdf"
+            >
+              Scarica il CV <span aria-hidden>↓</span>
             </Button>
           </div>
         </div>
