@@ -6,6 +6,7 @@ import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { Button } from "../ui/Button";
 import cvUrl from "../../assets/Nicolas Brazzo Frontend Developer · React.pdf?url";
+import { IconsRing } from "./IconsRing";
 
 export function Hero() {
   const containerRef = useRef(null);
@@ -15,8 +16,6 @@ export function Hero() {
   const headlineLinesRef = useRef([]);
   const subLinesRef = useRef([]);
   const ctaLineRef = useRef(null);
-  const gridRafRef = useRef(0);
-  const gridPosRef = useRef({ x: 0, y: 0 });
 
   // Reset array refs ad ogni render per evitare accumuli
   headlineLinesRef.current = [];
@@ -24,37 +23,6 @@ export function Hero() {
 
   const scrollTo = (id) =>
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
-
-  const updateGridVars = () => {
-    gridRafRef.current = 0;
-    const el = containerRef.current;
-    if (!el) return;
-    el.style.setProperty("--grid-x", `${gridPosRef.current.x}px`);
-    el.style.setProperty("--grid-y", `${gridPosRef.current.y}px`);
-  };
-
-  const onGridMove = (e) => {
-    const el = containerRef.current;
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    gridPosRef.current.x = e.clientX - r.left;
-    gridPosRef.current.y = e.clientY - r.top;
-    if (!gridRafRef.current) {
-      gridRafRef.current = requestAnimationFrame(updateGridVars);
-    }
-  };
-
-  const onGridLeave = () => {
-    const el = containerRef.current;
-    if (gridRafRef.current) {
-      cancelAnimationFrame(gridRafRef.current);
-      gridRafRef.current = 0;
-    }
-    if (el) {
-      el.style.setProperty("--grid-x", "50%");
-      el.style.setProperty("--grid-y", "45%");
-    }
-  };
 
   useGSAP(
     () => {
@@ -136,37 +104,12 @@ export function Hero() {
   return (
     <Section
       id="hero"
-      className="group py-0 min-h-screen flex flex-col justify-center"
+      className="py-0 min-h-screen flex flex-col justify-center"
       ref={containerRef}
-      onPointerMove={onGridMove}
-      onPointerLeave={onGridLeave}
-      style={{
-        "--grid-reveal-size": "260px",
-        "--grid-x": "50%",
-        "--grid-y": "45%",
-      }}
     >
-      {/* ── Grid background (full viewport) ───────────────────── */}
-      <div
-        aria-hidden
-        className="absolute inset-0 pointer-events-none opacity-0 group-hover:opacity-100 transition-opacity duration-150"
-        style={{
-          backgroundImage: `
-            linear-gradient(to right, var(--color-rule) 1px, transparent 1px),
-            linear-gradient(to bottom, var(--color-rule) 1px, transparent 1px)
-          `,
-          backgroundSize: "64px 64px",
-          backgroundPosition: "center",
-          maskImage:
-            "radial-gradient(circle var(--grid-reveal-size) at var(--grid-x) var(--grid-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0) 72%)",
-          WebkitMaskImage:
-            "radial-gradient(circle var(--grid-reveal-size) at var(--grid-x) var(--grid-y), rgba(0,0,0,1) 0%, rgba(0,0,0,0) 72%)",
-        }}
-      />
-
       <Container className="relative pt-89 pb-55 md:pb-89">
-        <div className="mx-auto flex flex-col items-center text-center gap-34 max-w-3xl">
-
+        <IconsRing />
+        <div className="relative z-10 mx-auto flex flex-col items-center text-center gap-34 max-w-3xl">
           {/* Name */}
           <div
             ref={nameLineRef}
