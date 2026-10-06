@@ -26,7 +26,7 @@ export const TIMELINE_ITEMS = [
 ];
 
 export const STATS = [
-  { value: "3+", label: "anni di esperienza" },
+  { value: "3+", label: "anni di programmazione" },
   { value: "10+", label: "progetti completati" },
   { value: "400+", label: "commit eseguiti nell'ultimo anno" },
 ];

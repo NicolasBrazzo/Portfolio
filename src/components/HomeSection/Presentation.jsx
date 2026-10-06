@@ -46,7 +46,7 @@ export const Presentation = () => {
             ref={kickerRef}
             className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.28em] uppercase text-accent"
           >
-            Manifesto
+            Approccio
           </span>
 
           <blockquote
