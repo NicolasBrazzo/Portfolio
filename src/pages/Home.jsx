@@ -5,7 +5,6 @@ import { Contact } from "../components/HomeSection/Contact";
 import { Hero } from "../components/HomeSection/Hero";
 import { Projects } from "../components/HomeSection/Projects";
 import { Skills } from "../components/HomeSection/Skills";
-import { Process } from "../components/HomeSection/Process";
 import { Presentation } from "../components/HomeSection/Presentation";
 
 export const Home = () => {
@@ -16,7 +15,7 @@ export const Home = () => {
         <Hero />
         <Presentation/>
         <Projects />
-        <Process />
+        {/* Process nascosta per ora: il componente resta in HomeSection/Process.jsx */}
         <Skills />
         <About />
         <Contact />

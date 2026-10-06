@@ -56,7 +56,7 @@ export function About() {
           {/* ── Colonna sinistra – testo + stat ─────── */}
           <div className="flex flex-col gap-34">
             <div ref={leftRef} className="flex flex-col gap-34">
-              <SectionTitle number="04" title="Chi sono" />
+              <SectionTitle number="03" title="Chi sono" />
 
               {/* Intro – parole chiave in colore accento */}
               <div className="flex flex-col gap-21 text-base leading-relaxed text-graphite-2 max-w-lg">
