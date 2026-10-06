@@ -15,10 +15,10 @@ export function Button({
   ...rest
 }) {
   const base =
-    'inline-flex items-center gap-3 px-7 py-3.5 text-sm tracking-wide transition-colors duration-200 cursor-pointer select-none'
+    'inline-flex items-center gap-13 px-34 py-13 text-base tracking-wide transition-colors duration-200 cursor-pointer select-none'
 
   const variants = {
-    primary: 'bg-accent text-paper font-bold hover:opacity-90',
+    primary: 'bg-accent text-paper font-semibold hover:opacity-90',
     outline: 'u-rule text-graphite font-medium hover:border-accent hover:text-accent',
   }
 

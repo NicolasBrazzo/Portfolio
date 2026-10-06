@@ -52,14 +52,14 @@ export function About() {
   return (
     <Section id="about" ref={sectionRef}>
       <Container>
-        <div className="grid lg:grid-cols-[1fr_1fr] gap-16 xl:gap-24 items-start">
+        <div className="grid lg:grid-cols-[1fr_1fr] gap-55 xl:gap-89 items-start">
           {/* ── Colonna sinistra – testo + stat ─────── */}
-          <div className="flex flex-col gap-10">
-            <div ref={leftRef} className="flex flex-col gap-8">
-              <SectionTitle number="05" title="Chi sono" />
+          <div className="flex flex-col gap-34">
+            <div ref={leftRef} className="flex flex-col gap-34">
+              <SectionTitle number="04" title="Chi sono" />
 
               {/* Intro – parole chiave in colore accento */}
-              <div className="flex flex-col gap-5 text-base md:text-lg leading-relaxed text-graphite-2 max-w-lg">
+              <div className="flex flex-col gap-21 text-base leading-relaxed text-graphite-2 max-w-lg">
                 <p>
                   Sono un{" "}
                   <em className="text-graphite not-italic">frontend developer</em> e{" "}
@@ -88,16 +88,16 @@ export function About() {
             </div>
 
             {/* Stat numbers */}
-            <div className="grid grid-cols-3 gap-3 md:gap-4 pt-2">
+            <div className="grid grid-cols-3 gap-13 pt-8">
               {STATS.map((stat, i) => (
                 <div
                   key={stat.label}
                   ref={(el) => {
                     statsRef.current[i] = el;
                   }}
-                  className="flex flex-col gap-1 p-5 u-surface u-rule"
+                  className="flex flex-col gap-5 p-21 u-surface u-rule"
                 >
-                  <span className="font-mono text-3xl font-semibold text-accent leading-none">
+                  <span className="font-mono text-md font-semibold text-accent leading-none">
                     {stat.value}
                   </span>
                   <span className="font-mono text-(length:--fs-2xs) text-graphite-3 leading-tight">
@@ -109,7 +109,7 @@ export function About() {
           </div>
 
           {/* ── Colonna destra – timeline ──────────── */}
-          <div className="lg:pt-18">
+          <div className="lg:pt-89">
             <Timeline items={TIMELINE_ITEMS} itemRefs={timelineRef} />
           </div>
         </div>

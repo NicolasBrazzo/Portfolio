@@ -44,22 +44,22 @@ export function SkillBar({ name, percent, triggered }) {
   }, [triggered, percent])
 
   return (
-    <div className="group flex flex-col gap-2.5 py-4 u-rule-b last:border-0">
+    <div className="group flex flex-col gap-8 py-13 u-rule-b last:border-0">
 
       {/* Nome + numero */}
-      <div className="flex items-baseline justify-between gap-4">
-        <span className="text-sm font-medium tracking-wide text-graphite uppercase">
+      <div className="flex items-baseline justify-between gap-13">
+        <span className="text-micro font-medium tracking-wide text-graphite uppercase">
           {name}
         </span>
 
         <div className="flex items-baseline gap-px tabular-nums shrink-0">
           <span
             ref={countRef}
-            className="font-mono text-2xl font-semibold leading-none text-accent"
+            className="font-mono text-md font-semibold leading-none text-accent"
           >
             0
           </span>
-          <span className="font-mono text-(length:--fs-2xs) font-semibold text-accent/50 self-start mt-1">%</span>
+          <span className="font-mono text-(length:--fs-2xs) font-semibold text-accent/50 self-start mt-5">%</span>
         </div>
       </div>
 

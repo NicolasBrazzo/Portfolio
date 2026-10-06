@@ -41,17 +41,17 @@ export const Presentation = () => {
   return (
     <Section id="presentation" ref={sectionRef}>
       <Container>
-        <div className="mx-auto flex flex-col items-center gap-7 max-w-3xl text-center">
+        <div className="mx-auto flex flex-col items-center gap-34 max-w-3xl text-center">
           <span
             ref={kickerRef}
-            className="font-mono text-(length:--fs-2xs) font-bold tracking-[0.28em] uppercase text-accent"
+            className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.28em] uppercase text-accent"
           >
             Manifesto
           </span>
 
           <blockquote
             ref={quoteRef}
-            className="font-display text-2xl sm:text-3xl md:text-4xl lg:text-[2.75rem] font-medium leading-[1.3] tracking-tight text-graphite"
+            className="font-display text-md md:text-lg font-medium leading-[1.3] tracking-tight text-graphite"
           >
             Vivo nel punto in cui{" "}
             <em className="font-display italic text-accent">
@@ -61,7 +61,7 @@ export const Presentation = () => {
             stessa attenzione a come una cosa appare e a come è fatta dentro.
           </blockquote>
 
-          <div ref={ruleRef} className="w-12 h-px bg-rule" aria-hidden />
+          <div ref={ruleRef} className="w-55 h-px bg-rule" aria-hidden />
         </div>
       </Container>
     </Section>

@@ -1,54 +1,171 @@
+import readitImg from "../assets/Readit.webp";
+import voltaImg from "../assets/Volta.webp";
+
 /**
- * Dati dei progetti.
- * Sostituisci i placeholder con i tuoi progetti reali.
+ * Dati dei progetti. Ogni progetto ha una card in home e una pagina
+ * di dettaglio su /projects/:id.
  *
- * Campi:
- * - id          → chiave univoca
+ * Campi base (card):
+ * - id           → slug univoco, usato nell'URL /projects/:id
  * - title        → nome del progetto
  * - role         → il tuo ruolo (es. "Frontend Developer", "UI/UX + Dev")
  * - description  → breve descrizione (2-3 righe max)
  * - stack        → array di tecnologie usate
  * - liveUrl      → link al sito live (null se non disponibile)
  * - repoUrl      → link al repo GitHub (null se privato)
- * - image        → path relativo a /public/projects/ (null = placeholder)
+ * - image        → immagine importata da src/assets (null = placeholder)
  * - featured     → true = mostrato in evidenza
+ *
+ * Campi pagina di dettaglio:
+ * - year         → anno del progetto
+ * - duration     → durata stimata del progetto
+ * - client       → cliente o "Personale" / "Team"
+ * - overview     → testo introduttivo lungo (1-2 paragrafi)
+ * - challenge    → contesto/problema affrontato
+ * - solution     → approccio e soluzione adottata
+ * - features     → array di feature chiave [{ title, description }]
+ * - results      → array di risultati/metriche [{ value, label }]
+ * - gallery      → array di immagini extra per la galleria
  */
 
 export const projects = [
   {
-    id: "project-01",
-    title: "Rivista Notturna",
-    role: "Frontend Developer & GSAP Animator",
+    id: "readit",
+    title: "ReadIt",
+    role: "Full Stack Project",
     description:
-      "Rivista Notturna è un progetto nato dallo studio di GSAP e delle animazioni web, con l'obiettivo di creare un'esperienza immersiva per gli utenti.",
-    stack: ["React", "Tailwind CSS", "Vite", "GSAP"],
-    liveUrl: "https://rivista-notturna.vercel.app/",
-    repoUrl: "https://github.com/NicolasBrazzo/Rivista-Notturna",
-    image: null,
+      "Progetto nato per incentivare i giovani a leggere di più, trasformando la lettura in un'esperienza coinvolgente, sociale e gratificante attraverso il monitoraggio del progresso quotidiano.",
+    stack: ["React", "Tailwind CSS", "Vite", "Figma", "NodeJS", "Supabase"],
+    liveUrl: "https://brz-read-it.vercel.app/",
+    repoUrl: "https://github.com/NicolasBrazzo/ReadIt",
+    image: readitImg,
     featured: true,
+    year: "2025",
+    duration: "6 settimane",
+    client: "Progetto personale",
+    overview:
+      "ReadIt nasce dall'esigenza di riportare i giovani lettori a un rapporto continuativo con i libri, sfruttando le meccaniche della gamification. L'app permette di tracciare le sessioni di lettura, conquistare obiettivi e condividere i propri progressi con la community.",
+    challenge:
+      "La lettura sta perdendo terreno tra i giovani perché percepita come attività poco gratificante nel breve periodo. Serviva un prodotto in grado di restituire feedback immediato, mostrare il progresso in modo tangibile e creare un livello sociale leggero ma motivante.",
+    solution:
+      "Ho progettato un flusso onboarding semplice, una dashboard quotidiana con streak e statistiche di lettura e un sistema di obiettivi a step. L'autenticazione e il database in tempo reale sono gestiti con Supabase, mentre il frontend in React garantisce un'esperienza fluida anche su mobile.",
+    features: [
+      {
+        title: "Tracking quotidiano",
+        description:
+          "Sessioni di lettura registrate in pochi tap, con statistiche aggregate per settimana e mese.",
+      },
+      {
+        title: "Obiettivi & streak",
+        description:
+          "Sistema di micro-obiettivi che premia la costanza e mantiene alta la motivazione.",
+      },
+      {
+        title: "Community reading",
+        description:
+          "Feed sociale per condividere libri in corso, recensioni e consigliare letture.",
+      },
+    ],
+    results: [
+      { value: "+40%", label: "Engagement medio giornaliero" },
+      { value: "95+", label: "Score Lighthouse Performance" },
+      { value: "<1.2s", label: "Time to Interactive" },
+    ],
+    gallery: [],
   },
   {
-    id: "project-02",
-    title: "Snippify",
-    role: "Frontend Developer & UX/UI Designer",
+    id: "hub",
+    title: "HUB",
+    role: "Personal Project",
     description:
-      "Snippify è un'applicazione web che permette di creare e condividere snippet di codice in modo semplice e veloce.",
-    stack: ["React", "GSAP", "Tailwind CSS", "Vite", "Figma"],
+      "HUB è il centro di controllo personale che uso per gestire progetti, snippet di codice, strumenti e design system in un'unica dashboard veloce e su misura.",
+    stack: ["Next.js", "Prisma", "Tailwind CSS", "shadcn/ui", "Supabase"],
     liveUrl: "https://snippify.andreasabettaprogrammatore.com/",
-    repoUrl: null,
+    repoUrl: "https://github.com",
     image: null,
     featured: true,
+    year: "2026",
+    duration: "4 settimane",
+    client: "My personal project",
+    overview:
+      "HUB è il centro di controllo personale che uso per gestire progetti, snippet di codice, strumenti e design system in un'unica dashboard veloce e su misura.",
+    challenge:
+      "Gestisco in parallelo più progetti personali e freelance, ognuno con le proprie note, task e link utili: avevo bisogno di un solo posto per tenere tutto sotto controllo, senza passare tra fogli sparsi, bookmark e app diverse. Volevo anche uno spazio dove archiviare snippet di codice e componenti UI riutilizzabili, per non riscrivere due volte la stessa soluzione.",
+    solution:
+      "Ho costruito una dashboard con Next.js 16 (App Router e React Server Components) e Prisma 7 collegato a Supabase tramite driver adapter, con le mutazioni gestite interamente da Server Actions invece che da API routes. L'interfaccia usa shadcn/ui insieme a un design system custom, con syntax highlighting lato server (Shiki) per gli snippet e una navigazione configurabile da un'unica fonte di verità.",
+    features: [
+      {
+        title: "To-do per ogni progetto",
+        description:
+          "Ogni progetto ha la propria lista di attività con priorità, stato e scadenze, per non perdere di vista cosa manca per portarlo a termine.",
+      },
+      {
+        title: "Knowledge base di snippet",
+        description:
+          "Codice riutilizzabile organizzato per linguaggio e categoria, con syntax highlighting generato lato server e ricerca full-text per ritrovare la soluzione giusta in pochi secondi.",
+      },
+      {
+        title: "Design system integrato",
+        description:
+          "Una libreria di componenti UI con showcase interattivo che mostra il codice sorgente reale di ogni elemento, pronta da riusare in nuovi progetti.",
+      },
+    ],
+    results: [
+      { value: "8", label: "Sezioni modulari nell'hub" },
+      { value: "60+", label: "Componenti UI riutilizzabili" },
+      { value: "100%", label: "Dark mode e responsive su ogni breakpoint" },
+    ],
+    gallery: [],
   },
   {
-    id: "project-03",
-    title: "NASA NEO Dashboard",
-    role: "Full stack Project",
+    id: "volta",
+    title: "Volta",
+    role: "SAAS Project",
     description:
-      "Dashboard per la visualizzazione di dati relativi a oggetti celesti vicini alla Terra (Near-Earth Objects).",
-    stack: ["Next.js", "Recharts", "Python", "FastAPI"],
-    liveUrl: "https://nasa-neo-dashboard-brz.vercel.app/",
-    repoUrl: "https://github.com/NicolasBrazzo/NASA-NEO-Dashboard",
-    image: null,
+      "Volta è una piattaforma web di prenotazione online per liberi professionisti.",
+    stack: ["React", "Express", "Tailwind CSS", "shadcn/ui", "Supabase"],
+    liveUrl: "https://frontend-production-0a46.up.railway.app/",
+    repoUrl: "https://github.com/NicolasBrazzo/volta",
+    image: voltaImg,
     featured: false,
-  }
+    year: "2026",
+    duration: "In sviluppo",
+    client: "Progetto SAAS",
+    overview:
+      "Volta è un progetto nato dalla necessità di semplificare la gestione delle prenotazioni per i liberi professionisti, offrendo un'interfaccia intuitiva e funzionalità avanzate per ottimizzare il flusso di lavoro e migliorare l'esperienza dei clienti.",
+    challenge:
+      "Solitamente i gestionali di prenotazione sono complessi, poco user-friendly e non si adattano alle esigenze specifiche dei professionisti. L'obiettivo era creare una piattaforma facile da usare, personalizzabile e in grado di gestire efficacemente prenotazioni, pagamenti e comunicazioni con i clienti.",
+    solution:
+      "Ho progettato un'architettura modulare con backend in Node.js + Express e Supabase per database, autenticazione e aggiornamenti in tempo reale. Il frontend React, con Tailwind CSS e shadcn/ui, offre un flusso di prenotazione fluido e reattivo, mentre un sistema di notifiche automatiche tiene allineati professionista e cliente lungo tutto il ciclo dell'appuntamento.",
+    features: [
+      {
+        title: "Agenda e disponibilità",
+        description:
+          "Calendario interattivo con gestione degli orari, dei servizi e degli slot disponibili in tempo reale.",
+      },
+      {
+        title: "Promemoria automatici",
+        description:
+          "Notifiche e promemoria via email per ridurre i no-show e tenere informati i clienti su conferme e modifiche.",
+      },
+      {
+        title: "Pagina di prenotazione personalizzabile",
+        description:
+          "Link pubblico brandizzabile dove i clienti prenotano in autonomia, senza necessità di registrazione.",
+      },
+    ],
+    results: [
+      { value: "TBD", label: "Pilot in onboarding" },
+      { value: "5", label: "Moduli principali pianificati" },
+      { value: "REST", label: "API documentate con OpenAPI" },
+    ],
+    gallery: [],
+  },
 ];
+
+/** Vecchi id di /case-studies/:id → nuovi slug, per non rompere link già condivisi. */
+export const LEGACY_PROJECT_IDS = {
+  "project-01": "readit",
+  "project-02": "hub",
+  "project-04": "volta",
+};

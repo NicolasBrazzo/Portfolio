@@ -18,15 +18,15 @@ export function SectionTitle({
   const isCenter = align === 'center'
 
   return (
-    <div className={['flex flex-col gap-3', isCenter ? 'items-center text-center' : 'items-start', className].filter(Boolean).join(' ')}>
+    <div className={['flex flex-col gap-13', isCenter ? 'items-center text-center' : 'items-start', className].filter(Boolean).join(' ')}>
 
       {number && (
-        <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
+        <span className="text-micro font-semibold tracking-[0.3em] uppercase text-accent font-mono">
           {number}
         </span>
       )}
 
-      <h2 className="font-display text-4xl md:text-5xl font-medium leading-tight tracking-tighter text-graphite">
+      <h2 className="font-display text-lg font-medium leading-tight tracking-tighter text-graphite">
         {title}
       </h2>
 

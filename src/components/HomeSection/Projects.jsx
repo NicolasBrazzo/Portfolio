@@ -5,22 +5,12 @@ import { prefersReducedMotion } from "../../lib/motion";
 import { Section } from "../ui/Section";
 import { Container } from "../ui/Container";
 import { SectionTitle } from "../ui/SectionTitle";
-import { ProjectCard } from "../ui/ProjectCard";
 import { projects } from "../../data/projects";
-import rivistaNotturna from "../../assets/RivistaNotturna.webp";
-import snippifyImg from "../../assets/Snippify.png";
-import nasaNeo from "../../assets/NASA-neo.png";
+import { ProjectCard } from "../ui/ProjectCard";
 
 export function Projects() {
   const sectionRef = useRef(null);
   const cardsRef = useRef([]);
-
-  const projectsWithImages = projects.map((p) => {
-    if (p.title === "Rivista Notturna") return { ...p, image: rivistaNotturna };
-    if (p.title === "Snippify") return { ...p, image: snippifyImg };
-    if (p.title === "NASA NEO Dashboard") return { ...p, image: nasaNeo };
-    return p;
-  });
 
   useGSAP(
     () => {
@@ -51,17 +41,17 @@ export function Projects() {
 
   return (
     <Section id="projects" ref={sectionRef}>
-      <Container className="flex flex-col gap-14">
+      <Container className="flex flex-col gap-55">
         {/* Header sezione */}
         <SectionTitle
-          number="03"
-          title="Progetti selezionati"
-          subtitle="Una selezione dei lavori che meglio rappresentano il mio approccio al design e allo sviluppo."
+          number="01"
+          title="Progetti"
+          subtitle="I progetti più significativi, con focus su processo e risultati"
         />
 
         {/* Grid progetti */}
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-          {projectsWithImages.map((project, i) => (
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-21">
+          {projects.map((project, i) => (
             <div
               key={project.id}
               ref={(el) => {

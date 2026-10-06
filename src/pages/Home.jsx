@@ -6,7 +6,6 @@ import { Hero } from "../components/HomeSection/Hero";
 import { Projects } from "../components/HomeSection/Projects";
 import { Skills } from "../components/HomeSection/Skills";
 import { Process } from "../components/HomeSection/Process";
-import { CaseStudies } from "../components/HomeSection/CaseStudies";
 import { Presentation } from "../components/HomeSection/Presentation";
 
 export const Home = () => {
@@ -17,7 +16,6 @@ export const Home = () => {
         <Hero />
         <Presentation/>
         <Projects />
-        <CaseStudies/>
         <Process />
         <Skills />
         <About />

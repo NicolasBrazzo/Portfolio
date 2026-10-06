@@ -6,20 +6,11 @@ import { Section } from "../components/ui/Section";
 import { Container } from "../components/ui/Container";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { Button } from "../components/ui/Button";
-import { caseStudies } from "../data/caseStudies";
-import readitImg from "../assets/Readit.png";
-import snippifyImg from "../assets/Snippify.png";
-import voltaImg from "../assets/Volta.png";
+import { projects } from "../data/projects";
 
-const IMAGE_MAP = {
-  ReadIt: readitImg,
-  Snippify: snippifyImg,
-  Volta: voltaImg,
-};
-
-export const CaseStudyDetail = () => {
+export const ProjectDetail = () => {
   const { id } = useParams();
-  const project = caseStudies.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === id);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -31,12 +22,12 @@ export const CaseStudyDetail = () => {
         <Navbar />
         <main>
           <Section>
-            <Container className="flex flex-col items-start gap-6 pt-24">
-              <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
+            <Container className="flex flex-col items-start gap-21 pt-89">
+              <span className="text-micro font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                 404
               </span>
-              <h1 className="font-display text-4xl md:text-5xl font-medium leading-tight tracking-tighter text-graphite">
-                Caso studio non trovato
+              <h1 className="font-display text-lg font-medium leading-tight tracking-tighter text-graphite">
+                Progetto non trovato
               </h1>
               <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
                 Il progetto che stai cercando non esiste o è stato rimosso.
@@ -52,65 +43,65 @@ export const CaseStudyDetail = () => {
     );
   }
 
-  const image = project.image ?? IMAGE_MAP[project.title] ?? null;
+  const image = project.image ?? null;
 
   return (
     <>
       <Navbar />
       <main>
         {/* HERO */}
-        <Section className="pt-32">
-          <Container className="flex flex-col gap-10">
+        <Section className="pt-144">
+          <Container className="flex flex-col gap-34">
             <Link
-              to="/#case-studies"
-              className="inline-flex items-center gap-2 text-xs font-semibold tracking-[0.2em] uppercase text-graphite-2 hover:text-accent transition-colors duration-200 w-fit"
+              to="/#projects"
+              className="inline-flex items-center gap-8 text-micro font-semibold tracking-[0.2em] uppercase text-graphite-2 hover:text-accent transition-colors duration-200 w-fit"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              Torna ai casi studio
+              Torna ai progetti
             </Link>
 
-            <div className="flex flex-col gap-6">
-              <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
+            <div className="flex flex-col gap-21">
+              <span className="text-micro font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                 {project.role}
               </span>
-              <h1 className="font-display text-5xl md:text-6xl lg:text-7xl font-medium leading-[1.05] tracking-tighter text-graphite">
+              <h1 className="font-display text-lg md:text-xl font-medium leading-[1.05] tracking-tighter text-graphite">
                 {project.title}
               </h1>
-              <p className="text-lg md:text-xl text-graphite-2 leading-relaxed max-w-3xl">
+              <p className="text-base text-graphite-2 leading-relaxed max-w-3xl">
                 {project.description}
               </p>
             </div>
 
             {/* Meta info */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 u-rule-t">
-              <div className="flex flex-col gap-1.5">
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-21 pt-21 u-rule-t">
+              <div className="flex flex-col gap-5">
                 <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Anno</span>
-                <span className="text-sm font-medium text-graphite">{project.year ?? "—"}</span>
+                <span className="text-base font-medium text-graphite">{project.year ?? "—"}</span>
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-5">
                 <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Durata</span>
-                <span className="text-sm font-medium text-graphite">{project.duration ?? "—"}</span>
+                <span className="text-base font-medium text-graphite">{project.duration ?? "—"}</span>
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-5">
                 <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Cliente</span>
-                <span className="text-sm font-medium text-graphite">{project.client ?? "—"}</span>
+                <span className="text-base font-medium text-graphite">{project.client ?? "—"}</span>
               </div>
-              <div className="flex flex-col gap-1.5">
+              <div className="flex flex-col gap-5">
                 <span className="font-mono text-(length:--fs-2xs) font-semibold tracking-[0.2em] uppercase text-graphite-3">Ruolo</span>
-                <span className="text-sm font-medium text-graphite">{project.role}</span>
+                <span className="text-base font-medium text-graphite">{project.role}</span>
               </div>
             </div>
 
             {/* Stack */}
             {project.stack?.length > 0 && (
-              <div className="flex flex-wrap gap-1.5">
+              <div className="flex flex-wrap gap-5">
                 {project.stack.map((tech) => (
                   <span
                     key={tech}
-                    className="px-2.5 py-1 font-mono text-(length:--fs-2xs) font-semibold tracking-[0.15em] uppercase text-graphite-3 u-rule"
+                    className="px-8 py-5 font-mono text-(length:--fs-2xs) font-semibold tracking-[0.15em] uppercase text-graphite-3 u-rule"
                   >
                     {tech}
                   </span>
@@ -119,7 +110,7 @@ export const CaseStudyDetail = () => {
             )}
 
             {/* CTA */}
-            <div className="flex flex-wrap items-center gap-4">
+            <div className="flex flex-wrap items-center gap-13">
               {project.liveUrl && (
                 <Button as="a" href={project.liveUrl} target="_blank" rel="noopener noreferrer">
                   Visita il sito
@@ -152,12 +143,12 @@ export const CaseStudyDetail = () => {
         {/* OVERVIEW */}
         {project.overview && (
           <Section>
-            <Container className="grid md:grid-cols-12 gap-10">
+            <Container className="grid md:grid-cols-12 gap-34">
               <div className="md:col-span-4">
                 <SectionTitle number="01" title="Overview" />
               </div>
               <div className="md:col-span-8">
-                <p className="text-base md:text-lg text-graphite-2 leading-relaxed">
+                <p className="text-base text-graphite-2 leading-relaxed">
                   {project.overview}
                 </p>
               </div>
@@ -168,29 +159,29 @@ export const CaseStudyDetail = () => {
         {/* CHALLENGE & SOLUTION */}
         {(project.challenge || project.solution) && (
           <Section>
-            <Container className="grid md:grid-cols-2 gap-10">
+            <Container className="grid md:grid-cols-2 gap-34">
               {project.challenge && (
-                <div className="flex flex-col gap-4 p-8 u-surface u-rule">
-                  <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
+                <div className="flex flex-col gap-13 p-34 u-surface u-rule">
+                  <span className="text-micro font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                     Challenge
                   </span>
-                  <h3 className="text-2xl font-bold text-graphite leading-tight">
+                  <h3 className="text-md font-semibold text-graphite leading-tight">
                     Il problema
                   </h3>
-                  <p className="text-sm md:text-base text-graphite-2 leading-relaxed">
+                  <p className="text-base text-graphite-2 leading-relaxed">
                     {project.challenge}
                   </p>
                 </div>
               )}
               {project.solution && (
-                <div className="flex flex-col gap-4 p-8 u-surface u-rule">
-                  <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
+                <div className="flex flex-col gap-13 p-34 u-surface u-rule">
+                  <span className="text-micro font-semibold tracking-[0.3em] uppercase text-accent font-mono">
                     Solution
                   </span>
-                  <h3 className="text-2xl font-bold text-graphite leading-tight">
+                  <h3 className="text-md font-semibold text-graphite leading-tight">
                     L'approccio
                   </h3>
-                  <p className="text-sm md:text-base text-graphite-2 leading-relaxed">
+                  <p className="text-base text-graphite-2 leading-relaxed">
                     {project.solution}
                   </p>
                 </div>
@@ -202,25 +193,25 @@ export const CaseStudyDetail = () => {
         {/* FEATURES */}
         {project.features?.length > 0 && (
           <Section>
-            <Container className="flex flex-col gap-12">
+            <Container className="flex flex-col gap-55">
               <SectionTitle
                 number="02"
                 title="Feature chiave"
                 subtitle="Le funzionalità che rendono il prodotto unico"
               />
-              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-21">
                 {project.features.map((feature, i) => (
                   <div
                     key={feature.title}
-                    className="flex flex-col gap-3 p-6 u-surface u-rule"
+                    className="flex flex-col gap-13 p-21 u-surface u-rule"
                   >
-                    <span className="text-xs font-mono text-accent">
+                    <span className="text-micro font-mono text-accent">
                       {String(i + 1).padStart(2, "0")}
                     </span>
-                    <h4 className="text-lg font-bold text-graphite leading-tight">
+                    <h4 className="text-base font-semibold text-graphite leading-tight">
                       {feature.title}
                     </h4>
-                    <p className="text-sm text-graphite-2 leading-relaxed">
+                    <p className="text-base text-graphite-2 leading-relaxed">
                       {feature.description}
                     </p>
                   </div>
@@ -233,15 +224,15 @@ export const CaseStudyDetail = () => {
         {/* RESULTS */}
         {project.results?.length > 0 && (
           <Section>
-            <Container className="flex flex-col gap-12">
+            <Container className="flex flex-col gap-55">
               <SectionTitle number="03" title="Risultati" />
-              <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 sm:grid-cols-3 gap-21">
                 {project.results.map((r) => (
                   <div
                     key={r.label}
-                    className="flex flex-col gap-2 p-8 u-surface u-rule"
+                    className="flex flex-col gap-8 p-34 u-surface u-rule"
                   >
-                    <span className="font-mono text-4xl md:text-5xl font-semibold text-accent leading-none">
+                    <span className="font-mono text-lg font-semibold text-accent leading-none">
                       {r.value}
                     </span>
                     <span className="font-mono text-(length:--fs-2xs) font-medium tracking-wide text-graphite-3 uppercase">
@@ -257,9 +248,9 @@ export const CaseStudyDetail = () => {
         {/* GALLERY */}
         {project.gallery?.length > 0 && (
           <Section>
-            <Container className="flex flex-col gap-12">
+            <Container className="flex flex-col gap-55">
               <SectionTitle number="04" title="Galleria" />
-              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-21">
                 {project.gallery.map((src, i) => (
                   <div
                     key={i}
@@ -280,19 +271,19 @@ export const CaseStudyDetail = () => {
 
         {/* CTA FINALE */}
         <Section>
-          <Container className="flex flex-col items-start gap-6 p-10 u-surface u-rule">
-            <span className="text-xs font-semibold tracking-[0.3em] uppercase text-accent font-mono">
+          <Container className="flex flex-col items-start gap-21 p-34 u-surface u-rule">
+            <span className="text-micro font-semibold tracking-[0.3em] uppercase text-accent font-mono">
               Next
             </span>
-            <h3 className="font-display text-3xl md:text-4xl font-medium tracking-tighter text-graphite leading-tight">
+            <h3 className="font-display text-md md:text-lg font-medium tracking-tighter text-graphite leading-tight">
               Ti piace quello che vedi?
             </h3>
             <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
-              Scopri gli altri casi studio o scrivimi per parlare di un nuovo progetto insieme.
+              Scopri gli altri progetti o scrivimi per parlare di un nuovo progetto insieme.
             </p>
-            <div className="flex flex-wrap gap-4">
-              <Button as={Link} to="/#case-studies" variant="outline">
-                Altri casi studio
+            <div className="flex flex-wrap gap-13">
+              <Button as={Link} to="/#projects" variant="outline">
+                Altri progetti
               </Button>
               <Button as={Link} to="/#contact">
                 Contattami
