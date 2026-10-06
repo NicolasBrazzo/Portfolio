@@ -1,9 +1,12 @@
+import { Link } from "react-router-dom";
+import { Button } from "./Button";
+
 /**
- * ProjectCard – card singolo progetto.
+ * ProjectCard – card singolo progetto, con link alla pagina di dettaglio.
  *
- * Props: { title, role, description, stack[], liveUrl, repoUrl, image }
+ * Props: { id, title, role, description, stack[], liveUrl, repoUrl, image }
  */
-export function ProjectCard({ title, role, description, stack = [], liveUrl, repoUrl, image }) {
+export function ProjectCard({ id, title, role, description, stack = [], liveUrl, repoUrl, image }) {
   return (
     <article className="group flex flex-col h-full min-h-233 u-surface u-rule overflow-hidden transition-all duration-300 hover:-translate-y-5">
 
@@ -98,6 +101,19 @@ export function ProjectCard({ title, role, description, stack = [], liveUrl, rep
             <span className="text-micro text-graphite-3/50 italic">Privato</span>
           )}
         </div>
+
+        {id && (
+          <div className="w-full">
+            <Button
+              as={Link}
+              to={`/projects/${id}`}
+              size="xs"
+              className="w-full mt-13 flex items-center justify-center"
+            >
+              Dettagli
+            </Button>
+          </div>
+        )}
 
       </div>
     </article>

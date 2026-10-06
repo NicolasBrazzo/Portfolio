@@ -112,7 +112,7 @@ export const Process = () => {
     <Section id="process" ref={sectionRef}>
       <Container className="relative flex flex-col gap-34">
         <SectionTitle
-          number="01"
+          number="02"
           title="Il mio processo"
           subtitle="Quattro passaggi, un metodo. Così trasformo un'idea in un prodotto che funziona."
         />

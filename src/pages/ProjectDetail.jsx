@@ -6,20 +6,11 @@ import { Section } from "../components/ui/Section";
 import { Container } from "../components/ui/Container";
 import { SectionTitle } from "../components/ui/SectionTitle";
 import { Button } from "../components/ui/Button";
-import { caseStudies } from "../data/caseStudies";
-import readitImg from "../assets/Readit.webp";
-import snippifyImg from "../assets/Snippify.webp";
-import voltaImg from "../assets/Volta.webp";
+import { projects } from "../data/projects";
 
-const IMAGE_MAP = {
-  ReadIt: readitImg,
-  Snippify: snippifyImg,
-  Volta: voltaImg,
-};
-
-export const CaseStudyDetail = () => {
+export const ProjectDetail = () => {
   const { id } = useParams();
-  const project = caseStudies.find((p) => p.id === id);
+  const project = projects.find((p) => p.id === id);
 
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "instant" });
@@ -36,7 +27,7 @@ export const CaseStudyDetail = () => {
                 404
               </span>
               <h1 className="font-display text-lg font-medium leading-tight tracking-tighter text-graphite">
-                Caso studio non trovato
+                Progetto non trovato
               </h1>
               <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
                 Il progetto che stai cercando non esiste o è stato rimosso.
@@ -52,7 +43,7 @@ export const CaseStudyDetail = () => {
     );
   }
 
-  const image = project.image ?? IMAGE_MAP[project.title] ?? null;
+  const image = project.image ?? null;
 
   return (
     <>
@@ -62,14 +53,14 @@ export const CaseStudyDetail = () => {
         <Section className="pt-144">
           <Container className="flex flex-col gap-34">
             <Link
-              to="/#case-studies"
+              to="/#projects"
               className="inline-flex items-center gap-8 text-micro font-semibold tracking-[0.2em] uppercase text-graphite-2 hover:text-accent transition-colors duration-200 w-fit"
             >
               <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden>
                 <line x1="19" y1="12" x2="5" y2="12" />
                 <polyline points="12 19 5 12 12 5" />
               </svg>
-              Torna ai casi studio
+              Torna ai progetti
             </Link>
 
             <div className="flex flex-col gap-21">
@@ -288,11 +279,11 @@ export const CaseStudyDetail = () => {
               Ti piace quello che vedi?
             </h3>
             <p className="text-base text-graphite-2 leading-relaxed max-w-xl">
-              Scopri gli altri casi studio o scrivimi per parlare di un nuovo progetto insieme.
+              Scopri gli altri progetti o scrivimi per parlare di un nuovo progetto insieme.
             </p>
             <div className="flex flex-wrap gap-13">
-              <Button as={Link} to="/#case-studies" variant="outline">
-                Altri casi studio
+              <Button as={Link} to="/#projects" variant="outline">
+                Altri progetti
               </Button>
               <Button as={Link} to="/#contact">
                 Contattami
