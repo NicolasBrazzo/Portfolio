@@ -97,7 +97,7 @@ export function Contact() {
           >
             <span className="w-5 h-5 rounded-full bg-accent animate-pulse" />
             <span className="text-micro font-medium tracking-[0.15em] uppercase text-graphite-3">
-              Aperto a nuovi progetti — 2026
+              Disponibile per nuove opportunità — 2026
             </span>
           </div>
 
@@ -106,12 +106,12 @@ export function Contact() {
             ref={headlineRef}
             className="font-display text-lg lg:text-xl font-medium leading-[0.95] tracking-tighter text-graphite"
           >
-            Costruiamo
+            Cerchi uno
             <br />
-            qualcosa
+            sviluppatore?
             <br />
             <em className="font-display italic text-accent">
-              insieme.
+              Parliamone.
             </em>
           </h2>
 
@@ -120,10 +120,17 @@ export function Contact() {
             ref={subRef}
             className="text-base text-graphite-2 leading-relaxed"
           >
-            Hai un progetto in mente, un'idea da sviluppare o semplicemente vuoi
-            scambiare due parole?{" "}
-            <span className="text-graphite font-medium">Scrivimi.</span> Rispondo
-            entro 24 ore.
+            Sono aperto a ruoli da developer in sede, ibridi o da remoto, e
+            posso iniziare 30 giorni dopo il colloquio.{" "}
+            <span className="text-graphite font-medium">Scrivimi qui</span>{" "}
+            oppure a{" "}
+            <a
+              href="mailto:nicolasbrazzo8@gmail.com"
+              className="text-accent underline underline-offset-4 hover:text-graphite transition-colors duration-200"
+            >
+              nicolasbrazzo8@gmail.com
+            </a>
+            .
           </p>
 
           {/* Form di contatto */}
@@ -143,7 +150,7 @@ export function Contact() {
                   </p>
                 </div>
                 <p className="text-graphite-2 text-base pl-34">
-                  Ho ricevuto il tuo messaggio. Ti rispondo entro 24 ore.
+                  Ho ricevuto il tuo messaggio. Ti rispondo il prima possibile.
                 </p>
               </div>
             ) : (
@@ -182,7 +189,7 @@ export function Contact() {
 
                 <textarea
                   name="message"
-                  placeholder="Raccontami del tuo progetto"
+                  placeholder="Il tuo messaggio"
                   rows={5}
                   required
                   disabled={status === "sending"}

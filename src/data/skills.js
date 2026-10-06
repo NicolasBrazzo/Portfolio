@@ -6,19 +6,19 @@
 
 export const skills = {
   core: {
-    label: 'Core Stack',
+    label: 'Uso ogni giorno',
     skills: ["React", "JavaScript", "Tailwind", "Figma", "HTML & CSS", "Git & GitHub"],
   },
   comfort: {
-    label: 'Comfortable skills',
+    label: 'Uso con sicurezza',
     skills: ["TypeScript", "Next.js", "Node.js", "Express", "MongoDB", "PostgreSQL", "Docker"],
   },
   learning: {
-    label: 'Learning & exploration',
+    label: 'Sto imparando',
     skills: ["GraphQL", "AWS", "Python", "Rust", "Go"],
   },
   ai: {
-    label: 'AI Toolkit',
+    label: 'Strumenti AI',
     skills: ["Claude (Code, AI, Design)", "ChatGPT", "Lovable", "Gemini"],
   },
 }

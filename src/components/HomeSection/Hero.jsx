@@ -135,7 +135,7 @@ export function Hero() {
               >
                 <span className="inline-flex items-baseline gap-13 flex-wrap">
                   <em className="font-display italic text-accent leading-none">
-                    front-end
+                    full stack
                   </em>
                 </span>
                 <span className="text-accent">.</span>
@@ -149,15 +149,16 @@ export function Hero() {
               ref={(el) => el && subLinesRef.current.push(el)}
               className="block"
             >
-              Progetto e costruisco sistemi digitali che funzionano davvero.
+              Sviluppo applicazioni web con React e Node.js, con una
+              passione per il frontend e il design delle interfacce.
             </span>
             <span
               ref={(el) => el && subLinesRef.current.push(el)}
               className="block"
             >
-              Ogni interfaccia nasce da un{" "}
-              <span className="text-graphite font-medium">sistema</span>, non da
-              un'ispirazione casuale.
+              Cerco un ruolo da{" "}
+              <span className="text-graphite font-medium">developer</span> in un
+              team di prodotto.
             </span>
           </p>
 

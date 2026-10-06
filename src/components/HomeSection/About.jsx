@@ -56,33 +56,36 @@ export function About() {
           {/* ── Colonna sinistra – testo + stat ─────── */}
           <div className="flex flex-col gap-34">
             <div ref={leftRef} className="flex flex-col gap-34">
-              <SectionTitle number="04" title="Chi sono" />
+              <SectionTitle number="03" title="Chi sono" />
 
               {/* Intro – parole chiave in colore accento */}
               <div className="flex flex-col gap-21 text-base leading-relaxed text-graphite-2 max-w-lg">
                 <p>
                   Sono un{" "}
-                  <em className="text-graphite not-italic">frontend developer</em> e{" "}
-                  <em className="text-accent not-italic">UI designer</em> con
-                  una forte ossessione per i{" "}
-                  <em className="text-graphite not-italic">dettagli</em>. Progetto
-                  partendo dal sistema, non dall'ispirazione del momento.
+                  <em className="text-graphite not-italic">web developer</em> con
+                  una formazione{" "}
+                  <em className="text-accent not-italic">full stack</em> e una
+                  passione per il frontend. Oggi lavoro come sviluppatore in
+                  un'azienda software, dove mi occupo soprattutto di interfacce,
+                  e nel frattempo completo il percorso ITS da Web Developer.
                 </p>
                 <p>
-                  Il mio approccio unisce rigore da ingegnere e sensibilità da
-                  designer: ogni componente deve essere coerente, scalabile e
-                  bello da usare. Lavoro con{" "}
+                  Lavoro con{" "}
                   <em className="text-accent not-italic">React</em>,{" "}
-                  <em className="text-accent not-italic">Tailwind</em> e{" "}
-                  <em className="text-accent not-italic">GSAP</em> per costruire
-                  interfacce che si muovono bene, si caricano veloce e si usano
-                  con piacere.
+                  <em className="text-accent not-italic">Node.js</em>,{" "}
+                  <em className="text-accent not-italic">Express</em> e{" "}
+                  <em className="text-accent not-italic">Tailwind</em>, e mi
+                  trovo a mio agio su tutto il ciclo di un'applicazione: dal
+                  database alle API, fino all'ultimo dettaglio dell'interfaccia.
+                  Cerco codice leggibile, componenti riutilizzabili e{" "}
+                  <em className="text-graphite not-italic">dettagli</em> curati.
                 </p>
                 <p>
-                  Quando non scrivo codice, studio tipografia, esploro design
-                  system di altri e cerco la combinazione perfetta tra{" "}
-                  <em className="text-graphite not-italic">forma</em> e{" "}
-                  <em className="text-graphite not-italic">funzione</em>.
+                  Ho imparato a programmare da autodidatta e non ho più smesso:
+                  sviluppo progetti personali per sperimentare nuove tecnologie,
+                  e cerco un team dove portare questa{" "}
+                  <em className="text-graphite not-italic">curiosità</em> ogni
+                  giorno.
                 </p>
               </div>
             </div>

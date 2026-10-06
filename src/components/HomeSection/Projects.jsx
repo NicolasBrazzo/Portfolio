@@ -46,7 +46,7 @@ export function Projects() {
         <SectionTitle
           number="01"
           title="Progetti"
-          subtitle="I progetti più significativi, con focus su processo e risultati"
+          subtitle="Tre progetti personali che ho progettato e sviluppato da zero, dal frontend al back-end."
         />
 
         {/* Grid progetti */}
