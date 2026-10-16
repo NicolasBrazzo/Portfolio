@@ -1,28 +1,22 @@
-/**
- * Section – wrapper di sezione riutilizzabile.
- *
- * Props:
- * - id        → anchor per la navbar
- * - className → classi aggiuntive
- * - as        → tag HTML (default: section)
- * - ref       → forwardRef per GSAP e altri usi
- */
-import { forwardRef } from 'react'
+import { cx } from '../../lib/cx'
 
-export const Section = forwardRef(function Section(
-  { children, id, className = '', as: Tag = 'section', ...rest },
-  ref
-) {
+const PADDING = {
+  bottom: 'pb-(--section-y)',
+  both: 'py-(--section-y)',
+  none: '',
+}
+
+/**
+ * Wrapper di sezione. Di base lo spazio sta solo sotto: le sezioni
+ * impilate non sommano due padding tra loro.
+ *
+ * - padding → "bottom" | "both" | "none"
+ * - ref     → passato direttamente (React 19), serve a GSAP
+ */
+export function Section({ as: Tag = 'section', padding = 'bottom', className, children, ...rest }) {
   return (
-    <Tag
-      ref={ref}
-      id={id}
-      className={['relative overflow-hidden py-(--section-padding-y)', className]
-        .filter(Boolean)
-        .join(' ')}
-      {...rest}
-    >
+    <Tag className={cx('relative', PADDING[padding], className)} {...rest}>
       {children}
     </Tag>
   )
-})
+}

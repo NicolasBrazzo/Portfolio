@@ -39,7 +39,9 @@
   --font-*: initial;
   --radius-*: initial;
 
-  /* Spaziatura — il nome È il valore in px */
+  /* Spaziatura — il nome È il valore in px. Lo zero serve a
+     inset-0, top-0, left-0 e simili. */
+  --spacing-0: 0px;
   --spacing-1: 1px;
   --spacing-2: 2px;
   --spacing-3: 3px;

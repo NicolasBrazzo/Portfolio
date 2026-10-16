@@ -1,11 +1,15 @@
 /**
  * Punto centrale di registrazione dei plugin GSAP.
- * Importa sempre gsap e ScrollTrigger da qui, mai direttamente da 'gsap',
- * così i plugin vengono registrati una sola volta.
+ * Importa sempre gsap, ScrollTrigger e useGSAP da qui, mai direttamente
+ * dai pacchetti, così i plugin vengono registrati una sola volta.
  */
 import gsap from 'gsap'
 import { ScrollTrigger } from 'gsap/ScrollTrigger'
+import { useGSAP } from '@gsap/react'
 
-gsap.registerPlugin(ScrollTrigger)
+gsap.registerPlugin(ScrollTrigger, useGSAP)
 
-export { gsap, ScrollTrigger }
+/* Curva condivisa con il CSS (--ease-out) */
+export const EASE_OUT = 'expo.out'
+
+export { gsap, ScrollTrigger, useGSAP }

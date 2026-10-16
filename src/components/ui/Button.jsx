@@ -1,33 +1,61 @@
+import { useRef } from 'react'
+import { cx } from '../../lib/cx'
+import { useMagnetic } from '../../hooks/useMagnetic'
+
+const VARIANTS = {
+  primary: 'bg-accent text-accent-ink hover:bg-fg hover:text-void',
+  outline: 'border border-line-strong text-fg hover:border-accent hover:text-accent',
+}
+
+const ICON_SHIFT = {
+  x: 'group-hover/btn:translate-x-5',
+  y: 'group-hover/btn:translate-y-3',
+}
+
 /**
- * Button – componente UI base.
+ * Bottone a pillola.
  *
- * Varianti:
- * - primary  → sfondo a colore accento, testo su carta
- * - outline  → hairline su --rule, testo grafite; hover accento
- *
- * Prop `as` permette di renderizzare come <a> (es. link esterno).
+ * - variant   → "primary" | "outline"
+ * - as        → tag o componente (es. "a", Link)
+ * - icon      → componente icona lucide, messo dopo il testo
+ * - iconShift → "x" | "y": direzione in cui l'icona scivola all'hover
+ * - magnetic  → segue leggermente il cursore
  */
 export function Button({
-  children,
-  variant = 'primary',
   as: Tag = 'button',
-  className = '',
+  variant = 'primary',
+  icon: Icon,
+  iconShift = 'x',
+  magnetic = false,
+  className,
+  children,
   ...rest
 }) {
-  const base =
-    'inline-flex items-center gap-13 px-34 py-13 text-base tracking-wide transition-colors duration-200 cursor-pointer select-none'
-
-  const variants = {
-    primary: 'bg-accent text-paper font-semibold hover:opacity-90',
-    outline: 'u-rule text-graphite font-medium hover:border-accent hover:text-accent',
-  }
+  const ref = useRef(null)
+  useMagnetic(ref, { enabled: magnetic })
 
   return (
     <Tag
-      className={[base, variants[variant] ?? variants.primary, className].filter(Boolean).join(' ')}
+      ref={ref}
+      className={cx(
+        'group/btn inline-flex cursor-pointer select-none items-center gap-13 rounded-full px-21 py-13',
+        'text-sm font-medium leading-none no-underline',
+        'transition-colors duration-(--duration-micro) ease-out-expo',
+        'disabled:cursor-wait disabled:opacity-60',
+        VARIANTS[variant],
+        className,
+      )}
       {...rest}
     >
       {children}
+      {Icon && (
+        <Icon
+          aria-hidden
+          size={16}
+          strokeWidth={1.75}
+          className={cx('transition-transform duration-(--duration-micro) ease-out-expo', ICON_SHIFT[iconShift])}
+        />
+      )}
     </Tag>
   )
 }
