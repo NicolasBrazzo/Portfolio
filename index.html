@@ -1,36 +1,11 @@
 <!doctype html>
-<html lang="it">
+<html lang="it" style="background-color:#07080B">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-    <!-- Tema: applica data-theme/data-accent prima del primo paint,
-         per evitare il flash del tema sbagliato al caricamento.
-         Le chiavi 'theme'/'accent' devono restare in sincrono con
-         src/theme/ThemeContext.js. Il chiaro è il tema canonico:
-         nessun auto-detect da prefers-color-scheme, solo scelta
-         esplicita persistita. -->
-    <script>
-      (function () {
-        try {
-          var theme = localStorage.getItem('theme');
-          var accent = localStorage.getItem('accent');
-          var accents = ['mark', 'ink', 'pine', 'ochre'];
-          document.documentElement.setAttribute('data-theme', theme === 'dark' ? 'dark' : 'light');
-          document.documentElement.setAttribute('data-accent', accents.indexOf(accent) !== -1 ? accent : 'mark');
-        } catch (e) {
-          document.documentElement.setAttribute('data-theme', 'light');
-          document.documentElement.setAttribute('data-accent', 'mark');
-        }
-      })();
-    </script>
-
     <!-- Favicon -->
     <link rel="icon" type="image/svg+xml" href="/vite.svg" />
-
-    <!-- Font preload -->
-    <link rel="preload" href="/fonts/IBMPlexSans-Medium.woff2" as="font" type="font/woff2" crossorigin />
-    <link rel="preload" href="/fonts/IBMPlexSerif-Regular.woff2" as="font" type="font/woff2" crossorigin />
 
     <!-- SEO primario -->
     <title>Nicolas Brazzo — Web Developer Full Stack | Portfolio</title>
@@ -53,7 +28,7 @@
     <meta name="twitter:image" content="https://brzportfolio.vercel.app/og-image.png" />
 
     <!-- Theme color (mobile browser chrome) -->
-    <meta name="theme-color" content="#FAF9F6" />
+    <meta name="theme-color" content="#07080B" />
   </head>
   <body>
     <div id="root"></div>

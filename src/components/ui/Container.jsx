@@ -1,9 +1,9 @@
-export function Container({ children, className = '', as: Tag = 'div', ...rest }) {
+import { cx } from '../../lib/cx'
+
+/** Larghezza massima del sito + gutter laterale. */
+export function Container({ as: Tag = 'div', className, children, ...rest }) {
   return (
-    <Tag
-      className={`w-full mx-auto px-(--section-padding-x) max-w-(--container-max) ${className}`.trim()}
-      {...rest}
-    >
+    <Tag className={cx('mx-auto w-full max-w-(--container-max) u-gutter', className)} {...rest}>
       {children}
     </Tag>
   )

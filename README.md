@@ -13,7 +13,8 @@ percorso professionale, costruita con React e animata con GSAP.
 |---|---|
 | **Framework** | React 19 + Vite |
 | **Stile** | Tailwind CSS |
-| **Animazioni** | GSAP (ScrollTrigger) |
+| **Animazioni** | GSAP (ScrollTrigger) + Lenis per lo scroll fluido |
+| **Font** | Bricolage Grotesque, Geist, Geist Mono, Newsreader (self-hosted via Fontsource) |
 | **Form** | Formspree |
 | **Deploy** | Vercel |
 
@@ -21,14 +22,20 @@ percorso professionale, costruita con React e animata con GSAP.
 
 ## Struttura
 
-Single page application con sezioni ancorate: hero, progetti selezionati,
-casi studio, processo di lavoro, competenze, percorso e contatti.
+Home a sezioni ancorate (hero, approccio, progetti, competenze, percorso,
+contatti) e una pagina di dettaglio per ogni progetto su `/projects/:id`.
 
 ```
 src/
-├── components/   # componenti UI e sezioni della pagina
-├── assets/       # immagini e risorse statiche
-└── main.jsx      # entry point
+├── components/
+│   ├── layout/     # cornice comune: navbar, footer, griglia, scroll fluido
+│   ├── sections/   # una sezione per componente (home/, project/)
+│   └── ui/         # primitivi riutilizzabili, senza contenuti
+├── hooks/          # animazioni condivise (reveal, puntatore, magnetico)
+├── data/           # testi e contenuti: il copy si cambia da qui
+├── constants/      # configurazione del sito (nav, contatti, social)
+├── styles/         # token e font
+└── lib/            # gsap, scroll, utility
 ```
 
 ---
@@ -55,7 +62,8 @@ Il sito parte su `http://localhost:5173`.
 
 ## Stato
 
-In evoluzione. È in programma una revisione della direzione visiva.
+Nuova direzione visiva: tema scuro, foglio tecnico e tipografia editoriale.
+In arrivo: revisione dei testi e nuovi progetti.
 
 ---
 
