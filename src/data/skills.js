@@ -1,24 +1,27 @@
 /**
- * Dati delle skill.
- * Aggiorna le percentuali e aggiungi/rimuovi skill in base al tuo profilo reale.
- *
+ * Gruppi della scheda competenze, nell'ordine in cui appaiono.
+ * `highlighted` mette in risalto la colonna (strumenti AI).
  */
-
-export const skills = {
-  core: {
-    label: 'Uso ogni giorno',
-    skills: ["React", "JavaScript", "Tailwind", "Figma", "HTML & CSS", "Git & GitHub"],
+export const SKILL_GROUPS = [
+  {
+    id: 'core',
+    title: 'Uso ogni giorno',
+    items: ['React', 'JavaScript', 'Tailwind', 'Figma', 'HTML & CSS', 'Git & GitHub'],
   },
-  comfort: {
-    label: 'Uso con sicurezza',
-    skills: ["TypeScript", "Next.js", "Node.js", "Express", "MongoDB", "PostgreSQL", "Docker"],
+  {
+    id: 'comfort',
+    title: 'Con sicurezza',
+    items: ['TypeScript', 'Next.js', 'Node.js', 'Express', 'MongoDB', 'PostgreSQL', 'Docker'],
   },
-  learning: {
-    label: 'Sto imparando',
-    skills: ["GraphQL", "AWS", "Python", "Rust", "Go"],
+  {
+    id: 'learning',
+    title: 'Sto imparando',
+    items: ['GraphQL', 'AWS', 'Python', 'Rust', 'Go'],
   },
-  ai: {
-    label: 'Strumenti AI',
-    skills: ["Claude (Code, AI, Design)", "ChatGPT", "Lovable", "Gemini"],
+  {
+    id: 'ai',
+    title: 'Strumenti AI',
+    items: ['Claude', 'ChatGPT', 'Lovable', 'Gemini'],
+    highlighted: true,
   },
-}
+]

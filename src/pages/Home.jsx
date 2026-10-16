@@ -1,26 +1,22 @@
-import { Footer } from "../components/Footer";
-import { Navbar } from "../components/Navbar";
-import { About } from "../components/HomeSection/About";
-import { Contact } from "../components/HomeSection/Contact";
-import { Hero } from "../components/HomeSection/Hero";
-import { Projects } from "../components/HomeSection/Projects";
-import { Skills } from "../components/HomeSection/Skills";
-import { Presentation } from "../components/HomeSection/Presentation";
+import { PageShell } from '../components/layout/PageShell'
+import { Hero } from '../components/sections/home/Hero'
+import { HomeMarquee } from '../components/sections/home/HomeMarquee'
+import { Approach } from '../components/sections/home/Approach'
+import { Projects } from '../components/sections/home/Projects'
+import { Skills } from '../components/sections/home/Skills'
+import { Journey } from '../components/sections/home/Journey'
+import { Contact } from '../components/sections/home/Contact'
 
-export const Home = () => {
+export function Home() {
   return (
-    <>
-      <Navbar />
-      <main>
-        <Hero />
-        <Presentation/>
-        <Projects />
-        {/* Process nascosta per ora: il componente resta in HomeSection/Process.jsx */}
-        <Skills />
-        <About />
-        <Contact />
-      </main>
-      <Footer />
-    </>
-  );
-};
+    <PageShell>
+      <Hero />
+      <HomeMarquee />
+      <Approach />
+      <Projects />
+      <Skills />
+      <Journey />
+      <Contact />
+    </PageShell>
+  )
+}

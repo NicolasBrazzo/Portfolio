@@ -8,6 +8,7 @@ import voltaImg from "../assets/Volta.webp";
  * Campi base (card):
  * - id           → slug univoco, usato nell'URL /projects/:id
  * - title        → nome del progetto
+ * - tag          → parola in corsivo accanto al titolo (es. "lettura")
  * - role         → il tuo ruolo (es. "Frontend Developer", "UI/UX + Dev")
  * - description  → breve descrizione (2-3 righe max)
  * - stack        → array di tecnologie usate
@@ -32,6 +33,7 @@ export const projects = [
   {
     id: "readit",
     title: "ReadIt",
+    tag: "lettura",
     role: "Full Stack Project",
     description:
       "Progetto nato per incentivare i giovani a leggere di più, trasformando la lettura in un'esperienza coinvolgente, sociale e gratificante attraverso il monitoraggio del progresso quotidiano.",
@@ -76,6 +78,7 @@ export const projects = [
   {
     id: "hub",
     title: "HUB",
+    tag: "dashboard",
     role: "Personal Project",
     description:
       "HUB è il centro di controllo personale che uso per gestire progetti, snippet di codice, strumenti e design system in un'unica dashboard veloce e su misura.",
@@ -120,6 +123,7 @@ export const projects = [
   {
     id: "volta",
     title: "Volta",
+    tag: "prenotazioni",
     role: "SAAS Project",
     description:
       "Volta è una piattaforma web di prenotazione online per liberi professionisti.",
