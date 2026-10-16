@@ -1,0 +1,16 @@
+/* ============================================
+   Font self-hosted via Fontsource: i file
+   vengono serviti dal sito, nessuna richiesta
+   a Google Fonts.
+
+   - Bricolage Grotesque → display (titoli grandi)
+   - Geist               → testo e interfaccia
+   - Geist Mono          → etichette, quote, numeri
+   - Newsreader corsivo  → la "mano": parole chiave
+                           e annotazioni a matita
+   ============================================ */
+
+@import "@fontsource-variable/bricolage-grotesque/opsz.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+@import "@fontsource/newsreader/latin-400-italic.css";

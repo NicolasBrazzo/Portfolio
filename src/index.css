@@ -1,134 +1,45 @@
 @import "tailwindcss";
+@import "./styles/fonts.css";
 @import "./styles/tokens.css";
 
 /* ============================================
-   IBM Plex Sans – display (self-hosted)
-   ============================================ */
-
-@font-face {
-  font-family: "IBM Plex Sans";
-  src: url("/fonts/IBMPlexSans-Medium.woff2") format("woff2");
-  font-weight: 500;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IBM Plex Sans";
-  src: url("/fonts/IBMPlexSans-MediumItalic.woff2") format("woff2");
-  font-weight: 500;
-  font-style: italic;
-  font-display: swap;
-}
-
-/* Peso alto obbligatorio: font-synthesis è disattivato, quindi
-   senza questo file ogni font-semibold/font-bold renderizza
-   silenziosamente in Medium. Serve anche ai corpi display, dove
-   il 500 risulta smilzo. */
-@font-face {
-  font-family: "IBM Plex Sans";
-  src: url("/fonts/IBMPlexSans-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ============================================
-   IBM Plex Serif – testo (self-hosted)
-   ============================================ */
-
-@font-face {
-  font-family: "IBM Plex Serif";
-  src: url("/fonts/IBMPlexSerif-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ============================================
-   IBM Plex Mono – etichette, annotazioni, numeri (self-hosted)
-   ============================================ */
-
-@font-face {
-  font-family: "IBM Plex Mono";
-  src: url("/fonts/IBMPlexMono-Regular.woff2") format("woff2");
-  font-weight: 400;
-  font-style: normal;
-  font-display: swap;
-}
-
-@font-face {
-  font-family: "IBM Plex Mono";
-  src: url("/fonts/IBMPlexMono-SemiBold.woff2") format("woff2");
-  font-weight: 600;
-  font-style: normal;
-  font-display: swap;
-}
-
-/* ============================================
    Tema – colori, raggi, famiglie
+
+   "inline": le utility puntano alla variabile
+   CSS, non al valore, così i token restano
+   l'unica fonte di verità.
    ============================================ */
 
 @theme inline {
-  /* Nomi Tailwind mappati sui token (indiretto, non
-     inlineato a build-time): necessario perché il valore
-     cambi a runtime con data-theme / data-accent. */
-  --color-paper: var(--paper);
-  --color-paper-2: var(--paper-2);
-  --color-rule: var(--rule);
-  --color-rule-soft: var(--rule-soft);
-  --color-graphite: var(--graphite);
-  --color-graphite-2: var(--graphite-2);
-  --color-graphite-3: var(--graphite-3);
-  --color-mark: var(--mark);
-  --color-ink: var(--ink);
-  --color-pine: var(--pine);
-  --color-ochre: var(--ochre);
+  --color-void: var(--void);
+  --color-surface: var(--surface);
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-fg: var(--fg);
+  --color-fg-2: var(--fg-2);
+  --color-fg-3: var(--fg-3);
   --color-accent: var(--accent);
-
-  /* Spigolo vivo ovunque tranne rounded-full (cerchi veri:
-     utility statica di Tailwind, non è una chiave di tema) */
-  --radius: var(--r-base);
-  --radius-xs: var(--r-base);
-  --radius-sm: var(--r-base);
-  --radius-md: var(--r-base);
-  --radius-lg: var(--r-base);
-  --radius-xl: var(--r-base);
-  --radius-2xl: var(--r-base);
-  --radius-3xl: var(--r-base);
-  --radius-4xl: var(--r-base);
-
-  /* Famiglie — vivono solo qui (non in tokens.css: vedi nota
-     lì) per generare le utility font-display/font-text, e per
-     sostituire il mono di default di Tailwind ovunque
-     font-mono è già in uso nei componenti. Valori letterali:
-     i font non cambiano con tema/accento, non serve
-     l'indirezione a runtime che "inline" abilita per i colori. */
-  --font-display: "IBM Plex Sans", system-ui, sans-serif;
-  --font-text: "IBM Plex Serif", Georgia, serif;
-  --font-mono: "IBM Plex Mono", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --color-accent-ink: var(--accent-ink);
+  --color-live: var(--live);
 }
 
 /* ============================================
-   Scala – rapporto aureo 1.618
+   Scala – Fibonacci per le spaziature, tipografia
+   fissa per il testo e fluida per i titoli display
 
-   Blocco separato e NON inline: questi valori sono
-   letterali e non cambiano a runtime, quindi conviene
-   che le utility referenzino la variabile di tema.
-
-   Le tre righe "initial" azzerano le scale di default:
-   dopo di quelle p-4, text-sm, mt-12 non esistono più.
-   È deliberato — fuori scala dev'essere impossibile,
-   non sconsigliato.
+   Le righe "initial" azzerano le scale di default:
+   p-4, text-sm, mt-12 non esistono. Fuori scala
+   dev'essere impossibile, non sconsigliato.
    ============================================ */
 
 @theme {
   --spacing: initial;
   --spacing-*: initial;
   --text-*: initial;
+  --font-*: initial;
+  --radius-*: initial;
 
-  /* Spaziatura — Fibonacci. Il nome È il valore in px:
-     p-34 vale 34px, non i 136px della convenzione Tailwind. */
+  /* Spaziatura — il nome È il valore in px */
   --spacing-1: 1px;
   --spacing-2: 2px;
   --spacing-3: 3px;
@@ -142,51 +53,83 @@
   --spacing-144: 144px;
   --spacing-233: 233px;
 
-  /* Tipografia — ogni gradino è il precedente × 1.618.
-     La crenatura si serra al crescere del corpo: a 177px
-     la spaziatura ottica di un carattere da testo è troppo
-     larga, e serrarla distingue un titolo composto da uno
-     solo ingrandito. */
-  --text-micro: 10px;
+  /* Famiglie */
+  --font-display: "Bricolage Grotesque Variable", "Geist Variable", system-ui, sans-serif;
+  --font-sans: "Geist Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "Geist Mono Variable", ui-monospace, "SFMono-Regular", Menlo, monospace;
+  --font-hand: "Newsreader", Georgia, serif;
+
+  /* Raggi — pochi e piccoli: la geometria resta tecnica */
+  --radius-sm: 4px;
+  --radius-md: 6px;
+
+  /* Testo — corpi fissi */
+  --text-micro: 11px;
   --text-micro--line-height: 1.4;
-  --text-micro--letter-spacing: 0.12em;
+  --text-micro--letter-spacing: 0.08em;
+
+  --text-sm: 14px;
+  --text-sm--line-height: 1.6;
 
   --text-base: 16px;
-  --text-base--line-height: 1.618;
+  --text-base--line-height: 1.7;
 
-  --text-md: 26px;
-  --text-md--line-height: 1.3;
+  --text-lg: 21px;
+  --text-lg--line-height: 1.2;
+  --text-lg--letter-spacing: -0.03em;
 
-  --text-lg: 42px;
-  --text-lg--line-height: 1.15;
-  --text-lg--letter-spacing: -0.01em;
+  --text-xl: 26px;
+  --text-xl--line-height: 1.2;
+  --text-xl--letter-spacing: -0.03em;
 
-  --text-xl: 68px;
-  --text-xl--line-height: 1.05;
-  --text-xl--letter-spacing: -0.02em;
+  /* Testo — display fluidi. La crenatura si serra
+     al crescere del corpo. */
+  --text-stat: 56px;
+  --text-stat--line-height: 1;
+  --text-stat--letter-spacing: -0.05em;
 
-  --text-2xl: 110px;
-  --text-2xl--line-height: 0.95;
-  --text-2xl--letter-spacing: -0.03em;
+  --text-quote: clamp(30px, 4.4vw, 64px);
+  --text-quote--line-height: 1.04;
+  --text-quote--letter-spacing: -0.04em;
 
-  --text-3xl: 177px;
-  --text-3xl--line-height: 0.9;
-  --text-3xl--letter-spacing: -0.035em;
+  --text-marquee: clamp(26px, 3.4vw, 44px);
+  --text-marquee--line-height: 1;
+  --text-marquee--letter-spacing: -0.04em;
+
+  --text-project: clamp(44px, 6vw, 88px);
+  --text-project--line-height: 0.9;
+  --text-project--letter-spacing: -0.05em;
+
+  --text-title: clamp(44px, 7vw, 104px);
+  --text-title--line-height: 0.88;
+  --text-title--letter-spacing: -0.05em;
+
+  --text-hero: clamp(52px, 11.5vw, 178px);
+  --text-hero--line-height: 0.84;
+  --text-hero--letter-spacing: -0.055em;
+
+  --text-contact: clamp(60px, 13vw, 210px);
+  --text-contact--line-height: 0.84;
+  --text-contact--letter-spacing: -0.06em;
+
+  /* Animazioni riusabili via utility (animate-*) */
+  --animate-blink: blink 2.4s ease-in-out infinite;
+  --animate-marquee: marquee 46s linear infinite;
+
+  @keyframes blink {
+    50% { opacity: 0.35; }
+  }
+
+  @keyframes marquee {
+    to { transform: translateX(-50%); }
+  }
 }
 
 /* ============================================
-   Portfolio – variabili CSS (base)
+   Base
    ============================================ */
 
 @layer base {
-  :root {
-    /* Layout. Il container è un limite di viewport, non fa
-       parte del ritmo interno: resta fuori scala. */
-    --container-max: 72rem;
-    --section-padding-y: 89px;
-    --section-padding-x: 21px;
-  }
-
   html {
     font-synthesis: none;
     text-rendering: optimizeLegibility;
@@ -194,31 +137,55 @@
     -moz-osx-font-smoothing: grayscale;
   }
 
-  /* Lo smooth scroll è movimento: va sotto condizione,
-     come tutto il resto. */
-  @media (prefers-reduced-motion: no-preference) {
-    html {
-      scroll-behavior: smooth;
-    }
-  }
-
   body {
     margin: 0;
     min-width: 320px;
     min-height: 100vh;
     overflow-x: hidden;
-    background-color: var(--color-paper);
-    color: var(--color-graphite);
-    font-family: var(--font-text);
+    background-color: var(--void);
+    color: var(--fg);
+    font-family: var(--font-sans);
     font-size: var(--text-base);
-    line-height: 1.618;
+    line-height: 1.7;
   }
 
-  /* Focus-visible globale – accessibilità keyboard */
+  ::selection {
+    background: var(--accent);
+    color: var(--accent-ink);
+  }
+
   :focus-visible {
-    outline: 2px solid var(--color-accent);
+    outline: 2px solid var(--accent);
     outline-offset: 3px;
-    border-radius: var(--r-base);
+  }
+
+  h1, h2, h3, h4 {
+    text-wrap: balance;
+  }
+
+  /* Lenis gestisce lo scroll fluido: lo smooth
+     nativo andrebbe in conflitto */
+  html.lenis,
+  html.lenis body {
+    height: auto;
+  }
+
+  .lenis.lenis-smooth {
+    scroll-behavior: auto !important;
+  }
+
+  .lenis.lenis-stopped {
+    overflow: hidden;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
   }
 }
 
@@ -227,31 +194,36 @@
    ============================================ */
 
 @layer utilities {
-  /* Superficie sollevata */
-  .u-surface {
-    background-color: var(--color-paper-2);
-  }
-
-  /* Hairline — quota tecnica, non decorazione.
-     0.5px invece di 1px: al netto vero, non un bordo pieno. */
-  .u-rule {
-    border: 0.5px solid var(--color-rule);
-  }
-
-  .u-rule-t {
-    border-top: 0.5px solid var(--color-rule);
-  }
-
-  .u-rule-b {
-    border-bottom: 0.5px solid var(--color-rule);
-  }
-
-  /* Etichetta tecnica — occhielli, numeri di sezione,
-     annotazioni a margine. Il registro minore del sistema. */
+  /* Etichetta tecnica — occhielli, quote, metadati */
   .u-label {
     font-family: var(--font-mono);
     font-size: var(--text-micro);
-    letter-spacing: 0.12em;
+    line-height: 1.4;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
+  }
+
+  /* La "mano": corsivo editoriale per le parole chiave */
+  .u-hand {
+    font-family: var(--font-hand);
+    font-style: italic;
+    font-weight: 400;
+    letter-spacing: -0.02em;
+  }
+
+  /* Testo a contorno, vuoto dentro */
+  .u-outline {
+    color: transparent;
+    -webkit-text-stroke: 1.2px var(--fg-2);
+  }
+
+  /* Gutter laterale del sito, rispetta i notch */
+  .u-gutter {
+    padding-left: max(var(--gutter), env(safe-area-inset-left, 0px));
+    padding-right: max(var(--gutter), env(safe-area-inset-right, 0px));
+  }
+
+  .ease-out-expo {
+    transition-timing-function: var(--ease-out);
   }
 }

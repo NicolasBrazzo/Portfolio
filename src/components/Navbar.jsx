@@ -1,14 +1,10 @@
 import { useState, useEffect } from 'react'
-import { Moon, Sun } from 'lucide-react'
 import { NAV_LINKS, SECTIONS } from '../constants/navbar'
-import { useTheme } from '../theme/ThemeContext'
 
 export function Navbar() {
   const [scrolled, setScrolled] = useState(false)
   const [menuOpen, setMenuOpen] = useState(false)
   const [active, setActive]     = useState('hero')
-  const { theme, toggleTheme }  = useTheme()
-  const isDark = theme === 'dark'
 
   /* background on scroll */
   useEffect(() => {
@@ -127,16 +123,6 @@ export function Navbar() {
             />
           </button>
 
-          {/* Theme toggle */}
-          <button
-            type="button"
-            onClick={toggleTheme}
-            aria-label={isDark ? 'Attiva tema chiaro' : 'Attiva tema scuro'}
-            title={isDark ? 'Tema chiaro' : 'Tema scuro'}
-            className="flex items-center justify-center w-34 h-34 text-graphite-2 hover:text-accent transition-colors duration-200 cursor-pointer"
-          >
-            {isDark ? <Sun size={18} strokeWidth={1.75} /> : <Moon size={18} strokeWidth={1.75} />}
-          </button>
         </div>
       </div>
 

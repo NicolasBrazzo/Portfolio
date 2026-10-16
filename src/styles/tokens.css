@@ -1,116 +1,57 @@
 /* ============================================
-   Token grezzi — identità "carta e grafite"
+   Token grezzi — identità "foglio tecnico al buio"
 
-   Il tema chiaro è quello canonico; lo scuro è
-   un'alternativa progettata, non un'inversione
-   automatica (nessun auto-detect da
-   prefers-color-scheme: la scelta è sempre
-   esplicita e persistita, vedi ThemeProvider).
+   Tema unico scuro: niente data-theme, niente
+   auto-detect. L'accento vive in un solo token
+   (--accent) con la sua versione RGB per le
+   trasparenze, così cambiarlo costa una riga.
 
-   Nota: --text-*, --tracking-*, --leading-* NON
-   vengono definiti qui perché collidono con lo
-   stesso namespace del tema di default di Tailwind
-   (dichiararli in un :root fuori da @theme li
-   sovrascriverebbe silenziosamente ovunque, bug
-   scoperto durante l'implementazione). Le uniche
-   dimensioni fuori scala Tailwind vivono qui sotto
-   con nomi non ambigui (--fs-*).
+   Nota: --text-*, --spacing-*, --font-* NON vanno
+   definiti qui, collidono con i namespace di
+   Tailwind: vivono nei blocchi @theme di index.css.
    ============================================ */
 
 :root {
-  /* --- Colore: tema chiaro (canonico) --- */
-  --paper: #FAF9F6;
-  --paper-2: #EDEAE3;
-  --rule: #D8D5CE;
-  --rule-soft: #E5E2DB;
-  --graphite: #1A1917;
-  --graphite-2: #4A4844;
-  --graphite-3: #8A8781;
-  --mark: #C8392B;
+  color-scheme: dark;
 
-  /* Accenti alternativi — colori da penna/matita tecnica,
-     non da brand. Attivato da data-accent sull'html. */
-  --ink: #2B5797;
-  --pine: #2E6B4B;
-  --ochre: #96631A;
+  /* --- Superfici --- */
+  --void: #07080B;
+  --surface: #0D0F14;
 
-  /* Accento attivo — indirizzato da data-accent, di base
-     coincide con --mark. */
-  --accent: var(--mark);
+  /* --- Linee: quote tecniche, mai bordi pieni --- */
+  --line: rgb(237 235 230 / 0.08);
+  --line-strong: rgb(237 235 230 / 0.16);
 
-  /* --- Raggi: spigolo vivo ovunque ---
-     Unica eccezione ammessa: elementi circolari
-     veri (avatar, pallino di stato), che restano
-     sull'utility rounded-full di Tailwind — non
-     è una chiave di questa scala. */
-  --r-base: 0;
+  /* --- Testo ---
+     fg-3 resta sopra 4.5:1 sul fondo: è usato
+     anche per le etichette mono piccole. */
+  --fg: #EDEBE6;
+  --fg-2: #9C9A94;
+  --fg-3: #7D7B75;
 
-  /* --- Ombre: quote tecniche, non luce diffusa ---
-     Solo hairline a offset netto, zero blur/spread. */
-  --shadow-1: 0 1px 0 0 var(--rule);
-  --shadow-2: 0 -1px 0 0 var(--rule), 0 1px 0 0 var(--rule);
-  --shadow-3: 0 1px 0 0 var(--rule), 0 2px 0 0 var(--rule-soft);
+  /* --- Accento --- */
+  --accent: #FFD23F;
+  --accent-rgb: 255 210 63;
+  --accent-ink: #0B0A06;
 
-  /* Le famiglie (display/text/mono) sono definite dentro
-     @theme in index.css, non qui: devono vivere in un
-     blocco @theme per generare le utility font-display/
-     font-text e per sovrascrivere il font-mono di default
-     di Tailwind. Definirle anche qui creerebbe due
-     dichiarazioni per la stessa custom property su :root
-     — nella migliore ipotesi duplicazione, nella peggiore
-     un riferimento circolare se una richiama l'altra via
-     var(). */
+  /* --- Stato "disponibile" --- */
+  --live: #B6FF3B;
 
-  /* Unico gradino fuori dalla scala nativa di Tailwind:
-     il livello più piccolo per badge/metadati minimi
-     (percentuali, anno/durata, tag stack) — sostituisce
-     i valori arbitrari text-[10px]/text-[11px] sparsi
-     nei componenti. Nome non ambiguo, non collide con
-     --text-xs di Tailwind. */
-  --fs-2xs: 0.6875rem; /* 11px */
+  /* --- Layout --- */
+  --container-max: 1320px;
+  --gutter: clamp(21px, 5vw, 89px);
+  --section-y: clamp(120px, 14vw, 216px);
+  --nav-h: 72px;
 
-  /* --- Movimento: durate nominali ---
-     L'assegnazione ai singoli gesti è nel Task 4;
-     qui solo i valori, azzerati sotto reduced-motion
-     più sotto in questo file. */
-  --duration-micro: 160ms;
-  --duration-enter: 500ms;
-  --duration-reveal: 700ms;
-  --duration-theme: 400ms;
+  /* --- Movimento --- */
+  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --duration-micro: 400ms;
+  --duration-enter: 900ms;
 }
-
-/* ============================================
-   Colore — tema scuro (alternativa progettata)
-   ============================================ */
-:root[data-theme="dark"] {
-  --paper: #17161A;
-  --paper-2: #201F1B;
-  --rule-soft: #2B2924;
-  --rule: #38352E;
-  --graphite: #F1EEE7;
-  --graphite-2: #A9A59C;
-  --graphite-3: #726E64;
-  --mark: #E2604B; /* stesso rosso, schiarito e un po' più saturo per il contrasto su fondo scuro */
-
-  /* TODO Task successivo: ink/pine/ochre non sono ancora
-     ricalibrati per il fondo scuro, ereditano i valori
-     chiari finché il selettore accento non viene esposto
-     in UI. */
-}
-
-/* ============================================
-   Accenti alternativi (data-accent)
-   ============================================ */
-:root[data-accent="mark"] { --accent: var(--mark); }
-:root[data-accent="ink"] { --accent: var(--ink); }
-:root[data-accent="pine"] { --accent: var(--pine); }
-:root[data-accent="ochre"] { --accent: var(--ochre); }
 
 @media (prefers-reduced-motion: reduce) {
   :root {
     --duration-micro: 0ms;
     --duration-enter: 0ms;
-    --duration-reveal: 0ms;
-    --duration-theme: 0ms;
   }
 }
