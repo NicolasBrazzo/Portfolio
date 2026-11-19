@@ -1,50 +1,23 @@
 /* ============================================
-   Token grezzi — identità "foglio tecnico al buio"
+   Variabili operative del sito
 
-   Tema unico scuro: niente data-theme, niente
-   auto-detect. L'accento vive in un solo token
-   (--accent) con la sua versione RGB per le
-   trasparenze, così cambiarlo costa una riga.
+   I token di design (colori, testo, raggi,
+   ombre, layout) stanno in index.css, nel
+   blocco @theme generato da
+   design-system/tokens.json. Qui restano solo
+   le misure di struttura che non sono token.
 
-   Nota: --text-*, --spacing-*, --font-* NON vanno
-   definiti qui, collidono con i namespace di
-   Tailwind: vivono nei blocchi @theme di index.css.
+   --container-max e --ease-out sono alias
+   temporanei dei componenti ancora da riscrivere.
    ============================================ */
 
 :root {
-  color-scheme: dark;
-
-  /* --- Superfici --- */
-  --void: #07080B;
-  --surface: #0D0F14;
-
-  /* --- Linee: quote tecniche, mai bordi pieni --- */
-  --line: rgb(237 235 230 / 0.08);
-  --line-strong: rgb(237 235 230 / 0.16);
-
-  /* --- Testo ---
-     fg-3 resta sopra 4.5:1 sul fondo: è usato
-     anche per le etichette mono piccole. */
-  --fg: #EDEBE6;
-  --fg-2: #9C9A94;
-  --fg-3: #7D7B75;
-
-  /* --- Accento --- */
-  --accent: #FFD23F;
-  --accent-rgb: 255 210 63;
-  --accent-ink: #0B0A06;
-
-  /* --- Stato "disponibile" --- */
-  --live: #B6FF3B;
-
-  /* --- Layout --- */
-  --container-max: 1320px;
-  --gutter: clamp(21px, 5vw, 89px);
-  --section-y: clamp(120px, 14vw, 216px);
+  --section-y: clamp(80px, 10vw, calc(var(--spacing) * 36));
   --nav-h: 72px;
 
-  /* --- Movimento --- */
-  --ease-out: cubic-bezier(0.16, 1, 0.3, 1);
+  --container-max: var(--container-content);
+  --ease-out: var(--ease-frame);
+
   --duration-micro: 400ms;
   --duration-enter: 900ms;
 }
